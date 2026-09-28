@@ -1,0 +1,649 @@
+{
+  "unit": 3,
+  "title_en": "Family",
+  "title_zh": "家庭",
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "page_range": {
+    "book": "13-18",
+    "pdf": "17-22"
+  },
+  "supplementary_pages": {
+    "book": "54-55",
+    "pdf": "58-59"
+  },
+  "sections": [
+    {
+      "book_page": 13,
+      "pdf_page": 17,
+      "label": "Let's start!",
+      "activities": [
+        "1 Listen, point and say (family in a park: dad, mum, sister, brother, grandpa, grandma labels)",
+        "2 Listen and sing (song)"
+      ]
+    },
+    {
+      "book_page": 14,
+      "pdf_page": 18,
+      "label": "Let's read!",
+      "activities": [
+        "1 Listen and read (5-panel story 'This is my … I love my …!')"
+      ]
+    },
+    {
+      "book_page": 15,
+      "pdf_page": 19,
+      "label": "Let's read!",
+      "activities": [
+        "2 Look, listen and circle (This is my dad/mum, grandpa/grandma, sister/brother)",
+        "3 Retell the story"
+      ]
+    },
+    {
+      "book_page": 16,
+      "pdf_page": 20,
+      "label": "Let's have fun!",
+      "activities": [
+        "Look, find and say (beach scene: find Toby, May, dad, mum, grandpa, grandma – 'This is Toby's mum.')"
+      ]
+    },
+    {
+      "book_page": 17,
+      "pdf_page": 21,
+      "label": "Let's do it!",
+      "activities": [
+        "Draw a picture of your family ('This is my family. This is my …')"
+      ]
+    },
+    {
+      "book_page": 18,
+      "pdf_page": 22,
+      "label": "Let's explore!",
+      "activities": [
+        "Watch the video. Look and match (family tree: grandma, grandpa, grandpa, grandma / mum, dad / me, brother; two grandma portraits to place)"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "en": "Duoduo",
+      "zh": "多多",
+      "role": "narrator of the 'I love my family' story p14 (pigtails, red-white striped top with heart)",
+      "uncertain": true,
+      "uncertain_reason": "Identified by appearance; not named on the page"
+    },
+    {
+      "en": "Toby",
+      "zh": "托比",
+      "role": "his family at the beach p16"
+    },
+    {
+      "en": "May",
+      "zh": "梅",
+      "role": "girl with pink bow in Toby's family at the beach p16 (probably Toby's sister)",
+      "uncertain": true,
+      "uncertain_reason": "Relationship to Toby not stated; name/zh from Proper nouns appendix"
+    }
+  ],
+  "words": [
+    {
+      "id": "u3_w01",
+      "en": "my",
+      "zh": "我的",
+      "emoji_hint": "🙋",
+      "picture_description": "Card: a child pointing proudly at a family photo – 'This is my family.' (book p17)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w02",
+      "en": "family",
+      "zh": "家庭",
+      "emoji_hint": "👨‍👩‍👧‍👦",
+      "picture_description": "Card: whole family together – grandma, dad, mum, sister, brother smiling in a pink frame (book p14 panel 5 'I love my family!')",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w03",
+      "en": "mum",
+      "zh": "妈妈",
+      "emoji_hint": "👩",
+      "picture_description": "Card: young mum with long dark hair and pink top, arms open to catch her roller-skating daughter (book p14 panel 1)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w04",
+      "en": "dad",
+      "zh": "爸爸",
+      "emoji_hint": "👨",
+      "picture_description": "Card: dad in blue shirt lifting his daughter up to fly a kite (book p14 panel 2)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w05",
+      "en": "grandpa",
+      "zh": "祖父；外祖父",
+      "emoji_hint": "👴",
+      "picture_description": "Card: grey-haired grandpa in white shirt (book p13 park scene) / grandpa with glasses (family tree p18)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w06",
+      "en": "grandma",
+      "zh": "祖母；外祖母",
+      "emoji_hint": "👵",
+      "picture_description": "Card: grey-haired grandma in an apron baking with her granddaughter (book p14 panel 3)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w07",
+      "en": "sister",
+      "zh": "姐姐；妹妹",
+      "emoji_hint": "👧",
+      "picture_description": "Card: girl with pigtails and blue dress in the park (book p13 label 'sister')",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w08",
+      "en": "and",
+      "zh": "和，与",
+      "emoji_hint": "➕",
+      "picture_description": "Used in song 'My sister and brother.' – could show sister + brother side by side",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w09",
+      "en": "brother",
+      "zh": "哥哥；弟弟",
+      "emoji_hint": "👦",
+      "picture_description": "Card: boy in yellow shirt building a block tower with his sister (book p14 panel 4); little boy on a scooter (p13)",
+      "page": 13,
+      "pdf_page": 17,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w10",
+      "en": "this",
+      "zh": "这，这个",
+      "emoji_hint": "👉",
+      "picture_description": "'This is my mum.' – a finger pointing at a person",
+      "page": 14,
+      "pdf_page": 18,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w11",
+      "en": "is",
+      "zh": "是",
+      "emoji_hint": "🟰",
+      "picture_description": "'This is my dad.'",
+      "page": 14,
+      "pdf_page": 18,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w12",
+      "en": "love",
+      "zh": "爱，关爱",
+      "emoji_hint": "❤️",
+      "picture_description": "Card: heart + family hugging – 'I love my family!' (book p14)",
+      "page": 14,
+      "pdf_page": 18,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u3_w13",
+      "en": "me",
+      "zh": "我",
+      "emoji_hint": "🧒",
+      "picture_description": "Family tree (book p18): child's portrait in the bottom row labelled 'me' next to 'brother'",
+      "page": 18,
+      "pdf_page": 22,
+      "source": "Appendix 'Words and expressions' Unit 3 (book pp62-63 / PDF pp68-69); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    }
+  ],
+  "sentence_patterns": [
+    {
+      "id": "u3_p01",
+      "pattern": "This is my ___.",
+      "zh": "这是我的___。",
+      "slot_examples": [
+        "mum",
+        "dad",
+        "grandpa",
+        "grandma",
+        "sister",
+        "brother",
+        "family"
+      ]
+    },
+    {
+      "id": "u3_p02",
+      "pattern": "I love my ___!",
+      "zh": "我爱我的___！",
+      "slot_examples": [
+        "mum",
+        "dad",
+        "grandma",
+        "brother",
+        "family"
+      ]
+    },
+    {
+      "id": "u3_p03",
+      "pattern": "Meet my family!",
+      "zh": "来见见我的家人吧！"
+    },
+    {
+      "id": "u3_p04",
+      "pattern": "My ___ and ___.",
+      "zh": "我的___和___。",
+      "slot_examples": [
+        "sister and brother"
+      ]
+    },
+    {
+      "id": "u3_p05",
+      "pattern": "This is [name]'s ___.",
+      "zh": "这是[某人]的___。",
+      "slot_examples": [
+        "This is Toby's mum."
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "id": "u3_s01",
+      "en": "Meet my family!",
+      "zh": "来见见我的家人吧！",
+      "page": 13,
+      "pdf_page": 17,
+      "note": "Song opening"
+    },
+    {
+      "id": "u3_s02",
+      "en": "My mum. / My dad. / My grandpa. / My grandma.",
+      "zh": "我的妈妈。/我的爸爸。/我的爷爷（外公）。/我的奶奶（外婆）。",
+      "page": 13,
+      "pdf_page": 17,
+      "note": "Song"
+    },
+    {
+      "id": "u3_s03",
+      "en": "My sister and brother.",
+      "zh": "我的姐姐（妹妹）和哥哥（弟弟）。",
+      "page": 13,
+      "pdf_page": 17,
+      "note": "Song"
+    },
+    {
+      "id": "u3_s04",
+      "en": "This is my mum.",
+      "zh": "这是我的妈妈。",
+      "page": 14,
+      "pdf_page": 18,
+      "note": "Pattern: This is my + family member."
+    },
+    {
+      "id": "u3_s05",
+      "en": "I love my mum!",
+      "zh": "我爱我的妈妈！",
+      "page": 14,
+      "pdf_page": 18,
+      "note": "Pattern: I love my + family member!"
+    },
+    {
+      "id": "u3_s06",
+      "en": "This is my dad. I love my dad!",
+      "zh": "这是我的爸爸。我爱我的爸爸！",
+      "page": 14,
+      "pdf_page": 18
+    },
+    {
+      "id": "u3_s07",
+      "en": "This is my grandma. I love my grandma!",
+      "zh": "这是我的奶奶（外婆）。我爱我的奶奶！",
+      "page": 14,
+      "pdf_page": 18
+    },
+    {
+      "id": "u3_s08",
+      "en": "This is my brother. I love my brother!",
+      "zh": "这是我的哥哥（弟弟）。我爱我的哥哥！",
+      "page": 14,
+      "pdf_page": 18
+    },
+    {
+      "id": "u3_s09",
+      "en": "I love my family!",
+      "zh": "我爱我的家！",
+      "page": 14,
+      "pdf_page": 18
+    },
+    {
+      "id": "u3_s10",
+      "en": "This is Toby's mum.",
+      "zh": "这是托比的妈妈。",
+      "page": 16,
+      "pdf_page": 20,
+      "note": "Look, find and say (beach picture)"
+    },
+    {
+      "id": "u3_s11",
+      "en": "This is my family. This is my …",
+      "zh": "这是我的家人。这是我的……",
+      "page": 17,
+      "pdf_page": 21,
+      "note": "Draw a picture of your family"
+    },
+    {
+      "id": "u3_s12",
+      "en": "This is my grandpa. I love my grandpa.",
+      "zh": "这是我的爷爷（外公）。我爱我的爷爷。",
+      "page": 55,
+      "pdf_page": 59,
+      "note": "Appendix share and talk"
+    }
+  ],
+  "song": {
+    "title": "Listen and sing",
+    "type": "song",
+    "page": 13,
+    "pdf_page": 17,
+    "lines": [
+      {
+        "en": "Meet my family!",
+        "zh": "来见见我的家人吧！"
+      },
+      {
+        "en": "My mum.",
+        "zh": "我的妈妈。"
+      },
+      {
+        "en": "My dad.",
+        "zh": "我的爸爸。"
+      },
+      {
+        "en": "My grandpa.",
+        "zh": "我的爷爷。"
+      },
+      {
+        "en": "My grandma.",
+        "zh": "我的奶奶。"
+      },
+      {
+        "en": "My sister and brother.",
+        "zh": "我的姐妹和兄弟。"
+      },
+      {
+        "en": "Hello, hello!",
+        "zh": "你好，你好！"
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "u3_d01",
+      "title": "Listen and read ('I love my family')",
+      "page": 14,
+      "pdf_page": 18,
+      "lines": [
+        {
+          "panel": 1,
+          "speaker": "Duoduo",
+          "en": "This is my mum. I love my mum!",
+          "zh": "这是我的妈妈。我爱我的妈妈！",
+          "scene": "girl roller-skating toward mum"
+        },
+        {
+          "panel": 2,
+          "speaker": "Duoduo",
+          "en": "This is my dad. I love my dad!",
+          "zh": "这是我的爸爸。我爱我的爸爸！",
+          "scene": "dad lifts her to fly a kite"
+        },
+        {
+          "panel": 3,
+          "speaker": "Duoduo",
+          "en": "This is my grandma. I love my grandma!",
+          "zh": "这是我的奶奶。我爱我的奶奶！",
+          "scene": "grandma baking in the kitchen"
+        },
+        {
+          "panel": 4,
+          "speaker": "Duoduo",
+          "en": "This is my brother. I love my brother!",
+          "zh": "这是我的哥哥（弟弟）。我爱我的哥哥！",
+          "scene": "building a block tower with brother"
+        },
+        {
+          "panel": 5,
+          "speaker": "Duoduo",
+          "en": "I love my family!",
+          "zh": "我爱我的家！",
+          "scene": "family portrait: grandma, dad, mum, Duoduo, brother"
+        }
+      ],
+      "uncertain": true,
+      "uncertain_reason": "Narrator identified as Duoduo by appearance only"
+    },
+    {
+      "id": "u3_d02",
+      "title": "Look, find and say",
+      "page": 16,
+      "pdf_page": 20,
+      "lines": [
+        {
+          "speaker": "Girl (photo)",
+          "en": "This is Toby's mum.",
+          "zh": "这是托比的妈妈。"
+        }
+      ]
+    },
+    {
+      "id": "u3_d03",
+      "title": "Draw a picture of your family (model)",
+      "page": 17,
+      "pdf_page": 21,
+      "lines": [
+        {
+          "speaker": "Girl (photo)",
+          "en": "This is my family. This is my …",
+          "zh": "这是我的家人。这是我的……"
+        }
+      ]
+    },
+    {
+      "id": "u3_d04",
+      "title": "Supplementary – Share and talk",
+      "page": 55,
+      "pdf_page": 59,
+      "lines": [
+        {
+          "speaker": "Boy",
+          "en": "This is my mum. I love my mum.",
+          "zh": "这是我的妈妈。我爱我的妈妈。"
+        },
+        {
+          "speaker": "Girl",
+          "en": "This is my grandpa. I love my grandpa.",
+          "zh": "这是我的爷爷。我爱我的爷爷。"
+        }
+      ]
+    }
+  ],
+  "match_exercise": {
+    "page": 15,
+    "pdf_page": 19,
+    "instruction": "Look, listen and circle.",
+    "items": [
+      {
+        "picture": "woman with shoulder-length dark hair, pink top",
+        "options": [
+          "dad",
+          "mum"
+        ],
+        "answer": "mum"
+      },
+      {
+        "picture": "man with short dark hair, blue shirt",
+        "options": [
+          "dad",
+          "mum"
+        ],
+        "answer": "dad"
+      },
+      {
+        "picture": "grey-haired old woman",
+        "options": [
+          "grandpa",
+          "grandma"
+        ],
+        "answer": "grandma"
+      },
+      {
+        "picture": "boy with short dark hair",
+        "options": [
+          "sister",
+          "brother"
+        ],
+        "answer": "brother"
+      }
+    ],
+    "uncertain": true,
+    "uncertain_reason": "Answers inferred from the pictures (audio-based; no key printed)"
+  },
+  "extra_activities": [
+    {
+      "id": "u3_x01",
+      "title": "Look, find and say (beach picture)",
+      "page": 16,
+      "pdf_page": 20,
+      "items": [
+        "Toby",
+        "May",
+        "dad",
+        "mum",
+        "grandpa",
+        "grandma"
+      ],
+      "note": "Toby's family on a beach: Toby, May (girl with pink bow), dad, mum, grandpa (flower necklace, walking stick), grandma (reading newspaper in deckchair)"
+    },
+    {
+      "id": "u3_x02",
+      "title": "Family tree",
+      "page": 18,
+      "pdf_page": 22,
+      "items": [
+        "grandma",
+        "grandpa",
+        "grandpa",
+        "grandma",
+        "mum",
+        "dad",
+        "me",
+        "brother"
+      ],
+      "note": "two grandma frames are empty; two grandma portraits at the bottom to match (video-dependent)",
+      "uncertain": true
+    },
+    {
+      "id": "u3_x03",
+      "title": "Supplementary 1 – Cut out the pictures (p73) and put them by grandma, grandpa, brother, sister, mum, dad",
+      "page": 54,
+      "pdf_page": 58,
+      "items": [
+        "grandma",
+        "grandpa",
+        "brother",
+        "sister",
+        "mum",
+        "dad"
+      ]
+    },
+    {
+      "id": "u3_x04",
+      "title": "Supplementary 2 – Listen and number the pictures",
+      "page": 54,
+      "pdf_page": 58,
+      "note": "Chinese New Year family photo with lanterns (grandpa, grandma, dad, mum, girl, boy); boy pre-numbered 1; rest audio-dependent",
+      "uncertain": true
+    },
+    {
+      "id": "u3_x05",
+      "title": "Supplementary 3 – Trace and say",
+      "page": 55,
+      "pdf_page": 59,
+      "items": [
+        {
+          "picture": "1 man in sweater",
+          "answer": "dad"
+        },
+        {
+          "picture": "2 little girl",
+          "answer": "sister"
+        },
+        {
+          "picture": "3 boy in striped shirt",
+          "answer": "brother"
+        },
+        {
+          "picture": "4 woman with long hair",
+          "answer": "mum"
+        }
+      ],
+      "model": "This is my…",
+      "uncertain": true,
+      "uncertain_reason": "Answers inferred from the pictures; tangled trace lines not verified"
+    }
+  ],
+  "letters": [],
+  "phonics": [],
+  "review_elsewhere": [
+    {
+      "where": "Wrap up 'Can you say it?' spinner",
+      "book_page": 38,
+      "pdf_page": 42,
+      "items": [
+        "This is my dad / mum.",
+        "This is my grandpa / grandma.",
+        "That is my sister / brother. ('that' is a Unit 4 word)"
+      ]
+    }
+  ],
+  "notes": [
+    "Word list en/zh taken verbatim from the book's appendix 'Words and expressions' (Unit 3 runs from book p62 to p63 / PDF pp68-69).",
+    "Bold = 义务教育英语课程标准二级词汇. By measured stroke width, all 13 Unit 3 words are bold.",
+    "grandpa/grandma: the book gives both paternal and maternal meanings (祖父；外祖父 / 祖母；外祖母); sister/brother cover older and younger (姐姐；妹妹 / 哥哥；弟弟). For a kids' game you may want to show 爷爷/外公 etc. together.",
+    "Picturable nouns for cards: mum, dad, grandpa, grandma, sister, brother, family (plus me). Function words: my, and, this, is, love.",
+    "Sentence/dialogue Chinese translations are NOT printed in the book – they are translations for the game.",
+    "'page' = printed book page; 'pdf_page' = PDF page index (book +4 for pp.1-61; appendix word list printed 62/63 is PDF 68/69)."
+  ]
+}

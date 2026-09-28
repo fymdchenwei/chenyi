@@ -1,0 +1,671 @@
+{
+  "unit": 2,
+  "title_en": "Numbers",
+  "title_zh": "数字",
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "page_range": {
+    "book": "7-12",
+    "pdf": "11-16"
+  },
+  "supplementary_pages": {
+    "book": "52-53",
+    "pdf": "56-57"
+  },
+  "sections": [
+    {
+      "book_page": 7,
+      "pdf_page": 11,
+      "label": "Let's start!",
+      "activities": [
+        "1 Listen, point and say (hopscotch grid numbered 1-7 with word labels; Taotao, Duoduo, Emma, Toby playing)",
+        "2 Listen and chant"
+      ]
+    },
+    {
+      "book_page": 8,
+      "pdf_page": 12,
+      "label": "Let's read!",
+      "activities": [
+        "1 Listen and read (5-panel balloon story)"
+      ]
+    },
+    {
+      "book_page": 9,
+      "pdf_page": 13,
+      "label": "Let's read!",
+      "activities": [
+        "2 Count and say the numbers (pictures of 6, 4, 2, 1 balloons)",
+        "3 Act out the story"
+      ]
+    },
+    {
+      "book_page": 10,
+      "pdf_page": 14,
+      "label": "Let's have fun!",
+      "activities": [
+        "Guess the missing number (5 caterpillar number patterns)"
+      ]
+    },
+    {
+      "book_page": 11,
+      "pdf_page": 15,
+      "label": "Let's do it!",
+      "activities": [
+        "Draw and say (draw spots on a ladybird; 'Please say the number.' – 'Seven.')"
+      ]
+    },
+    {
+      "book_page": 12,
+      "pdf_page": 16,
+      "label": "Let's explore!",
+      "activities": [
+        "Watch the video. Match and say (birthday cake / T-shirt / bus ↔ five, three, seven)"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "en": "Taotao",
+      "zh": "淘淘",
+      "role": "on the hopscotch opener p7"
+    },
+    {
+      "en": "Duoduo",
+      "zh": "多多",
+      "role": "on the hopscotch opener p7"
+    },
+    {
+      "en": "Emma",
+      "zh": "埃玛",
+      "role": "on the hopscotch opener p7"
+    },
+    {
+      "en": "Toby",
+      "zh": "托比",
+      "role": "hero of the balloon story p8 (brown curly hair, grey T-shirt)"
+    },
+    {
+      "en": "(little girl, unnamed)",
+      "zh": null,
+      "role": "crying girl with pigtails in a purple dress who gets a balloon from Toby and says 'Thank you!' (p8)",
+      "uncertain": true,
+      "uncertain_reason": "Not named; not Duoduo (different clothes)"
+    }
+  ],
+  "words": [
+    {
+      "id": "u2_w01",
+      "en": "one",
+      "zh": "一",
+      "emoji_hint": "1️⃣",
+      "picture_description": "Card: big numeral 1 + ONE red balloon (book p8 panel 5: Toby holding one yellow balloon; hopscotch square 1 on p7)",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w02",
+      "en": "two",
+      "zh": "二",
+      "emoji_hint": "2️⃣",
+      "picture_description": "Card: numeral 2 + two balloons (book p8 panel 3: two balloons left after others pop in a tree; hopscotch square 2)",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w03",
+      "en": "three",
+      "zh": "三",
+      "emoji_hint": "3️⃣",
+      "picture_description": "Card: numeral 3 + three things (hopscotch square 3 on p7; three fingers held up in appendix p52)",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w04",
+      "en": "four",
+      "zh": "四",
+      "emoji_hint": "4️⃣",
+      "picture_description": "Card: numeral 4 + four balloons (book p8 panel 2: wind leaves Toby with four balloons; hopscotch square 4)",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w05",
+      "en": "five",
+      "zh": "五",
+      "emoji_hint": "5️⃣",
+      "picture_description": "Card: numeral 5 + an open hand with five fingers (appendix p52) / five squares (appendix p53); hopscotch square 5",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w06",
+      "en": "six",
+      "zh": "六",
+      "emoji_hint": "6️⃣",
+      "picture_description": "Card: numeral 6 + six colourful balloons (book p8 panel 1: 'Six balloons.'); hopscotch square 6",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w07",
+      "en": "seven",
+      "zh": "七",
+      "emoji_hint": "7️⃣",
+      "picture_description": "Card: numeral 7 + a red ladybird with seven black spots (book p11 'Draw and say' – 'Seven.'); hopscotch square 7",
+      "page": 7,
+      "pdf_page": 11,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w08",
+      "en": "balloon",
+      "zh": "气球",
+      "emoji_hint": "🎈",
+      "picture_description": "Card: a bunch of colourful balloons (yellow, purple, green, blue, red) – book p8 story",
+      "page": 8,
+      "pdf_page": 12,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": false,
+      "uncertain": true,
+      "uncertain_reason": "Printed in regular (non-bold) type in word list = not a 课标二级 core word (measured stroke width from scan)"
+    },
+    {
+      "id": "u2_w09",
+      "en": "thank",
+      "zh": "感谢，向……表示谢意",
+      "emoji_hint": "🙏",
+      "picture_description": "Card: little girl smiling and taking a red balloon from Toby, saying 'Thank you!' (book p8 panel 4)",
+      "page": 8,
+      "pdf_page": 12,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w10",
+      "en": "please",
+      "zh": "请，劳驾",
+      "emoji_hint": "🙋‍♀️",
+      "picture_description": "Card: girl politely asking a boy 'Please say the number.' pointing at a ladybird drawing (book p11)",
+      "page": 11,
+      "pdf_page": 15,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": true
+    },
+    {
+      "id": "u2_w11",
+      "en": "number",
+      "zh": "数，数字",
+      "emoji_hint": "🔢",
+      "picture_description": "Card: row of numerals 1-7 (hopscotch p7 / caterpillar number puzzle p10)",
+      "page": 11,
+      "pdf_page": 15,
+      "source": "Appendix 'Words and expressions' Unit 2 (book p62 / PDF p68); en+zh verbatim from book",
+      "curriculum_level2_bold": false,
+      "uncertain": true,
+      "uncertain_reason": "Printed in regular (non-bold) type in word list = not a 课标二级 core word"
+    }
+  ],
+  "sentence_patterns": [
+    {
+      "id": "u2_p01",
+      "pattern": "One, two, three … seven!",
+      "zh": "一、二、三……七！",
+      "note": "count 1-7"
+    },
+    {
+      "id": "u2_p02",
+      "pattern": "[number] balloon(s).",
+      "zh": "[数字]个气球。",
+      "slot_examples": [
+        "One balloon.",
+        "Two balloons.",
+        "Four balloons.",
+        "Six balloons."
+      ]
+    },
+    {
+      "id": "u2_p03",
+      "pattern": "Please say the number. — [number].",
+      "zh": "请说出这个数字。——[数字]。"
+    },
+    {
+      "id": "u2_p04",
+      "pattern": "[number]? — No!",
+      "zh": "是[数字]吗？——不是！",
+      "note": "appendix guessing game"
+    },
+    {
+      "id": "u2_p05",
+      "pattern": "Thank you!",
+      "zh": "谢谢你！"
+    }
+  ],
+  "sentences": [
+    {
+      "id": "u2_s01",
+      "en": "One, two, three! Four, five, six! Seven!",
+      "zh": "一、二、三！四、五、六！七！",
+      "page": 7,
+      "pdf_page": 11,
+      "note": "Counting 1-7 (chant)"
+    },
+    {
+      "id": "u2_s02",
+      "en": "Six balloons.",
+      "zh": "六个气球。",
+      "page": 8,
+      "pdf_page": 12,
+      "note": "Pattern: number + balloon(s)"
+    },
+    {
+      "id": "u2_s03",
+      "en": "Four balloons.",
+      "zh": "四个气球。",
+      "page": 8,
+      "pdf_page": 12
+    },
+    {
+      "id": "u2_s04",
+      "en": "Two balloons.",
+      "zh": "两个气球。",
+      "page": 8,
+      "pdf_page": 12
+    },
+    {
+      "id": "u2_s05",
+      "en": "One balloon.",
+      "zh": "一个气球。",
+      "page": 8,
+      "pdf_page": 12,
+      "note": "Singular: no -s after one"
+    },
+    {
+      "id": "u2_s06",
+      "en": "Thank you!",
+      "zh": "谢谢你！",
+      "page": 8,
+      "pdf_page": 12
+    },
+    {
+      "id": "u2_s07",
+      "en": "Please say the number.",
+      "zh": "请说出这个数字。",
+      "page": 11,
+      "pdf_page": 15
+    },
+    {
+      "id": "u2_s08",
+      "en": "Seven.",
+      "zh": "七。",
+      "page": 11,
+      "pdf_page": 15,
+      "note": "Answer: number of spots on the ladybird"
+    },
+    {
+      "id": "u2_s09",
+      "en": "Five? — No!",
+      "zh": "是五吗？——不是！",
+      "page": 53,
+      "pdf_page": 57,
+      "note": "Appendix guessing game",
+      "page_note": "appendix p53"
+    },
+    {
+      "id": "u2_s10",
+      "en": "Two.",
+      "zh": "二。",
+      "page": 53,
+      "pdf_page": 57,
+      "note": "Appendix: count the dots and say the number"
+    },
+    {
+      "id": "u2_s11",
+      "en": "Let's play!",
+      "zh": "我们一起玩吧！",
+      "page": 7,
+      "pdf_page": 11,
+      "note": "Recycled from Unit 1 (chant)"
+    },
+    {
+      "id": "u2_s12",
+      "en": "Hooray!",
+      "zh": "好哇！万岁！",
+      "page": 7,
+      "pdf_page": 11,
+      "note": "Chant exclamation; not in the word list",
+      "uncertain": true,
+      "uncertain_reason": "'hooray' is printed in the chant but not listed in the unit word list"
+    }
+  ],
+  "song": {
+    "title": "Listen and chant",
+    "type": "chant",
+    "page": 7,
+    "pdf_page": 11,
+    "lines": [
+      {
+        "en": "Let's play!",
+        "zh": "我们一起玩吧！"
+      },
+      {
+        "en": "One, two, three!",
+        "zh": "一、二、三！"
+      },
+      {
+        "en": "Four, five, six!",
+        "zh": "四、五、六！"
+      },
+      {
+        "en": "Seven!",
+        "zh": "七！"
+      },
+      {
+        "en": "Hooray! Hooray!",
+        "zh": "好哇！好哇！"
+      }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "u2_d01",
+      "title": "Listen and read (balloon story)",
+      "page": 8,
+      "pdf_page": 12,
+      "lines": [
+        {
+          "panel": 1,
+          "speaker": "Narrator (caption)",
+          "en": "Six balloons.",
+          "zh": "六个气球。",
+          "scene": "Toby in the park holding six balloons"
+        },
+        {
+          "panel": 2,
+          "speaker": "Narrator (caption)",
+          "en": "Four balloons.",
+          "zh": "四个气球。",
+          "scene": "wind blows two balloons away"
+        },
+        {
+          "panel": 3,
+          "speaker": "Narrator (caption)",
+          "en": "Two balloons.",
+          "zh": "两个气球。",
+          "scene": "two balloons pop on tree branches"
+        },
+        {
+          "panel": 4,
+          "speaker": "Little girl",
+          "en": "Thank you!",
+          "zh": "谢谢你！",
+          "scene": "Toby sees a crying girl and gives her a red balloon"
+        },
+        {
+          "panel": 5,
+          "speaker": "Narrator (caption)",
+          "en": "One balloon.",
+          "zh": "一个气球。",
+          "scene": "Toby happily holding his last yellow balloon"
+        }
+      ]
+    },
+    {
+      "id": "u2_d02",
+      "title": "Draw and say",
+      "page": 11,
+      "pdf_page": 15,
+      "lines": [
+        {
+          "speaker": "Girl",
+          "en": "Please say the number.",
+          "zh": "请说出这个数字。"
+        },
+        {
+          "speaker": "Boy",
+          "en": "Seven.",
+          "zh": "七。"
+        }
+      ]
+    },
+    {
+      "id": "u2_d03",
+      "title": "Supplementary – Play the game",
+      "page": 53,
+      "pdf_page": 57,
+      "lines": [
+        {
+          "speaker": "Girl",
+          "en": "Five?",
+          "zh": "是五吗？"
+        },
+        {
+          "speaker": "Boy",
+          "en": "No!",
+          "zh": "不是！"
+        }
+      ]
+    }
+  ],
+  "match_exercise": {
+    "page": 12,
+    "pdf_page": 16,
+    "instruction": "Watch the video. Match and say.",
+    "items": [
+      {
+        "picture": "girl with party hat and a birthday cake (number hidden by '?')"
+      },
+      {
+        "picture": "white T-shirt with a hidden number '?'"
+      },
+      {
+        "picture": "red bus with a hidden route number '?'"
+      }
+    ],
+    "options": [
+      "five",
+      "three",
+      "seven"
+    ],
+    "uncertain": true,
+    "uncertain_reason": "Answers are only in the video; not determinable from the page"
+  },
+  "extra_activities": [
+    {
+      "id": "u2_x01",
+      "title": "Count and say the numbers",
+      "page": 9,
+      "pdf_page": 13,
+      "items": [
+        {
+          "picture": "6 balloons",
+          "answer": "six"
+        },
+        {
+          "picture": "4 balloons blowing in the wind",
+          "answer": "four"
+        },
+        {
+          "picture": "2 balloons",
+          "answer": "two"
+        },
+        {
+          "picture": "1 red balloon",
+          "answer": "one"
+        }
+      ]
+    },
+    {
+      "id": "u2_x02",
+      "title": "Guess the missing number (caterpillars)",
+      "page": 10,
+      "pdf_page": 14,
+      "items": [
+        {
+          "sequence": [
+            1,
+            2,
+            1,
+            2,
+            1
+          ],
+          "answer": 2
+        },
+        {
+          "sequence": [
+            3,
+            4,
+            5,
+            3,
+            4
+          ],
+          "answer": 5
+        },
+        {
+          "sequence": [
+            6,
+            7,
+            3,
+            6,
+            7
+          ],
+          "answer": 3
+        },
+        {
+          "sequence": [
+            1,
+            3,
+            5,
+            7,
+            1,
+            3,
+            5
+          ],
+          "answer": 7
+        },
+        {
+          "sequence": [
+            2,
+            4,
+            6,
+            1,
+            2,
+            4,
+            6
+          ],
+          "answer": 1
+        }
+      ],
+      "note": "answers inferred from the repeating patterns (no key printed)"
+    },
+    {
+      "id": "u2_x03",
+      "title": "Draw and say (ladybird)",
+      "page": 11,
+      "pdf_page": 15,
+      "items": [
+        {
+          "picture": "red ladybird with 7 black spots",
+          "answer": "seven"
+        }
+      ]
+    },
+    {
+      "id": "u2_x04",
+      "title": "Supplementary 1 – Cut out the pictures (p71) and put them by one … seven",
+      "page": 52,
+      "pdf_page": 56,
+      "items": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven"
+      ],
+      "note": "cut-out cards (PDF p75) are coloured numerals 1-7"
+    },
+    {
+      "id": "u2_x05",
+      "title": "Supplementary 2 – Listen and tick or cross (finger counting)",
+      "page": 52,
+      "pdf_page": 56,
+      "items": [
+        {
+          "picture": "1 finger (example ticked)"
+        },
+        {
+          "picture": "3 fingers"
+        },
+        {
+          "picture": "5 fingers (open hand)"
+        },
+        {
+          "picture": "4 fingers"
+        }
+      ],
+      "uncertain": true,
+      "uncertain_reason": "audio-dependent; finger counts read from drawings"
+    },
+    {
+      "id": "u2_x06",
+      "title": "Supplementary 3 – Count, match and say",
+      "page": 53,
+      "pdf_page": 57,
+      "items": [
+        {
+          "picture": "2 red dots",
+          "answer": "two"
+        },
+        {
+          "picture": "4 pink triangles",
+          "answer": "four"
+        },
+        {
+          "picture": "5 green squares",
+          "answer": "five"
+        },
+        {
+          "picture": "6 blue triangles",
+          "answer": "six"
+        }
+      ],
+      "note": "answers inferred by counting"
+    }
+  ],
+  "letters": [],
+  "phonics": [],
+  "review_elsewhere": [
+    {
+      "where": "Wrap up 'Can you say it?' spinner",
+      "book_page": 38,
+      "pdf_page": 42,
+      "items": [
+        "One, two, ___?",
+        "four / five (picture of 4 triangles)"
+      ]
+    }
+  ],
+  "notes": [
+    "Word list en/zh taken verbatim from the book's appendix 'Words and expressions' (Unit 2 is on book p62 / PDF p68).",
+    "Bold = 义务教育英语课程标准二级词汇. By measured stroke width, all Unit 2 words are bold except 'balloon' and 'number'.",
+    "Numbers taught are only one–seven (no eight/nine/ten in this unit).",
+    "Sentence/dialogue Chinese translations are NOT printed in the book – they are translations for the game.",
+    "'page' = printed book page; 'pdf_page' = PDF page index (book +4 for pp.1-61).",
+    "Emoji hints and picture_description are card-illustration suggestions based on the book's pictures."
+  ]
+}

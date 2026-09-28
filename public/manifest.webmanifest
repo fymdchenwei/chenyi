@@ -1,0 +1,33 @@
+{
+  "id": "/chenyi/",
+  "name": "陈一",
+  "short_name": "陈一",
+  "description": "给一年级小朋友的英语冒险：闯关、星星、集卡",
+  "start_url": "/chenyi/",
+  "scope": "/chenyi/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#8fd3ff",
+  "theme_color": "#5eb0f0",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
