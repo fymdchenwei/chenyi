@@ -175,10 +175,36 @@ function mixMeanings(unit: NormUnit, rand: () => number, en: number, zh: number)
   return shuffle([...a, ...b], rand);
 }
 
+/** Words whose pictures a child can tell apart. Function words stay out of picture rounds when a unit has enough of these. */
+const PICTORIAL = new Set([
+  'u1_w01',
+  'u1_w06',
+  'u1_w10',
+  'u2_w01',
+  'u2_w02',
+  'u2_w03',
+  'u2_w04',
+  'u2_w05',
+  'u2_w06',
+  'u2_w07',
+  'u2_w08',
+  'u2_w09',
+  'u3_w02',
+  'u3_w03',
+  'u3_w04',
+  'u3_w05',
+  'u3_w06',
+  'u3_w07',
+  'u3_w09',
+  'u3_w12',
+]);
+
 function listenPool(unit: NormUnit, rand: () => number): Question[] {
+  const pictorial = unit.words.filter((w) => PICTORIAL.has(w.id));
+  const source = pictorial.length >= 4 ? pictorial : unit.words;
   const out: Question[] = [];
-  for (const w of unit.words) {
-    const opts = uniqueOthers(unit.words, w, 3, rand, (x) => x.id);
+  for (const w of source) {
+    const opts = uniqueOthers(source, w, 3, rand, (x) => x.id);
     if (opts.length < 3) continue;
     const options = shuffle([w, ...opts], rand).map((x) => ({ wordId: x.id }));
     out.push({
@@ -230,9 +256,11 @@ function whoPool(unit: NormUnit, rand: () => number): Question[] {
     grouped.set(key, arr);
   }
   const unique = [...grouped.values()].filter((arr) => new Set(arr.map((a) => a.face)).size === 1).map((arr) => arr[0]);
-  const faces = Object.keys(FACE_NAME);
+  const cast = [...new Set(lines.map((line) => line.face))];
+  const mains = ['taotao', 'duoduo', 'toby', 'emma'];
   return shuffle(unique, rand).map((line) => {
-    const others = shuffle(faces.filter((f) => f !== line.face), rand).slice(0, 3);
+    const ranked = [...new Set([...cast, ...mains, ...Object.keys(FACE_NAME)])].filter((face) => face !== line.face);
+    const others = ranked.slice(0, 3);
     const options = shuffle([line.face, ...others], rand).map((face) => ({ face, name: FACE_NAME[face] }));
     return {
       type: 'who' as const,

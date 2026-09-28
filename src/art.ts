@@ -113,7 +113,7 @@ export function wordArt(id: string): string {
     case 'u1_w07':
       return sticker(id, '#e7f1ff', '#c5dcff', person(100, 62, '#3d7dff', '#5c3a24', 'short', 1.15));
     case 'u1_w08':
-      return sticker(id, '#fff6d8', '#ffe08a', `<rect x="40" y="40" width="120" height="80" rx="20" fill="#fff" stroke="#ffd24a" stroke-width="4"/><text x="100" y="90" text-anchor="middle" font-size="28" font-family="Fredoka, sans-serif" fill="#5a3b1e">I'm</text>`);
+      return sticker(id, '#fff6d8', '#ffe08a', person(100, 62, '#ffd56a', '#5c3a24', 'short', 1.15));
     case 'u1_w09':
       return sticker(id, '#f3e9ff', '#ddc8ff', `<circle cx="70" cy="80" r="24" fill="#ffd2ad"/>${eyes(70, 78, 7)}${smile(70, 88)}<circle cx="130" cy="80" r="24" fill="#ffd8b8"/>${eyes(130, 78, 7)}${smile(130, 88)}<text x="100" y="40" text-anchor="middle" font-size="22" fill="#8b7cff">+</text>`);
     case 'u1_w10':

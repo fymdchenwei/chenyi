@@ -53,9 +53,11 @@ button { cursor: pointer; }
     linear-gradient(#8fd4ff, #d7f3ff);
 }
 .stage {
-  width: min(100%, calc(100dvh * 852 / 393));
-  height: calc(min(100%, calc(100dvh * 852 / 393)) * 393 / 852);
-  max-height: 100%;
+  /* 100% in a height value is the parent's height, so size from the viewport instead. */
+  height: min(100%, calc(100vw * 393 / 852));
+  width: auto;
+  aspect-ratio: 852 / 393;
+  max-width: 100%;
   position: relative;
   overflow: hidden;
   container-type: size;
@@ -313,7 +315,7 @@ button { cursor: pointer; }
 
 .nav {
   flex: none;
-  height: 17cqh;
+  height: 15.5cqh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
@@ -498,6 +500,8 @@ button { cursor: pointer; }
   min-height: 0;
   align-items: center;
 }
+.fill-layout { grid-template-rows: 1fr auto; }
+.fill-layout .hint-btn { grid-column: 2; justify-self: end; height: 40px; }
 .prompt-card .art { width: 70%; }
 .prompt-card h2 { margin: 4px 0; font-size: 8cqh; color: #2f6fe0; }
 .big-zh { font-size: 8cqh; margin: 8px 0; }
@@ -599,11 +603,14 @@ button { cursor: pointer; }
   animation: spin 8s linear infinite;
   pointer-events: none;
 }
-.flipper { width: min(34cqh, 210px); aspect-ratio: 400 / 520; position: relative; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.flipper { width: min(30cqh, 180px); aspect-ratio: 400 / 520; position: relative; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.2,.8,.2,1); flex: none; }
 .flipper.on { transform: rotateY(180deg); }
+.reveal-meta { text-align: center; opacity: 0; transform: translateY(6px); transition: .3s ease; }
+.flipper.on ~ .reveal-meta { opacity: 1; transform: none; }
+.reveal-meta h2 { margin: 2px 0 0; }
 .face { position: absolute; inset: 0; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; }
 .face-front { transform: rotateY(180deg); }
-.card-frame { width: 100%; height: 78%; padding: 4px; border-radius: 22px; background: #fff; }
+.card-frame { width: 100%; height: 100%; padding: 4px; border-radius: 22px; background: #fff; }
 .card-frame.r-rare { background: linear-gradient(135deg, #7ecbff, #fff); }
 .card-frame.r-epic { background: linear-gradient(135deg, #c9a6ff, #7a5cff); }
 .card-frame.r-legendary {
@@ -617,7 +624,8 @@ button { cursor: pointer; }
 .rarity-banner.r-rare { background: #d7efff; color: #146; }
 .rarity-banner.r-epic { background: #efe4ff; color: #4b2a8a; }
 .rarity-banner.r-legendary { background: #ffd76a; color: #6a4010; }
-.reveal h2 { margin: 4px 0 0; font-size: 4.4cqh; }
+.reveal h2 { margin: 2px 0 0; font-size: 4.4cqh; }
+.reveal .blurb { margin: 2px 0 0; }
 .reveal-actions { display: flex; gap: 10px; opacity: 0; transform: translateY(8px); transition: .3s ease; }
 .reveal-actions.show { opacity: 1; transform: none; }
 .album { background: linear-gradient(#fff8ee, #fff); }
@@ -652,23 +660,25 @@ button { cursor: pointer; }
   overflow: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-rows: repeat(3, minmax(56px, 1fr));
+  grid-auto-rows: 58px;
+  gap: 6px;
   padding: 4px 2px 6px;
 }
 .acard {
   position: relative;
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 64px 1fr;
   gap: 6px;
   align-items: center;
   background: #fff;
   border-radius: 16px;
-  min-height: 78px;
+  min-height: 0;
   padding: 4px;
   box-shadow: 0 4px 0 #efe2cc;
   overflow: hidden;
 }
-.acard-art { height: 70px; border-radius: 12px; overflow: hidden; background: #efe6ff; }
+.acard-art { height: 100%; min-height: 48px; border-radius: 12px; overflow: hidden; background: #efe6ff; }
 .acard-art img { width: 100%; height: 100%; object-fit: cover; }
 .acard.sil { background: #2d2658; color: #fff; }
 .acard.sil img { filter: brightness(0) opacity(.45); }

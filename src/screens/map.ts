@@ -216,8 +216,6 @@ export function mountMap(root: HTMLElement, ctx: AppCtx): () => void {
     </div>`;
   }
 
-  // fix today's minutes properly inside draw - I'll compute before template. The template above has a bug with usage. I'll set it in a second draw version... let me fix by computing outside the string in a cleaner way. I'll patch after first write if needed. For now compute here by rewriting draw's minutes. I already inlined a broken expression. Let me fix immediately after this function... I'll correct in the string now by not using that. I'll replace after writing.
-
   root.addEventListener('click', onClick);
   draw();
   return () => {

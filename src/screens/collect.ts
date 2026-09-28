@@ -120,11 +120,13 @@ export function mountReveal(root: HTMLElement, ctx: AppCtx, cardId: string, isNe
           <div class="card-frame r-${card.rarity}">
             <img src="${asset(`content/cards/images/${card.image}`)}" alt="${esc(card.name)}" />
           </div>
-          <div class="rarity-banner r-${card.rarity}">${'★'.repeat(meta.stars)} ${meta.zh}</div>
-          <h2>${esc(card.name)}</h2>
-          <p class="blurb">${esc(card.blurb)}</p>
-          ${isNew ? '' : `<p class="dup">重复卡片，返还 ${refund} 星星</p>`}
         </div>
+      </div>
+      <div class="reveal-meta" id="reveal-meta">
+        <div class="rarity-banner r-${card.rarity}">${'★'.repeat(meta.stars)} ${meta.zh}</div>
+        <h2>${esc(card.name)}</h2>
+        <p class="blurb">${esc(card.blurb)}</p>
+        ${isNew ? '' : `<p class="dup">重复卡片，返还 ${refund} 星星</p>`}
       </div>
       <div class="reveal-actions" id="reveal-actions">
         <button type="button" class="btn ghost" data-action="draw-again">再抽一次<span>${ctx.data.cards.drawCost} ★</span></button>
