@@ -15,7 +15,7 @@
     "epic": 10,
     "legendary": 2
   },
-  "cardBack": "card-back.svg",
+  "cardBack": "card-back.webp",
   "series": [
     {
       "id": "heroes",
@@ -27,65 +27,65 @@
           "id": "star-knight",
           "name": "星盾骑士",
           "rarity": "common",
-          "image": "heroes/star-knight.svg",
+          "image": "heroes/star-knight.webp",
           "emoji": "🛡️",
-          "blurb": "举着星星盾的小骑士"
+          "blurb": "星星盾一举，坏心情就躲开"
         },
         {
           "id": "leaf-archer",
           "name": "林叶弓手",
           "rarity": "common",
-          "image": "heroes/leaf-archer.svg",
+          "image": "heroes/leaf-archer.webp",
           "emoji": "🏹",
-          "blurb": "会跟树叶打招呼的弓手"
+          "blurb": "树叶箭轻轻说一声你好"
         },
         {
           "id": "spark-mage",
           "name": "火花法师",
           "rarity": "rare",
-          "image": "heroes/spark-mage.svg",
+          "image": "heroes/spark-mage.webp",
           "emoji": "✨",
-          "blurb": "法杖顶端亮着一颗小太阳"
+          "blurb": "法杖顶上挂着一颗小太阳"
         },
         {
           "id": "tide-guard",
           "name": "浪花卫士",
           "rarity": "common",
-          "image": "heroes/tide-guard.svg",
+          "image": "heroes/tide-guard.webp",
           "emoji": "🌊",
-          "blurb": "站在浪尖上的卫士"
+          "blurb": "浪花是他的好朋友"
         },
         {
           "id": "sun-healer",
           "name": "阳光牧师",
           "rarity": "rare",
-          "image": "heroes/sun-healer.svg",
+          "image": "heroes/sun-healer.webp",
           "emoji": "💛",
-          "blurb": "把阳光分给小朋友"
+          "blurb": "把阳光分给每个小朋友"
         },
         {
           "id": "rock-guard",
           "name": "岩甲守卫",
           "rarity": "epic",
-          "image": "heroes/rock-guard.svg",
+          "image": "heroes/rock-guard.webp",
           "emoji": "🪨",
-          "blurb": "盔甲像小山一样稳"
+          "blurb": "盔甲像小山，心却软软的"
         },
         {
           "id": "moon-ninja",
           "name": "月羽侠客",
           "rarity": "epic",
-          "image": "heroes/moon-ninja.svg",
+          "image": "heroes/moon-ninja.webp",
           "emoji": "🌙",
-          "blurb": "月光下轻轻落地"
+          "blurb": "月光一闪，他就轻轻落地"
         },
         {
           "id": "drake-heart",
           "name": "龙心勇者",
           "rarity": "legendary",
-          "image": "heroes/drake-heart.svg",
+          "image": "heroes/drake-heart.webp",
           "emoji": "🐉",
-          "blurb": "心口有一颗小小的龙鳞"
+          "blurb": "心口亮着一颗小小的龙鳞"
         }
       ]
     },
@@ -99,65 +99,65 @@
           "id": "wukong",
           "name": "齐天小圣",
           "rarity": "legendary",
-          "image": "journey/wukong.svg",
+          "image": "journey/wukong.webp",
           "emoji": "🐵",
-          "blurb": "金箍棒还没自己高"
+          "blurb": "红头箍一戴，就想去冒险"
         },
         {
           "id": "bajie",
           "name": "天蓬元帅",
           "rarity": "epic",
-          "image": "journey/bajie.svg",
+          "image": "journey/bajie.webp",
           "emoji": "🐷",
-          "blurb": "最爱睡觉也最讲义气"
+          "blurb": "最爱打盹，也最讲义气"
         },
         {
           "id": "wujing",
           "name": "流沙大将",
           "rarity": "rare",
-          "image": "journey/wujing.svg",
+          "image": "journey/wujing.webp",
           "emoji": "📿",
-          "blurb": "脖子上挂着一串闪亮的珠子"
+          "blurb": "珠子一碰就会叮叮当当"
         },
         {
           "id": "tangseng",
           "name": "取经师父",
           "rarity": "epic",
-          "image": "journey/tangseng.svg",
+          "image": "journey/tangseng.webp",
           "emoji": "🙏",
-          "blurb": "一路说“谢谢”的师父"
+          "blurb": "一路走，一路说谢谢"
         },
         {
           "id": "bailong",
           "name": "小白龙",
           "rarity": "rare",
-          "image": "journey/bailong.svg",
+          "image": "journey/bailong.webp",
           "emoji": "🐲",
-          "blurb": "会变成一朵小白云"
+          "blurb": "高兴时会变成一朵小白云"
         },
         {
           "id": "bajiao",
           "name": "芭蕉小仙",
           "rarity": "common",
-          "image": "journey/bajiao.svg",
+          "image": "journey/bajiao.webp",
           "emoji": "🍃",
-          "blurb": "扇子一挥就起微风"
+          "blurb": "芭蕉扇一挥，夏天就有风"
         },
         {
           "id": "honghai",
           "name": "火焰小童",
           "rarity": "rare",
-          "image": "journey/honghai.svg",
+          "image": "journey/honghai.webp",
           "emoji": "🔥",
-          "blurb": "脾气热热的小火苗"
+          "blurb": "小火苗脾气热，心却很暖"
         },
         {
           "id": "jindou",
           "name": "筋斗云",
           "rarity": "common",
-          "image": "journey/jindou.svg",
+          "image": "journey/jindou.webp",
           "emoji": "☁️",
-          "blurb": "一朵爱翻跟斗的云"
+          "blurb": "一朵爱翻跟斗的白云"
         }
       ]
     },
@@ -171,65 +171,65 @@
           "id": "spark-mouse",
           "name": "闪闪鼠",
           "rarity": "common",
-          "image": "digibeasts/spark-mouse.svg",
+          "image": "digibeasts/spark-mouse.webp",
           "emoji": "🐭",
-          "blurb": "尾巴会一闪一闪"
+          "blurb": "尾巴一甩，眨出小星星"
         },
         {
           "id": "bubble-beast",
           "name": "泡泡兽",
           "rarity": "common",
-          "image": "digibeasts/bubble-beast.svg",
+          "image": "digibeasts/bubble-beast.webp",
           "emoji": "🫧",
-          "blurb": "走路会冒出泡泡"
+          "blurb": "每走一步都冒出圆泡泡"
         },
         {
           "id": "leaf-drake",
           "name": "叶叶龙",
           "rarity": "rare",
-          "image": "digibeasts/leaf-drake.svg",
+          "image": "digibeasts/leaf-drake.webp",
           "emoji": "🍃",
-          "blurb": "鳞片像新叶子"
+          "blurb": "鳞片像刚长出的新叶子"
         },
         {
           "id": "zap-bunny",
           "name": "电电兔",
           "rarity": "rare",
-          "image": "digibeasts/zap-bunny.svg",
+          "image": "digibeasts/zap-bunny.webp",
           "emoji": "🐰",
-          "blurb": "耳朵里藏着小闪电"
+          "blurb": "耳朵尖藏着软软的闪电"
         },
         {
           "id": "boulder-bear",
           "name": "岩岩熊",
           "rarity": "epic",
-          "image": "digibeasts/boulder-bear.svg",
+          "image": "digibeasts/boulder-bear.webp",
           "emoji": "🐻",
-          "blurb": "拥抱像一块暖和的石头"
+          "blurb": "拥抱起来像暖和的大石头"
         },
         {
           "id": "flame-fox",
           "name": "焰尾狐",
           "rarity": "epic",
-          "image": "digibeasts/flame-fox.svg",
+          "image": "digibeasts/flame-fox.webp",
           "emoji": "🦊",
-          "blurb": "尾巴是一小簇火焰"
+          "blurb": "尾巴尖是一小簇不烫人的火"
         },
         {
           "id": "star-whale",
           "name": "星空鲸",
           "rarity": "rare",
-          "image": "digibeasts/star-whale.svg",
+          "image": "digibeasts/star-whale.webp",
           "emoji": "🐋",
-          "blurb": "肚皮上有星星的小鲸鱼"
+          "blurb": "肚皮上的星星会跟着唱歌"
         },
         {
           "id": "glow-phoenix",
           "name": "光羽凤",
           "rarity": "legendary",
-          "image": "digibeasts/glow-phoenix.svg",
+          "image": "digibeasts/glow-phoenix.webp",
           "emoji": "🔆",
-          "blurb": "羽毛会发光，不是任何电视里的角色"
+          "blurb": "羽毛会发光，飞过的地方亮晶晶"
         }
       ]
     },
@@ -243,97 +243,97 @@
           "id": "rat",
           "name": "机灵鼠",
           "rarity": "common",
-          "image": "zodiac/rat.svg",
+          "image": "zodiac/rat.webp",
           "emoji": "🐭",
-          "blurb": "生肖 · 鼠"
+          "blurb": "口袋里总藏着小惊喜"
         },
         {
           "id": "ox",
           "name": "踏实牛",
           "rarity": "common",
-          "image": "zodiac/ox.svg",
+          "image": "zodiac/ox.webp",
           "emoji": "🐮",
-          "blurb": "生肖 · 牛"
+          "blurb": "一步一步，做什么都踏实"
         },
         {
           "id": "tiger",
           "name": "山中虎",
           "rarity": "epic",
-          "image": "zodiac/tiger.svg",
+          "image": "zodiac/tiger.webp",
           "emoji": "🐯",
-          "blurb": "生肖 · 虎"
+          "blurb": "森林里最勇敢的小老虎"
         },
         {
           "id": "rabbit",
           "name": "月牙兔",
           "rarity": "rare",
-          "image": "zodiac/rabbit.svg",
+          "image": "zodiac/rabbit.webp",
           "emoji": "🐰",
-          "blurb": "生肖 · 兔"
+          "blurb": "耳朵弯成两弯月牙"
         },
         {
           "id": "dragon",
           "name": "祥云龙",
           "rarity": "legendary",
-          "image": "zodiac/dragon.svg",
+          "image": "zodiac/dragon.webp",
           "emoji": "🐲",
-          "blurb": "生肖 · 龙"
+          "blurb": "祥云绕着他转圈圈"
         },
         {
           "id": "snake",
           "name": "灵巧蛇",
           "rarity": "rare",
-          "image": "zodiac/snake.svg",
+          "image": "zodiac/snake.webp",
           "emoji": "🐍",
-          "blurb": "生肖 · 蛇"
+          "blurb": "身子软软的，跳舞最好看"
         },
         {
           "id": "horse",
           "name": "奔腾马",
           "rarity": "common",
-          "image": "zodiac/horse.svg",
+          "image": "zodiac/horse.webp",
           "emoji": "🐴",
-          "blurb": "生肖 · 马"
+          "blurb": "风一吹，就想去奔跑"
         },
         {
           "id": "goat",
           "name": "软软羊",
           "rarity": "common",
-          "image": "zodiac/goat.svg",
+          "image": "zodiac/goat.webp",
           "emoji": "🐑",
-          "blurb": "生肖 · 羊"
+          "blurb": "羊毛软软的，喜欢云朵"
         },
         {
           "id": "monkey",
           "name": "蹦蹦猴",
           "rarity": "rare",
-          "image": "zodiac/monkey.svg",
+          "image": "zodiac/monkey.webp",
           "emoji": "🐒",
-          "blurb": "生肖 · 猴"
+          "blurb": "见到树就想蹦两下"
         },
         {
           "id": "rooster",
           "name": "报晓鸡",
           "rarity": "common",
-          "image": "zodiac/rooster.svg",
+          "image": "zodiac/rooster.webp",
           "emoji": "🐔",
-          "blurb": "生肖 · 鸡"
+          "blurb": "早上第一个说你好"
         },
         {
           "id": "dog",
           "name": "忠诚狗",
           "rarity": "rare",
-          "image": "zodiac/dog.svg",
+          "image": "zodiac/dog.webp",
           "emoji": "🐶",
-          "blurb": "生肖 · 狗"
+          "blurb": "会摇尾巴等你回家"
         },
         {
           "id": "pig",
           "name": "圆圆猪",
           "rarity": "epic",
-          "image": "zodiac/pig.svg",
+          "image": "zodiac/pig.webp",
           "emoji": "🐷",
-          "blurb": "生肖 · 猪"
+          "blurb": "圆滚滚的，笑容最甜"
         }
       ]
     }

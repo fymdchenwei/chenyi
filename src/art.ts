@@ -1,3 +1,5 @@
+import { asset } from './util';
+
 function sticker(key: string, bg1: string, bg2: string, inner: string): string {
   const id = key.replace(/[^a-z0-9]/gi, '') || 'a';
   return `<svg class="art" viewBox="0 0 200 160" aria-hidden="true">
@@ -187,37 +189,9 @@ export function portrait(face: string): string {
 }
 
 export function mascotSvg(): string {
-  return `<svg class="mascot-svg" viewBox="0 0 160 210" aria-hidden="true">
-    <ellipse cx="80" cy="198" rx="36" ry="8" fill="rgba(40,24,16,.15)"/>
-    <path d="M48 96 q-20 30 4 70 q 18 -16 22 -4 q 4 -36 10 -66 z" fill="#e23b3b"/>
-    <path d="M58 150 q 8 28 16 30 q 10 0 12 -28" fill="#2450b8"/>
-    <path d="M96 154 q 10 26 20 24 q 6 -2 4 -26" fill="#2450b8"/>
-    <rect x="52" y="108" width="58" height="52" rx="18" fill="#f0b429" stroke="#d89a12" stroke-width="3"/>
-    <path d="M54 118 h54" stroke="#e23b3b" stroke-width="8"/>
-    <circle cx="46" cy="128" r="12" fill="#f0b429"/>
-    <circle cx="118" cy="100" r="12" fill="#ffd2ad"/>
-    <circle cx="80" cy="78" r="36" fill="#f6c453"/>
-    <circle cx="40" cy="78" r="14" fill="#f0b429" stroke="#d89a12" stroke-width="3"/>
-    <circle cx="120" cy="78" r="14" fill="#f0b429" stroke="#d89a12" stroke-width="3"/>
-    <path d="M52 70 q 28 -40 56 0 v10 h-56 z" fill="#f6c453"/>
-    <rect x="50" y="62" width="60" height="12" rx="6" fill="#e23b3b"/>
-    <circle cx="80" cy="68" r="6" fill="#ffd24a" stroke="#e09a00" stroke-width="2"/>
-    ${eyes(80, 80, 12)}
-    <ellipse cx="80" cy="96" rx="8" ry="5" fill="#c47a3a"/>
-    ${smile(80, 100)}
-    <ellipse cx="58" cy="92" rx="6" ry="3" fill="#ff9eb5" opacity=".8"/>
-    <ellipse cx="102" cy="92" rx="6" ry="3" fill="#ff9eb5" opacity=".8"/>
-  </svg>`;
+  return `<img class="mascot-svg" src="${asset('content/cards/images/mascot.webp')}" alt="" />`;
 }
 
 export function dragonSvg(): string {
-  return `<svg class="dragon-svg" viewBox="0 0 150 90" aria-hidden="true">
-    <path d="M16 58 q 24 -28 40 -8 q 18 16 34 -6 q 20 18 30 -8" fill="none" stroke="#b48bff" stroke-width="16" stroke-linecap="round"/>
-    <path d="M20 60 q 24 -18 36 0 q 16 12 30 -4" fill="none" stroke="#efe4ff" stroke-width="6" stroke-linecap="round"/>
-    <circle cx="112" cy="36" r="18" fill="#c9b6ff"/>
-    <path d="M98 28 q 10 -22 20 -6 q 8 -16 14 0 q -8 8 -16 6 q -8 8 -18 0 z" fill="#ffd24a"/>
-    ${eyes(112, 36, 5)}
-    <path d="M108 44 q 6 5 12 0" fill="none" stroke="#e07070" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M128 34 q 16 -8 10 4 q 10 -4 4 6 q -8 2 -14 -2 z" fill="#ffb703"/>
-  </svg>`;
+  return `<img class="dragon-svg" src="${asset('content/cards/images/map-dragon.webp')}" alt="" />`;
 }

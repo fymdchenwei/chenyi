@@ -11,6 +11,7 @@ const index = readJson('public/content/units.json') as {
   units: { unit: number; file: string | null; playable: boolean; title_en: string; title_zh: string }[];
 };
 const manifest = readJson('public/content/cards/manifest.json') as {
+  cardBack: string;
   series: { id: string; cards: { id: string; image: string; rarity: string }[] }[];
   pityLegendary: number;
 };
@@ -61,7 +62,7 @@ for (const series of manifest.series) {
     if (!existsSync(path)) problems.push(`missing art ${path}`);
   }
 }
-if (!existsSync('public/content/cards/images/card-back.svg')) problems.push('missing card back');
+if (!existsSync(`public/content/cards/images/${manifest.cardBack}`)) problems.push('missing card back');
 if (manifest.series.length !== 4) problems.push('expected 4 series');
 
 function checkQuestion(q: Question, unit: NormUnit, where: string) {
