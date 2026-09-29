@@ -1,4 +1,5 @@
 import './style.css';
+import { registerWordImages } from './art';
 import { loadAll } from './content';
 import { mountAlbum, mountDraw, mountReveal, mountTen } from './screens/collect';
 import { mountMap } from './screens/map';
@@ -21,6 +22,7 @@ void loadAll()
   });
 
 function start(root: HTMLElement, data: GameData) {
+  registerWordImages(data.units.flatMap((unit) => unit.words));
   root.innerHTML = `<div class="stage-wrap"><div class="stage" id="stage"></div></div>`;
   const stage = root.querySelector('#stage');
   if (!(stage instanceof HTMLElement)) return;

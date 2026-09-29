@@ -142,18 +142,11 @@ Limitation: the figures come from an image model, so a hand or prop can be sligh
 
 ## Word pictures
 
-Lesson pictures live in `public/content/words/` as square WebP (about 320×320). The service worker precaches every `webp` under the build, so they still load offline.
+Lesson pictures live in `public/content/words/` as small WebP files (about 400px on the long side). Each word’s `image` field in the unit JSON is a path relative to `public/content/`. The service worker precaches every `webp` under the build, so they still load offline.
 
-| File | Where it shows |
-| --- | --- |
-| `u1_w01.webp` … `u1_w12.webp` | Unit 1 learn cards, and level 2 (听音选意) options |
-| `u2_w08.webp` … `u2_w11.webp` | balloon, thank-you gift, please (tea), number (abacus) |
-| `u3_w01.webp` … `u3_w13.webp` | Unit 3 learn cards and the family pictures in 听音选图 |
-| `face-taotao.webp` and the other `face-*.webp` | 谁说的 portraits |
+Most Unit 1–3 pictures are cropped from the owner’s FLTRP textbook (外研社英语一年级上册预备级，2024) for private family use: story scenes, balloon counts, finger counts, and family activities. Surrounding English was covered where the crop still showed a caption. The repo owner is responsible for that copyright and may want to make the repository private.
 
-Numbers one–seven are drawn in the page, not as files: a big colored numeral plus a row of balloons, so 3 and 4 cannot be confused. 数一数 uses the same balloons with no numeral, in rows a child can count. Greetings and other words that are not a single object (hello, I, am, please, …) are not picture-only choices. Unit 1 level 2 is 听音选意: hear the word, then tap a picture with its Chinese meaning. Unit 2 level 3 only offers one–seven and balloon. Unit 3 level 2 only offers family members a child can tell apart (mum, dad, grandpa, grandma, sister, brother, family, love).
-
-The pictures are original flat cartoons from an image model (one subject, cream background). They are not the textbook’s illustrations. A hand or prop can still be slightly uneven. `how` is a puzzled owl with a question mark, which is a symbol rather than a letter.
+Words with no clean textbook picture still use the earlier generated flat cartoons: you, am, too, photo, how, say, nice, balloon, please, number, my, this, is, me, and the 谁说的 portraits. `how` is still a puzzled owl. Seven has no separate object picture in the book that does not also print the word, so it stays a big numeral plus seven balloons. 数一数 keeps those drawn balloons with no numeral, so the count is not spoiled by a caption. Balloon is a learn-card picture only, because the number scenes already show balloons. Unit 1 level 2 is 听音选意: hear the word, then tap a picture with its Chinese meaning. Unit 2 level 3 offers one–seven. Unit 3 level 2 offers family, mum, dad, grandpa, grandma, sister, brother, and love.
 
 ## iPhone notes
 

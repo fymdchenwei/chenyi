@@ -87,6 +87,7 @@
   "words": [
     {
       "id": "u3_w01",
+      "image": "words/u3_w01.webp",
       "en": "my",
       "zh": "我的",
       "emoji_hint": "🙋",
@@ -98,6 +99,7 @@
     },
     {
       "id": "u3_w02",
+      "image": "words/u3_w02.webp",
       "en": "family",
       "zh": "家庭",
       "emoji_hint": "👨‍👩‍👧‍👦",
@@ -109,6 +111,7 @@
     },
     {
       "id": "u3_w03",
+      "image": "words/u3_w03.webp",
       "en": "mum",
       "zh": "妈妈",
       "emoji_hint": "👩",
@@ -120,6 +123,7 @@
     },
     {
       "id": "u3_w04",
+      "image": "words/u3_w04.webp",
       "en": "dad",
       "zh": "爸爸",
       "emoji_hint": "👨",
@@ -131,6 +135,7 @@
     },
     {
       "id": "u3_w05",
+      "image": "words/u3_w05.webp",
       "en": "grandpa",
       "zh": "祖父；外祖父",
       "emoji_hint": "👴",
@@ -142,6 +147,7 @@
     },
     {
       "id": "u3_w06",
+      "image": "words/u3_w06.webp",
       "en": "grandma",
       "zh": "祖母；外祖母",
       "emoji_hint": "👵",
@@ -153,6 +159,7 @@
     },
     {
       "id": "u3_w07",
+      "image": "words/u3_w07.webp",
       "en": "sister",
       "zh": "姐姐；妹妹",
       "emoji_hint": "👧",
@@ -164,6 +171,7 @@
     },
     {
       "id": "u3_w08",
+      "image": "words/u3_w08.webp",
       "en": "and",
       "zh": "和，与",
       "emoji_hint": "➕",
@@ -175,6 +183,7 @@
     },
     {
       "id": "u3_w09",
+      "image": "words/u3_w09.webp",
       "en": "brother",
       "zh": "哥哥；弟弟",
       "emoji_hint": "👦",
@@ -186,6 +195,7 @@
     },
     {
       "id": "u3_w10",
+      "image": "words/u3_w10.webp",
       "en": "this",
       "zh": "这，这个",
       "emoji_hint": "👉",
@@ -197,6 +207,7 @@
     },
     {
       "id": "u3_w11",
+      "image": "words/u3_w11.webp",
       "en": "is",
       "zh": "是",
       "emoji_hint": "🟰",
@@ -208,6 +219,7 @@
     },
     {
       "id": "u3_w12",
+      "image": "words/u3_w12.webp",
       "en": "love",
       "zh": "爱，关爱",
       "emoji_hint": "❤️",
@@ -219,6 +231,7 @@
     },
     {
       "id": "u3_w13",
+      "image": "words/u3_w13.webp",
       "en": "me",
       "zh": "我",
       "emoji_hint": "🧒",

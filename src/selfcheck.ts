@@ -37,6 +37,14 @@ for (const meta of index.units) {
   const raw = readJson(`public/content/${meta.file}`);
   const unit = normalizeUnit(raw, meta) as NormUnit;
   if (unit.words.length < 8) problems.push(`unit ${unit.unit} has too few words`);
+  for (const word of unit.words) {
+    if (!word.image) {
+      if (word.id !== 'u2_w07') problems.push(`missing image ${word.id}`);
+      continue;
+    }
+    if (!word.image.startsWith('words/') || word.image.includes('..')) problems.push(`bad image path ${word.id}`);
+    if (!existsSync(`public/content/${word.image}`)) problems.push(`missing image file ${word.image}`);
+  }
   const grandpa = unit.words.find((w) => w.en === 'grandpa');
   if (grandpa && grandpa.zhShort !== '爷爷/外公') problems.push('grandpa display');
   const sister = unit.words.find((w) => w.en === 'sister');

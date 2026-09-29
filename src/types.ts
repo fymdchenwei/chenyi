@@ -12,6 +12,8 @@ export interface Word {
   dictatable: boolean;
   note?: string;
   example?: { en: string; zh: string };
+  /** Path relative to public/content/, for example words/u1_w01.webp. */
+  image?: string;
 }
 
 export interface DialogueLine {

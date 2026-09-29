@@ -95,6 +95,7 @@
   "words": [
     {
       "id": "u2_w01",
+      "image": "words/u2_w01.webp",
       "en": "one",
       "zh": "一",
       "emoji_hint": "1️⃣",
@@ -106,6 +107,7 @@
     },
     {
       "id": "u2_w02",
+      "image": "words/u2_w02.webp",
       "en": "two",
       "zh": "二",
       "emoji_hint": "2️⃣",
@@ -117,6 +119,7 @@
     },
     {
       "id": "u2_w03",
+      "image": "words/u2_w03.webp",
       "en": "three",
       "zh": "三",
       "emoji_hint": "3️⃣",
@@ -128,6 +131,7 @@
     },
     {
       "id": "u2_w04",
+      "image": "words/u2_w04.webp",
       "en": "four",
       "zh": "四",
       "emoji_hint": "4️⃣",
@@ -139,6 +143,7 @@
     },
     {
       "id": "u2_w05",
+      "image": "words/u2_w05.webp",
       "en": "five",
       "zh": "五",
       "emoji_hint": "5️⃣",
@@ -150,6 +155,7 @@
     },
     {
       "id": "u2_w06",
+      "image": "words/u2_w06.webp",
       "en": "six",
       "zh": "六",
       "emoji_hint": "6️⃣",
@@ -172,6 +178,7 @@
     },
     {
       "id": "u2_w08",
+      "image": "words/u2_w08.webp",
       "en": "balloon",
       "zh": "气球",
       "emoji_hint": "🎈",
@@ -185,6 +192,7 @@
     },
     {
       "id": "u2_w09",
+      "image": "words/u2_w09.webp",
       "en": "thank",
       "zh": "感谢，向……表示谢意",
       "emoji_hint": "🙏",
@@ -196,6 +204,7 @@
     },
     {
       "id": "u2_w10",
+      "image": "words/u2_w10.webp",
       "en": "please",
       "zh": "请，劳驾",
       "emoji_hint": "🙋‍♀️",
@@ -207,6 +216,7 @@
     },
     {
       "id": "u2_w11",
+      "image": "words/u2_w11.webp",
       "en": "number",
       "zh": "数，数字",
       "emoji_hint": "🔢",

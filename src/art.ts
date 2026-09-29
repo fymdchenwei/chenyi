@@ -86,7 +86,18 @@ function numberCard(n: number): string {
   return `<div class="art num-card" style="--n:${color}"><b>${n}</b>${balloonSvg(n)}</div>`;
 }
 
+const wordImages = new Map<string, string>();
+
+/** Picture paths come from each unit JSON `image` field (relative to public/content/). */
+export function registerWordImages(words: { id: string; image?: string }[]): void {
+  for (const word of words) {
+    if (word.image) wordImages.set(word.id, word.image);
+  }
+}
+
 export function wordArt(id: string): string {
+  const rel = wordImages.get(id);
+  if (rel) return `<img class="art word-art" src="${asset(`content/${rel}`)}" alt="" />`;
   const n = NUM[id];
   if (n) return numberCard(n);
   if ((WORD_ART_IDS as readonly string[]).includes(id)) {

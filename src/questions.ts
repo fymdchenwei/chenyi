@@ -180,7 +180,8 @@ function mixMeanings(unit: NormUnit, rand: () => number, en: number, zh: number)
 /**
  * Words a child can tell apart from the picture alone.
  * Greetings and function words stay out; Unit 1 level 2 uses picture + Chinese instead.
- * Numbers use a big numeral. Family members use distinct portraits.
+ * Balloon is a learn-card picture only: the number scenes already show balloons.
+ * Seven is a numeral card. Family members use distinct textbook scenes.
  */
 export const PICTORIAL = new Set([
   'u2_w01',
@@ -190,7 +191,6 @@ export const PICTORIAL = new Set([
   'u2_w05',
   'u2_w06',
   'u2_w07',
-  'u2_w08',
   'u3_w02',
   'u3_w03',
   'u3_w04',

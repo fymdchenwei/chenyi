@@ -19,6 +19,7 @@ interface RawWord {
   en: string;
   zh: string;
   emoji_hint?: string;
+  image?: string;
 }
 
 interface RawLine {
@@ -115,6 +116,7 @@ export function normalizeUnit(raw: RawUnit, meta?: Partial<UnitMeta>): NormUnit 
       dictatable: spell.length >= 3 && spell.length <= 10 && spell === en.toLowerCase(),
       note,
       example,
+      image: w.image,
     };
   });
   return {
