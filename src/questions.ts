@@ -1,7 +1,7 @@
 import type { NormUnit, Word } from './types';
 import { escapeReg, rng, shuffle } from './util';
 
-export type Kind = 'learn' | 'listen' | 'who' | 'meaning' | 'fill-order' | 'dictation' | 'count' | 'boss';
+export type Kind = 'learn' | 'listen' | 'scene' | 'who' | 'meaning' | 'fill-order' | 'dictation' | 'count' | 'boss';
 
 export interface LevelPlan {
   title: string;
@@ -12,7 +12,7 @@ export interface LevelPlan {
 const PLANS: Record<number, LevelPlan[]> = {
   1: [
     { title: '认识新词', kind: 'learn' },
-    { title: '听音选图', kind: 'listen' },
+    { title: '听音选意', kind: 'scene' },
     { title: '谁说的', kind: 'who' },
     { title: '中英互译', kind: 'meaning' },
     { title: '句子填空', kind: 'fill-order' },
@@ -65,6 +65,7 @@ export type Question =
   | { type: 'meaning-en-zh'; wordId: string; en: string; speak: string; options: { label: string }[]; answer: number }
   | { type: 'meaning-zh-en'; wordId: string; zh: string; options: { label: string }[]; answer: number }
   | { type: 'listen-picture'; wordId: string; speak: string; options: { wordId: string }[]; answer: number }
+  | { type: 'pic-zh'; wordId: string; speak: string; options: { wordId: string; zh: string }[]; answer: number }
   | { type: 'who'; speak: string; en: string; zh: string; options: { face: string; name: string }[]; answer: number }
   | { type: 'order'; lines: { en: string; zh: string }[]; answer: number[] }
   | { type: 'fill'; before: string; after: string; zh: string; options: string[]; answer: number; wordId: string }
@@ -77,6 +78,7 @@ export function makeQuestions(unit: NormUnit, kind: Kind, seed: number): Questio
   const rand = rng(seed);
   if (kind === 'learn') return [];
   if (kind === 'listen') return take(listenPool(unit, rand), 5, rand);
+  if (kind === 'scene') return take(scenePool(unit, rand), 5, rand);
   if (kind === 'who') {
     const who = whoPool(unit, rand);
     if (who.length >= 3) return take(who, 4, rand);
@@ -175,11 +177,12 @@ function mixMeanings(unit: NormUnit, rand: () => number, en: number, zh: number)
   return shuffle([...a, ...b], rand);
 }
 
-/** Words whose pictures a child can tell apart. Function words stay out of picture rounds when a unit has enough of these. */
-const PICTORIAL = new Set([
-  'u1_w01',
-  'u1_w06',
-  'u1_w10',
+/**
+ * Words a child can tell apart from the picture alone.
+ * Greetings and function words stay out; Unit 1 level 2 uses picture + Chinese instead.
+ * Numbers use a big numeral. Family members use distinct portraits.
+ */
+export const PICTORIAL = new Set([
   'u2_w01',
   'u2_w02',
   'u2_w03',
@@ -188,7 +191,6 @@ const PICTORIAL = new Set([
   'u2_w06',
   'u2_w07',
   'u2_w08',
-  'u2_w09',
   'u3_w02',
   'u3_w03',
   'u3_w04',
@@ -199,9 +201,25 @@ const PICTORIAL = new Set([
   'u3_w12',
 ]);
 
+function scenePool(unit: NormUnit, rand: () => number): Question[] {
+  const out: Question[] = [];
+  for (const w of unit.words) {
+    const opts = uniqueOthers(unit.words, w, 3, rand, (x) => x.zhShort);
+    if (opts.length < 3) continue;
+    const options = shuffle([w, ...opts], rand).map((x) => ({ wordId: x.id, zh: x.zhShort }));
+    out.push({
+      type: 'pic-zh',
+      wordId: w.id,
+      speak: w.en,
+      options,
+      answer: options.findIndex((o) => o.wordId === w.id),
+    });
+  }
+  return shuffle(out, rand);
+}
+
 function listenPool(unit: NormUnit, rand: () => number): Question[] {
-  const pictorial = unit.words.filter((w) => PICTORIAL.has(w.id));
-  const source = pictorial.length >= 4 ? pictorial : unit.words;
+  const source = unit.words.filter((w) => PICTORIAL.has(w.id));
   const out: Question[] = [];
   for (const w of source) {
     const opts = uniqueOthers(source, w, 3, rand, (x) => x.id);

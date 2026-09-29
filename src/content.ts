@@ -1,4 +1,4 @@
-import type { GameData, NormUnit, Word } from './types';
+import type { CardExtra, GameData, NormUnit, Word } from './types';
 import { asset, escapeReg } from './util';
 
 interface UnitMeta {
@@ -172,7 +172,8 @@ export async function loadAll(): Promise<GameData> {
     }
   }
   const cards = await getJson<GameData['cards']>(asset('content/cards/manifest.json'));
-  return { book: index.book, units, cards };
+  const lore = await getJson<Record<string, CardExtra>>(asset('content/cards/lore.json'));
+  return { book: index.book, units, cards, lore };
 }
 
 export function unitByNumber(data: GameData, n: number): NormUnit {

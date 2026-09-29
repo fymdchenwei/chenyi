@@ -1,6 +1,8 @@
 import { readFileSync, existsSync } from 'node:fs';
+import { FACE_ART_IDS, WORD_ART_IDS } from './art';
 import { normalizeUnit } from './content';
-import { makeQuestions, levelPlan, type Question } from './questions';
+import { makeQuestions, levelPlan, PICTORIAL, type Question } from './questions';
+import { migrateOwned, nextCardLevel } from './state';
 import type { NormUnit } from './types';
 
 function readJson(path: string) {
@@ -12,9 +14,16 @@ const index = readJson('public/content/units.json') as {
 };
 const manifest = readJson('public/content/cards/manifest.json') as {
   cardBack: string;
-  series: { id: string; cards: { id: string; image: string; rarity: string }[] }[];
+  drawCost: number;
+  tenDrawCost: number;
+  pityEpic: number;
   pityLegendary: number;
+  maxLevel: number;
+  maxRefund: number;
+  seriesReward: number;
+  series: { id: string; cards: { id: string; image: string; rarity: string }[] }[];
 };
+const lore = readJson('public/content/cards/lore.json') as Record<string, { hint?: string; lore?: string; word?: { en?: string; zh?: string } }>;
 
 const problems: string[] = [];
 let questions = 0;
@@ -44,6 +53,9 @@ for (const meta of index.units) {
       questions += qs.length;
     }
   }
+  if (unit.unit === 1 && levelPlan(1)[1]?.kind !== 'scene') problems.push('unit 1 level 2 should be scene');
+  const scene = makeQuestions(unit, 'scene', 9);
+  if (unit.unit === 1 && !scene.some((q) => q.type === 'pic-zh')) problems.push('unit 1 scene missing');
   const who = makeQuestions(unit, 'who', 42);
   if ((unit.unit === 1 || unit.unit === 3) && !who.some((q) => q.type === 'who')) problems.push(`unit ${unit.unit} who missing`);
   const meaning = makeQuestions(unit, 'meaning', 7);
@@ -64,6 +76,34 @@ for (const series of manifest.series) {
 }
 if (!existsSync(`public/content/cards/images/${manifest.cardBack}`)) problems.push('missing card back');
 if (manifest.series.length !== 4) problems.push('expected 4 series');
+if (manifest.drawCost !== 2) problems.push('drawCost');
+if (manifest.tenDrawCost !== 18) problems.push('tenDrawCost');
+if (manifest.maxLevel !== 10 || manifest.maxRefund !== 1) problems.push('card level economy');
+if (manifest.pityEpic > manifest.pityLegendary) problems.push('pity order');
+for (const id of WORD_ART_IDS) {
+  if (!existsSync(`public/content/words/${id}.webp`)) problems.push(`missing word art ${id}`);
+}
+for (const id of FACE_ART_IDS) {
+  if (!existsSync(`public/content/words/face-${id}.webp`)) problems.push(`missing face ${id}`);
+}
+const oldOwned = migrateOwned({ 'star-knight': 4, 'rat': 0, nope: -1 }, false);
+if (oldOwned['star-knight'] !== 1 || oldOwned.rat || oldOwned.nope) problems.push('migrate copies to level 1');
+const kept = migrateOwned({ 'star-knight': 7, bajie: 12 }, true, 10);
+if (kept['star-knight'] !== 7 || kept.bajie !== 10) problems.push('keep card levels');
+const fresh = nextCardLevel(0, 10, 1);
+const up = nextCardLevel(3, 10, 1);
+const maxed = nextCardLevel(10, 10, 1);
+if (!fresh.isNew || fresh.level !== 1 || fresh.refund !== 0) problems.push('new card level');
+if (up.isNew || up.level !== 4 || up.refund !== 0 || up.maxed) problems.push('upgrade level');
+if (!maxed.maxed || maxed.level !== 10 || maxed.refund !== 1) problems.push('max refund');
+for (const series of manifest.series) {
+  for (const card of series.cards) {
+    const extra = lore[card.id];
+    if (!extra?.hint || extra.hint.length < 4) problems.push(`hint ${card.id}`);
+    if (!extra?.lore || extra.lore.length < 20) problems.push(`lore ${card.id}`);
+    if (!extra?.word?.en || !extra.word.zh) problems.push(`word ${card.id}`);
+  }
+}
 
 function checkQuestion(q: Question, unit: NormUnit, where: string) {
   types.add(q.type);
@@ -95,9 +135,19 @@ function checkQuestion(q: Question, unit: NormUnit, where: string) {
       problems.push(`split meaning used as option ${labels.join(',')}`);
     }
   }
-  if (q.type === 'listen-picture' || q.type === 'who' || q.type === 'count-see' || q.type === 'count-hear') {
+  if (q.type === 'listen-picture' || q.type === 'pic-zh' || q.type === 'who' || q.type === 'count-see' || q.type === 'count-hear') {
     if (q.options.length !== 4) problems.push(`${q.type} options ${where}`);
     if (q.answer < 0 || q.answer > 3) problems.push(`${q.type} answer ${where}`);
+  }
+  if (q.type === 'listen-picture') {
+    for (const option of q.options) {
+      if (!PICTORIAL.has(option.wordId)) problems.push(`abstract picture option ${option.wordId} ${where}`);
+    }
+  }
+  if (q.type === 'pic-zh') {
+    const labels = q.options.map((o) => o.zh);
+    if (new Set(labels).size !== labels.length) problems.push(`pic-zh labels ${where}`);
+    if (!q.options[q.answer] || q.options[q.answer].wordId !== q.wordId) problems.push(`pic-zh answer ${where}`);
   }
   if (q.type === 'who') {
     const faces = q.options.map((o) => o.face);

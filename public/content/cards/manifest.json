@@ -1,14 +1,11 @@
 {
-  "drawCost": 20,
-  "pityEpic": 10,
-  "pityLegendary": 30,
-  "seriesReward": 40,
-  "duplicateRefund": {
-    "common": 3,
-    "rare": 8,
-    "epic": 20,
-    "legendary": 40
-  },
+  "drawCost": 2,
+  "tenDrawCost": 18,
+  "pityEpic": 8,
+  "pityLegendary": 20,
+  "seriesReward": 4,
+  "maxLevel": 10,
+  "maxRefund": 1,
   "weights": {
     "common": 60,
     "rare": 28,

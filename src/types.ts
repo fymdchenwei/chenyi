@@ -51,19 +51,36 @@ export interface CardSeries {
 
 export interface CardManifest {
   drawCost: number;
+  tenDrawCost: number;
   pityEpic: number;
   pityLegendary: number;
   seriesReward: number;
-  duplicateRefund: Record<Rarity, number>;
+  maxLevel: number;
+  maxRefund: number;
   weights: Record<Rarity, number>;
   cardBack: string;
   series: CardSeries[];
+}
+
+export interface CardExtra {
+  hint: string;
+  lore: string;
+  word?: { en: string; zh: string };
 }
 
 export interface GameData {
   book: string;
   units: NormUnit[];
   cards: CardManifest;
+  lore: Record<string, CardExtra>;
+}
+
+export interface DrawHit {
+  cardId: string;
+  isNew: boolean;
+  level: number;
+  refund: number;
+  maxed: boolean;
 }
 
 export type Screen =
@@ -72,7 +89,8 @@ export type Screen =
   | { name: 'quiz'; unit: number; index: number }
   | { name: 'result'; unit: number; index: number; stars: number; gained: number; first: boolean }
   | { name: 'draw' }
-  | { name: 'reveal'; cardId: string; isNew: boolean; refund: number }
+  | { name: 'reveal'; cardId: string; isNew: boolean; level: number; refund: number; maxed: boolean }
+  | { name: 'ten'; hits: DrawHit[] }
   | { name: 'album' }
   | { name: 'parent-gate' }
   | { name: 'parent' }
