@@ -114,7 +114,7 @@ Each card:
   "id": "star-knight",
   "name": "星盾骑士",
   "rarity": "common",
-  "image": "heroes/star-knight.svg",
+  "image": "heroes/star-knight.webp",
   "emoji": "🛡️",
   "blurb": "举着星星盾的小骑士"
 }
@@ -126,9 +126,13 @@ Each card:
 
 If an image fails to load, the card `emoji` is only a data fallback in the manifest; the on-screen frame still shows. Prefer a square-ish illustration with the character large in the middle, because album tiles crop the image with `object-fit: cover`.
 
-The checked-in art is original geometric SVG (placeholder warriors, an original reading of 西游记, made-up digital creatures, and the twelve zodiac animals). Do not drop in copyrighted character artwork.
+The checked-in art is original 3D chibi (Q版) WebP, about 400×520. Characters were generated with an image model from original prompts — big head, glossy soft shading, saturated colors, thick rim light — then cut out and placed on procedural gradients. Each rarity has its own frame, drawn in that step so every card of the same rarity matches: 普通 is a plain silver rim, 稀有 a blue rim with corner dots, 史诗 a purple rim with diamonds, 传说 a gold rim with corner stars and a stronger glow. The map monkey and the little map dragon use the same rendered style on a transparent background.
 
-`scripts/generate-cards.mjs` rewrites the placeholder SVGs and the manifest. Run it only when you want to regenerate those placeholders; it overwrites the image files.
+These are original figures. Journey to the West characters and the twelve zodiac animals are public-domain subjects drawn in this style. The hero series only borrows a general “colorful armored hero” feeling. Nothing is traced from Ultraman, Digimon, Pokémon, Dragon Ball, Disney, or any other copyrighted character.
+
+Limitation: the figures come from an image model, so a hand or prop can be slightly uneven. Frames, glows, and backgrounds are procedural, which keeps the set consistent. Album tiles still crop with `object-fit: cover`, so the character stays large in the middle.
+
+`scripts/generate-cards.mjs` no longer overwrites this art. It only rebuilds the old geometric SVG placeholders when `REGENERATE_PLACEHOLDERS=1`.
 
 ## iPhone notes
 

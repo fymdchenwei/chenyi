@@ -1,6 +1,13 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
+if (process.env.REGENERATE_PLACEHOLDERS !== '1') {
+  console.log(
+    'Card art is the committed WebP in public/content/cards/images/. Set REGENERATE_PLACEHOLDERS=1 to overwrite those with the old geometric SVG placeholders.',
+  );
+  process.exit(0);
+}
+
 const OUT = 'public/content/cards/images';
 
 function stars(id, n, seed) {
