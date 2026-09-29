@@ -1,1 +1,138 @@
-# chenyi
+# 陈一
+
+An offline Progressive Web App that teaches English vocabulary from the FLTRP starter textbook (外研社英语 一年级上册 · 预备级) to a Chinese first-grader. Lessons are played as map levels. Stars from levels pay for a card draw. Everything runs in the browser: no backend, and after the first visit the app works offline.
+
+The interface is Simplified Chinese. The words and sentences being learned are English.
+
+Playable in this version: Unit 1 Hello!, Unit 2 Numbers, Unit 3 Family. Units 4–6 appear on the map as locked.
+
+Hosted site: [https://fymdchenwei.github.io/chenyi/](https://fymdchenwei.github.io/chenyi/)
+
+## Play
+
+Open the site in Safari on an iPhone, then **Add to Home Screen**. The manifest asks for standalone display and landscape. A portrait phone shows a “turn sideways” card. Designed first for iPhone 15 Pro landscape (852×393 CSS pixels) and still usable on iPad landscape.
+
+- **地图** — one island per unit, seven nodes (six lessons plus a Boss). Clear a node to open the next. Unit 2 opens after Unit 1’s Boss, Unit 3 after Unit 2’s Boss.
+- **学一学** — word cards with a picture, English, and Chinese. Tap the speaker for an en-US voice at a slow rate, or **慢** for an even slower reading. If the device has no voice, a note asks a parent to read aloud.
+- **闯关** — questions are generated from the unit JSON. A wrong answer gets a short hint and is asked again later. 3 stars with no mistakes, 2 stars with one mistake or hint, 1 star otherwise. Replaying a perfected level still grants a couple of stars.
+- **抽卡** — 20 stars for one draw (cost lives in the card manifest). Rarities: 普通 / 稀有 / 史诗 / 传说. Pity: an 史诗 within 10 draws, a 传说 within 30. Duplicates return some stars. A legendary draw fills the screen.
+- **相册** — four series, collected cards versus locked silhouettes, a chest when the series is complete.
+- **家长** — a two-digit addition gate, then today’s time limit, words learned, per-word accuracy, stars, and reset. Progress stays in `localStorage` under `chenyi.v1`.
+
+Question types, picked from what each unit can support:
+
+| Type | What the child does |
+| --- | --- |
+| Listen and choose a picture | Hear the word, tap the picture |
+| Who says it | Hear a sentence from the story, tap the character |
+| Meaning, both ways | English → Chinese, and Chinese → English |
+| Fill the blank | A song line or sentence with a missing word |
+| Put lines in order | Three lines of a dialogue or story |
+| Count | Unit 2 only: see a number of balloons, or hear a number and pick the picture |
+| Dictation | Hear the word and spell it with letter tiles. **慢** replays slowly. **提示** fills the next letter |
+| Boss | Only dictation and meaning questions |
+
+Words that share a Chinese meaning never compete as distractors. `I` / `me` (我) and `am` / `is` (是) stay out of each other’s options. `grandpa` is shown as 爷爷/外公 (the book’s 祖父；外祖父), and the same for grandma, sister, and brother — the two senses are one label, not two answers. Lines and exercises marked `"uncertain": true` are not used as questions. Uncertain *words* such as `photo` (the flag there is only about curriculum bold type) stay in the word list.
+
+## Develop
+
+```bash
+npm install
+npm run dev
+npm run check   # question generator invariants
+npm run build
+npm run preview
+```
+
+Dev and preview both use the base path `/chenyi/`, so the local app is at `http://127.0.0.1:5173/chenyi/` (dev) or port 4173 (preview).
+
+Stack: Vite, TypeScript, no UI framework. Sounds are synthesized with Web Audio. Pronunciation uses `speechSynthesis` (`en-US`, rate 0.72, turtle 0.45). Fredoka and ZCOOL KuaiLe are bundled so the rounded type works offline.
+
+## Deploy
+
+`.github/workflows/pages.yml` builds on every push to `main` and deploys the `dist/` folder with GitHub Actions. In the repo settings, set **Pages → Build and deployment → Source** to **GitHub Actions** once. The Vite `base` is `/chenyi/`, matching `https://fymdchenwei.github.io/chenyi/`.
+
+The service worker precaches the app shell, fonts, unit JSON, and card art. The first online visit fills the cache; later visits, including Home Screen launches, work with no network.
+
+## Unit JSON
+
+The game does not hard-code the word list. `public/content/units.json` is the registry:
+
+```json
+{
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "units": [
+    { "unit": 1, "title_en": "Hello!", "title_zh": "你好！", "file": "unit1.json", "playable": true },
+    { "unit": 4, "title_en": "My classroom", "title_zh": "我的教室", "file": null, "playable": false }
+  ]
+}
+```
+
+To drop in Unit 4 later: add `public/content/unit4.json`, point `file` at it, and set `"playable": true`. No other code change is required. Level *types* (learn, listen, who, meaning, fill, order, count, dictation, boss) are chosen from the unit number in `src/questions.ts`. Units 1–3 have hand-tuned mixes. Any later unit still gets a 7-node path; extend `PLANS` in that file if the new unit should emphasize different question types (for example counting only fits a numbers unit).
+
+Each unit file can keep the full textbook notes. The loader reads only:
+
+| Field | Use |
+| --- | --- |
+| `unit`, `title_en`, `title_zh` | Map label. `unit` must match the registry. |
+| `words[]` | `id`, `en`, `zh`, optional `emoji_hint`. These become cards, meaning items, pictures, and dictation. |
+| `sentences[]` | `en`, `zh`, optional `uncertain`. Fill-in-the-blank and “skip this line” checks. |
+| `song.lines[]` | `en`, `zh`. Fill-in-the-blank from the song or chant. |
+| `dialogues[]` | `id`, optional `uncertain`, `lines[]` with `speaker`, `en`, `zh`, optional `uncertain`. Who-says-it and ordering. |
+
+Ignored on purpose: page numbers, `extra_activities`, `match_exercise`, phonics, and anything else. If a sentence or dialogue line has `"uncertain": true`, or its English matches an uncertain sentence, it is not turned into a question.
+
+Headwords are normalized for display:
+
+- `let's = let us` → **let's**
+- `am (I'm = I am)` → **am**, with the note `I'm = I am` on the learn card
+
+Dictation uses the headword only when it is 3–10 letters with no apostrophe, so `let's`, `I`, `am`, `my`, `is`, and `me` are practiced in other question types instead of spelling.
+
+Kid-facing Chinese is a short label (`你好`, `爷爷/外公`, `谢谢`). The learn card also shows the book’s wording when it differs (`词表：喂，你好`, `词表：祖父；外祖父`).
+
+`public/content/units_overview.json` is the scanned book outline only. The app does not need it at runtime.
+
+## Card art
+
+Card draws read `public/content/cards/manifest.json`. Balance numbers live here so they can change without a code edit:
+
+| Field | Meaning |
+| --- | --- |
+| `drawCost` | Stars for one draw |
+| `pityEpic`, `pityLegendary` | Guaranteed rarity deadlines |
+| `weights` | Relative odds before pity (`common`, `rare`, `epic`, `legendary`) |
+| `duplicateRefund` | Stars given back for a duplicate of each rarity |
+| `seriesReward` | Stars from the album chest |
+| `cardBack` | Filename of the card back, inside `images/` |
+| `series[]` | `id`, `name`, `icon` (not shown; tabs use drawn icons), `color`, `cards[]` |
+
+Each card:
+
+```json
+{
+  "id": "star-knight",
+  "name": "星盾骑士",
+  "rarity": "common",
+  "image": "heroes/star-knight.svg",
+  "emoji": "🛡️",
+  "blurb": "举着星星盾的小骑士"
+}
+```
+
+`image` is a path relative to `public/content/cards/images/`. The four folders are `heroes/`, `journey/`, `digibeasts/`, and `zodiac/`.
+
+**To replace a picture:** put your file at the same relative path (SVG, PNG, or WebP all work — the album and the reveal screen use an `<img>`). Keep the `image` string in the manifest pointed at that file. You do not need to change TypeScript. Rarity frames, the holographic legendary border, the Chinese rarity name, and the flip animation stay in CSS and wrap whatever image you supply.
+
+If an image fails to load, the card `emoji` is only a data fallback in the manifest; the on-screen frame still shows. Prefer a square-ish illustration with the character large in the middle, because album tiles crop the image with `object-fit: cover`.
+
+The checked-in art is original geometric SVG (placeholder warriors, an original reading of 西游记, made-up digital creatures, and the twelve zodiac animals). Do not drop in copyrighted character artwork.
+
+`scripts/generate-cards.mjs` rewrites the placeholder SVGs and the manifest. Run it only when you want to regenerate those placeholders; it overwrites the image files.
+
+## iPhone notes
+
+- `viewport-fit=cover`, `user-scalable=no`, and `touch-action: manipulation` so the page does not pinch-zoom.
+- `overscroll-behavior: none` plus a `touchmove` guard outside scroll areas, so the page does not rubber-band. Word lists and the album grid scroll inside `.scroll`.
+- Safe-area insets pad the screen, including the Dynamic Island side in landscape.
+- `apple-mobile-web-app-capable`, status bar, title, and a 180×180 `apple-touch-icon` are in `index.html`. Manifest `display` is `standalone` and `orientation` is `landscape`.

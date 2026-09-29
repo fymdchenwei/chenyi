@@ -1,0 +1,47 @@
+{
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "units": [
+    {
+      "unit": 1,
+      "title_en": "Hello!",
+      "title_zh": "你好！",
+      "file": "unit1.json",
+      "playable": true
+    },
+    {
+      "unit": 2,
+      "title_en": "Numbers",
+      "title_zh": "数字",
+      "file": "unit2.json",
+      "playable": true
+    },
+    {
+      "unit": 3,
+      "title_en": "Family",
+      "title_zh": "家庭",
+      "file": "unit3.json",
+      "playable": true
+    },
+    {
+      "unit": 4,
+      "title_en": "My classroom",
+      "title_zh": "我的教室",
+      "file": null,
+      "playable": false
+    },
+    {
+      "unit": 5,
+      "title_en": "School things",
+      "title_zh": "学习用品",
+      "file": null,
+      "playable": false
+    },
+    {
+      "unit": 6,
+      "title_en": "Colours",
+      "title_zh": "颜色",
+      "file": null,
+      "playable": false
+    }
+  ]
+}

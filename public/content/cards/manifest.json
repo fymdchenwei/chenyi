@@ -1,0 +1,341 @@
+{
+  "drawCost": 20,
+  "pityEpic": 10,
+  "pityLegendary": 30,
+  "seriesReward": 40,
+  "duplicateRefund": {
+    "common": 3,
+    "rare": 8,
+    "epic": 20,
+    "legendary": 40
+  },
+  "weights": {
+    "common": 60,
+    "rare": 28,
+    "epic": 10,
+    "legendary": 2
+  },
+  "cardBack": "card-back.svg",
+  "series": [
+    {
+      "id": "heroes",
+      "name": "英雄战士",
+      "icon": "🛡️",
+      "color": "#4C8DFF",
+      "cards": [
+        {
+          "id": "star-knight",
+          "name": "星盾骑士",
+          "rarity": "common",
+          "image": "heroes/star-knight.svg",
+          "emoji": "🛡️",
+          "blurb": "举着星星盾的小骑士"
+        },
+        {
+          "id": "leaf-archer",
+          "name": "林叶弓手",
+          "rarity": "common",
+          "image": "heroes/leaf-archer.svg",
+          "emoji": "🏹",
+          "blurb": "会跟树叶打招呼的弓手"
+        },
+        {
+          "id": "spark-mage",
+          "name": "火花法师",
+          "rarity": "rare",
+          "image": "heroes/spark-mage.svg",
+          "emoji": "✨",
+          "blurb": "法杖顶端亮着一颗小太阳"
+        },
+        {
+          "id": "tide-guard",
+          "name": "浪花卫士",
+          "rarity": "common",
+          "image": "heroes/tide-guard.svg",
+          "emoji": "🌊",
+          "blurb": "站在浪尖上的卫士"
+        },
+        {
+          "id": "sun-healer",
+          "name": "阳光牧师",
+          "rarity": "rare",
+          "image": "heroes/sun-healer.svg",
+          "emoji": "💛",
+          "blurb": "把阳光分给小朋友"
+        },
+        {
+          "id": "rock-guard",
+          "name": "岩甲守卫",
+          "rarity": "epic",
+          "image": "heroes/rock-guard.svg",
+          "emoji": "🪨",
+          "blurb": "盔甲像小山一样稳"
+        },
+        {
+          "id": "moon-ninja",
+          "name": "月羽侠客",
+          "rarity": "epic",
+          "image": "heroes/moon-ninja.svg",
+          "emoji": "🌙",
+          "blurb": "月光下轻轻落地"
+        },
+        {
+          "id": "drake-heart",
+          "name": "龙心勇者",
+          "rarity": "legendary",
+          "image": "heroes/drake-heart.svg",
+          "emoji": "🐉",
+          "blurb": "心口有一颗小小的龙鳞"
+        }
+      ]
+    },
+    {
+      "id": "journey",
+      "name": "西游记",
+      "icon": "☁️",
+      "color": "#FF9F43",
+      "cards": [
+        {
+          "id": "wukong",
+          "name": "齐天小圣",
+          "rarity": "legendary",
+          "image": "journey/wukong.svg",
+          "emoji": "🐵",
+          "blurb": "金箍棒还没自己高"
+        },
+        {
+          "id": "bajie",
+          "name": "天蓬元帅",
+          "rarity": "epic",
+          "image": "journey/bajie.svg",
+          "emoji": "🐷",
+          "blurb": "最爱睡觉也最讲义气"
+        },
+        {
+          "id": "wujing",
+          "name": "流沙大将",
+          "rarity": "rare",
+          "image": "journey/wujing.svg",
+          "emoji": "📿",
+          "blurb": "脖子上挂着一串闪亮的珠子"
+        },
+        {
+          "id": "tangseng",
+          "name": "取经师父",
+          "rarity": "epic",
+          "image": "journey/tangseng.svg",
+          "emoji": "🙏",
+          "blurb": "一路说“谢谢”的师父"
+        },
+        {
+          "id": "bailong",
+          "name": "小白龙",
+          "rarity": "rare",
+          "image": "journey/bailong.svg",
+          "emoji": "🐲",
+          "blurb": "会变成一朵小白云"
+        },
+        {
+          "id": "bajiao",
+          "name": "芭蕉小仙",
+          "rarity": "common",
+          "image": "journey/bajiao.svg",
+          "emoji": "🍃",
+          "blurb": "扇子一挥就起微风"
+        },
+        {
+          "id": "honghai",
+          "name": "火焰小童",
+          "rarity": "rare",
+          "image": "journey/honghai.svg",
+          "emoji": "🔥",
+          "blurb": "脾气热热的小火苗"
+        },
+        {
+          "id": "jindou",
+          "name": "筋斗云",
+          "rarity": "common",
+          "image": "journey/jindou.svg",
+          "emoji": "☁️",
+          "blurb": "一朵爱翻跟斗的云"
+        }
+      ]
+    },
+    {
+      "id": "digibeasts",
+      "name": "数码神兽",
+      "icon": "💠",
+      "color": "#3DDC97",
+      "cards": [
+        {
+          "id": "spark-mouse",
+          "name": "闪闪鼠",
+          "rarity": "common",
+          "image": "digibeasts/spark-mouse.svg",
+          "emoji": "🐭",
+          "blurb": "尾巴会一闪一闪"
+        },
+        {
+          "id": "bubble-beast",
+          "name": "泡泡兽",
+          "rarity": "common",
+          "image": "digibeasts/bubble-beast.svg",
+          "emoji": "🫧",
+          "blurb": "走路会冒出泡泡"
+        },
+        {
+          "id": "leaf-drake",
+          "name": "叶叶龙",
+          "rarity": "rare",
+          "image": "digibeasts/leaf-drake.svg",
+          "emoji": "🍃",
+          "blurb": "鳞片像新叶子"
+        },
+        {
+          "id": "zap-bunny",
+          "name": "电电兔",
+          "rarity": "rare",
+          "image": "digibeasts/zap-bunny.svg",
+          "emoji": "🐰",
+          "blurb": "耳朵里藏着小闪电"
+        },
+        {
+          "id": "boulder-bear",
+          "name": "岩岩熊",
+          "rarity": "epic",
+          "image": "digibeasts/boulder-bear.svg",
+          "emoji": "🐻",
+          "blurb": "拥抱像一块暖和的石头"
+        },
+        {
+          "id": "flame-fox",
+          "name": "焰尾狐",
+          "rarity": "epic",
+          "image": "digibeasts/flame-fox.svg",
+          "emoji": "🦊",
+          "blurb": "尾巴是一小簇火焰"
+        },
+        {
+          "id": "star-whale",
+          "name": "星空鲸",
+          "rarity": "rare",
+          "image": "digibeasts/star-whale.svg",
+          "emoji": "🐋",
+          "blurb": "肚皮上有星星的小鲸鱼"
+        },
+        {
+          "id": "glow-phoenix",
+          "name": "光羽凤",
+          "rarity": "legendary",
+          "image": "digibeasts/glow-phoenix.svg",
+          "emoji": "🔆",
+          "blurb": "羽毛会发光，不是任何电视里的角色"
+        }
+      ]
+    },
+    {
+      "id": "zodiac",
+      "name": "十二生肖",
+      "icon": "🐾",
+      "color": "#F2B705",
+      "cards": [
+        {
+          "id": "rat",
+          "name": "机灵鼠",
+          "rarity": "common",
+          "image": "zodiac/rat.svg",
+          "emoji": "🐭",
+          "blurb": "生肖 · 鼠"
+        },
+        {
+          "id": "ox",
+          "name": "踏实牛",
+          "rarity": "common",
+          "image": "zodiac/ox.svg",
+          "emoji": "🐮",
+          "blurb": "生肖 · 牛"
+        },
+        {
+          "id": "tiger",
+          "name": "山中虎",
+          "rarity": "epic",
+          "image": "zodiac/tiger.svg",
+          "emoji": "🐯",
+          "blurb": "生肖 · 虎"
+        },
+        {
+          "id": "rabbit",
+          "name": "月牙兔",
+          "rarity": "rare",
+          "image": "zodiac/rabbit.svg",
+          "emoji": "🐰",
+          "blurb": "生肖 · 兔"
+        },
+        {
+          "id": "dragon",
+          "name": "祥云龙",
+          "rarity": "legendary",
+          "image": "zodiac/dragon.svg",
+          "emoji": "🐲",
+          "blurb": "生肖 · 龙"
+        },
+        {
+          "id": "snake",
+          "name": "灵巧蛇",
+          "rarity": "rare",
+          "image": "zodiac/snake.svg",
+          "emoji": "🐍",
+          "blurb": "生肖 · 蛇"
+        },
+        {
+          "id": "horse",
+          "name": "奔腾马",
+          "rarity": "common",
+          "image": "zodiac/horse.svg",
+          "emoji": "🐴",
+          "blurb": "生肖 · 马"
+        },
+        {
+          "id": "goat",
+          "name": "软软羊",
+          "rarity": "common",
+          "image": "zodiac/goat.svg",
+          "emoji": "🐑",
+          "blurb": "生肖 · 羊"
+        },
+        {
+          "id": "monkey",
+          "name": "蹦蹦猴",
+          "rarity": "rare",
+          "image": "zodiac/monkey.svg",
+          "emoji": "🐒",
+          "blurb": "生肖 · 猴"
+        },
+        {
+          "id": "rooster",
+          "name": "报晓鸡",
+          "rarity": "common",
+          "image": "zodiac/rooster.svg",
+          "emoji": "🐔",
+          "blurb": "生肖 · 鸡"
+        },
+        {
+          "id": "dog",
+          "name": "忠诚狗",
+          "rarity": "rare",
+          "image": "zodiac/dog.svg",
+          "emoji": "🐶",
+          "blurb": "生肖 · 狗"
+        },
+        {
+          "id": "pig",
+          "name": "圆圆猪",
+          "rarity": "epic",
+          "image": "zodiac/pig.svg",
+          "emoji": "🐷",
+          "blurb": "生肖 · 猪"
+        }
+      ]
+    }
+  ]
+}

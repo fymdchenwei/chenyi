@@ -1,0 +1,133 @@
+{
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "pdf_pages": 81,
+  "page_offset_note": "PDF page = book page + 4 for book pp.1-63 (PDF 5-67). From PDF p68 on, the printed numbers restart at 62 (PDF p68 is printed 62, p73 printed 67), so PDF = printed + 6 there – a numbering quirk in the scan/book.",
+  "units": [
+    {
+      "unit": 1,
+      "title_en": "Hello!",
+      "title_zh": "你好！",
+      "pages": {
+        "book": "1-6",
+        "pdf": "5-10"
+      },
+      "supplementary_activity_pages": {
+        "book": "50-51",
+        "pdf": "54-55"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    },
+    {
+      "unit": 2,
+      "title_en": "Numbers",
+      "title_zh": "数字",
+      "pages": {
+        "book": "7-12",
+        "pdf": "11-16"
+      },
+      "supplementary_activity_pages": {
+        "book": "52-53",
+        "pdf": "56-57"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    },
+    {
+      "unit": 3,
+      "title_en": "Family",
+      "title_zh": "家庭",
+      "pages": {
+        "book": "13-18",
+        "pdf": "17-22"
+      },
+      "supplementary_activity_pages": {
+        "book": "54-55",
+        "pdf": "58-59"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    },
+    {
+      "unit": 4,
+      "title_en": "My classroom",
+      "title_zh": "我的教室",
+      "pages": {
+        "book": "19-24",
+        "pdf": "23-28"
+      },
+      "supplementary_activity_pages": {
+        "book": "56-57",
+        "pdf": "60-61"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    },
+    {
+      "unit": 5,
+      "title_en": "School things",
+      "title_zh": "学习用品",
+      "pages": {
+        "book": "25-30",
+        "pdf": "29-34"
+      },
+      "supplementary_activity_pages": {
+        "book": "58-59",
+        "pdf": "62-63"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    },
+    {
+      "unit": 6,
+      "title_en": "Colours",
+      "title_zh": "颜色",
+      "pages": {
+        "book": "31-36",
+        "pdf": "35-40"
+      },
+      "supplementary_activity_pages": {
+        "book": "60-61",
+        "pdf": "64-65"
+      },
+      "title_zh_note": "zh title is a translation; book prints English titles only"
+    }
+  ],
+  "other_sections": [
+    {
+      "title_en": "Wrap up",
+      "title_zh": "复习",
+      "pages": {
+        "book": "37-40",
+        "pdf": "41-44"
+      }
+    },
+    {
+      "title_en": "This is Chongqing!",
+      "title_zh": "这是重庆！",
+      "pages": {
+        "book": "41-48",
+        "pdf": "45-52"
+      }
+    },
+    {
+      "title_en": "Appendices",
+      "title_zh": "附录",
+      "pages": {
+        "book": "49-77 (printed numbering irregular after 63)",
+        "pdf": "53-81"
+      },
+      "contents": [
+        "Supplementary activities (per unit, book 50-61)",
+        "Reading for pleasure: The bear picks apples (PDF 66-67)",
+        "Words and expressions (PDF 68-69)",
+        "Word list A-Z (PDF 70-73)",
+        "Proper nouns (PDF 73)",
+        "Words and expressions in 'This is Chongqing!' (PDF 73-74)",
+        "Words and expressions in 'Reading for pleasure' (PDF 74)",
+        "Cut-out pictures for Unit 1-6 Activity 1 (PDF 75-81)"
+      ]
+    }
+  ],
+  "front_matter": {
+    "pdf_1": "cover (英语 预备级 一年级上册)",
+    "pdf_2": "title page",
+    "pdf_3": "致同学 (introduces Taotao, Duoduo, Toby, Emma)",
+    "pdf_4": "Contents"
+  }
+}
