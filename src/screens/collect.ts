@@ -445,6 +445,7 @@ function detailHtml(ctx: AppCtx, id: string): string {
   const meta = RARITY_META[card.rarity];
   const word = extra?.word;
   return `<div class="detail-pop"><article class="detail-card">
+    <button type="button" class="btn detail-close" data-action="close-detail">关闭</button>
     <img class="hero" src="${src}" alt="${esc(card.name)}" />
     <div class="detail-copy scroll">
       <h3>${esc(card.name)}</h3>
@@ -458,7 +459,6 @@ function detailHtml(ctx: AppCtx, id: string): string {
           ? `<button type="button" class="btn ghost word-btn" data-action="say-word" data-en="${esc(word.en)}">${esc(word.en)} · ${esc(word.zh)}</button>`
           : ''
       }
-      <button type="button" class="btn" data-action="close-detail">关闭</button>
     </div>
   </article></div>`;
 }

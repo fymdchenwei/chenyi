@@ -1,7 +1,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { FACE_ART_IDS, WORD_ART_IDS } from './art';
 import { normalizeUnit } from './content';
-import { makeQuestions, levelPlan, PICTORIAL, TEXT_ONLY, type Question } from './questions';
+import { makeQuestions, levelPlan, PICTORIAL, TEXT_ONLY, showHintButton, wrongHint, type Question } from './questions';
+import { tapSpell, undoSpell, type SpellBoard } from './spell';
 import { migrateOwned, nextCardLevel } from './state';
 import type { NormUnit } from './types';
 
@@ -66,6 +67,8 @@ for (const meta of index.units) {
     }
   }
   if (unit.unit === 1 && levelPlan(1)[1]?.kind !== 'scene') problems.push('unit 1 level 2 should be scene');
+  if (levelPlan(1)[2]?.title !== '谁说的' || levelPlan(3)[2]?.title !== '谁说的') problems.push('level 3 who');
+  if (levelPlan(2)[2]?.kind !== 'listen') problems.push('unit 2 level 3');
   const scene = makeQuestions(unit, 'scene', 9);
   if (unit.unit === 1 && !scene.some((q) => q.type === 'pic-zh')) problems.push('unit 1 scene missing');
   const who = makeQuestions(unit, 'who', 42);
@@ -179,6 +182,55 @@ function checkQuestion(q: Question, unit: NormUnit, where: string) {
     if (!q.options[q.answer]) problems.push('fill answer');
     if (new Set(q.options.map((o) => o.toLowerCase())).size !== q.options.length) problems.push('fill dup');
   }
+  const hint = wrongHint(q);
+  if (q.type === 'order') {
+    if (hint !== '再想一想顺序') problems.push(`order hint ${hint}`);
+  } else if (q.type === 'dictation') {
+    if (hint !== `再听一次，开头是 ${q.answer[0]}`) problems.push(`dictation hint ${hint}`);
+  } else {
+    const listen = q.type === 'listen-picture' || q.type === 'pic-zh' || q.type === 'who' || q.type === 'count-hear';
+    const expect = listen ? '再听一听，再试一次' : '再看一看，再试一次';
+    if (hint !== expect) problems.push(`choice hint ${q.type} ${hint}`);
+    const secret = answerText(q);
+    if (secret.length > 1 && hint.includes(secret)) problems.push(`hint leaks ${q.type} ${secret}`);
+  }
+}
+
+if (showHintButton(2) || !showHintButton(0) || !showHintButton(1) || !showHintButton(3) || !showHintButton(4) || !showHintButton(5)) {
+  problems.push('hint button only hidden on level index 2');
+}
+checkSpellBurst();
+
+function checkSpellBurst() {
+  const answer = 'elephant';
+  const tiles = [...answer, 'q', 'z'].map((ch, i) => ({ id: `t${i}`, ch, used: false }));
+  const board: SpellBoard = { tiles, slots: answer.split('').map(() => null), answer };
+  const first = tapSpell(board, 't0');
+  const again = tapSpell(board, 't0');
+  if (!first.ok || first.done || again.ok) problems.push('double tap on the same letter must land once');
+  if (board.slots.filter(Boolean).length !== 1) problems.push('double tap filled more than one slot');
+  let lastStep: ReturnType<typeof tapSpell> = first;
+  for (let i = 1; i < answer.length; i++) {
+    lastStep = tapSpell(board, `t${i}`);
+    if (!lastStep.ok) problems.push(`dropped spell tap ${i}`);
+    if (i < answer.length - 1 && lastStep.ok && lastStep.done) problems.push('spell finished early');
+  }
+  const filled = board.slots.filter(Boolean).length;
+  if (filled !== answer.length) problems.push(`spell burst filled ${filled}`);
+  if (!lastStep.ok || !lastStep.done || !lastStep.correct) problems.push('spell burst should complete elephant');
+  if (!undoSpell(board)) problems.push('undo');
+  if (board.slots[answer.length - 1] !== null || board.tiles[answer.length - 1].used) problems.push('undo did not clear last letter');
+  const miss = tapSpell(board, 't8');
+  if (!miss.ok || !miss.done || miss.correct) problems.push('decoy letter should finish wrong');
+}
+
+function answerText(q: Question): string {
+  if (q.type === 'meaning-en-zh' || q.type === 'meaning-zh-en') return q.options[q.answer]?.label ?? '';
+  if (q.type === 'fill') return q.options[q.answer] ?? '';
+  if (q.type === 'who') return q.options[q.answer]?.name ?? '';
+  if (q.type === 'pic-zh') return q.options[q.answer]?.zh ?? '';
+  if (q.type === 'count-see') return q.options[q.answer]?.label ?? '';
+  return '';
 }
 
 if (problems.length) {

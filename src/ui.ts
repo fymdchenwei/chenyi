@@ -61,8 +61,44 @@ export function toastHtml(message: string): string {
 }
 
 export function actionFrom(event: Event): HTMLElement | null {
-  const target = event.target;
-  if (!(target instanceof Element)) return null;
+  const raw = event.target;
+  const target = raw instanceof Element ? raw : raw instanceof Node ? raw.parentElement : null;
+  if (!target) return null;
   const el = target.closest('[data-action]');
   return el instanceof HTMLElement ? el : null;
+}
+
+/**
+ * Letter tiles are tapped faster than Safari emits a click. A new touchstart
+ * cancels a click that has not been dispatched yet, so the letter is dropped.
+ * Commit on pointerdown. Swallow the click that may still follow.
+ */
+export function bindPress(root: HTMLElement, handle: (el: HTMLElement) => void): () => void {
+  let suppressUntil = 0;
+
+  const onPointerDown = (event: PointerEvent) => {
+    if (event.button !== 0) return;
+    const el = actionFrom(event);
+    if (!el || el.hasAttribute('disabled')) return;
+    if (event.cancelable) event.preventDefault();
+    suppressUntil = performance.now() + 1000;
+    handle(el);
+  };
+
+  const onClick = (event: MouseEvent) => {
+    if (performance.now() < suppressUntil) {
+      event.preventDefault();
+      return;
+    }
+    const el = actionFrom(event);
+    if (!el || el.hasAttribute('disabled')) return;
+    handle(el);
+  };
+
+  root.addEventListener('pointerdown', onPointerDown, { passive: false });
+  root.addEventListener('click', onClick);
+  return () => {
+    root.removeEventListener('pointerdown', onPointerDown);
+    root.removeEventListener('click', onClick);
+  };
 }
