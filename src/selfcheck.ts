@@ -4,6 +4,7 @@ import { normalizeUnit } from './content';
 import { makeQuestions, levelPlan, PICTORIAL, TEXT_ONLY, showHintButton, wrongHint, type Question } from './questions';
 import { tapSpell, undoSpell, type SpellBoard } from './spell';
 import { migrateOwned, nextCardLevel } from './state';
+import { shouldIgnoreFollowUpClick } from './ui';
 import type { NormUnit } from './types';
 
 function readJson(path: string) {
@@ -269,6 +270,12 @@ for (const rule of pictureRules) {
 if (!playSource.includes('class="scene-bar"')) problems.push('pic-zh should keep the mascot in the top bar');
 if (/放大|preview|zoom/.test(playSource)) problems.push('picture preview must stay off');
 if (showHintButton(2)) problems.push('level 3 must hide the hint button');
+
+const now = 1_000;
+if (!shouldIgnoreFollowUpClick('next|', 'next|', now, now + 500)) problems.push('same-control click should be ignored');
+if (shouldIgnoreFollowUpClick('next|', 'back|', now, now + 500)) problems.push('back click after next must not be ignored');
+if (shouldIgnoreFollowUpClick('next|', 'back|', now + 500, now + 500)) problems.push('expired window must not ignore a different control');
+if (!shouldIgnoreFollowUpClick('next|', null, now, now + 500)) problems.push('click on empty space should be ignored');
 
 if (problems.length) {
   console.error(problems.join('\n'));
