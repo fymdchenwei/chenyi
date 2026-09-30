@@ -10,7 +10,7 @@ Hosted site: [https://fymdchenwei.github.io/chenyi/](https://fymdchenwei.github.
 
 ## Play
 
-Open the site in Safari on an iPhone, then **Add to Home Screen**. The manifest asks for standalone display and landscape. A portrait phone shows a “turn sideways” card. Designed first for iPhone 15 Pro landscape (852×393 CSS pixels) and still usable on iPad landscape.
+Open the site in Safari on an iPhone, then **Add to Home Screen**. The manifest asks for standalone display and allows either orientation, so the parent page can be used upright. A portrait phone still shows a “turn sideways” card on every other screen. Designed first for iPhone 15 Pro landscape (852×393 CSS pixels) and still usable on iPad landscape.
 
 - **地图** — one island per unit, seven nodes (six lessons plus a Boss). Clear a node to open the next. Each next unit opens after the previous unit’s Boss.
 - **学一学** — word cards with a picture, English, and Chinese. Tap the speaker for an en-US voice at a slow rate, or **慢** for an even slower reading. If the device has no voice, a note asks a parent to read aloud.
@@ -153,4 +153,4 @@ Abstract words (`nice`, `you`, `I`, `am`, `too`, `how`, `please`, `my`, `this`, 
 - `viewport-fit=cover`, `user-scalable=no`, and `touch-action: manipulation` so the page does not pinch-zoom.
 - `overscroll-behavior: none` plus a `touchmove` guard outside scroll areas, so the page does not rubber-band. Word lists and the album grid scroll inside `.scroll`.
 - Safe-area insets pad the screen, including the Dynamic Island side in landscape.
-- `apple-mobile-web-app-capable`, status bar, title, and a 180×180 `apple-touch-icon` are in `index.html`. Manifest `display` is `standalone` and `orientation` is `landscape`.
+- `apple-mobile-web-app-capable`, status bar, title, and a 180×180 `apple-touch-icon` are in `index.html`. Manifest `display` is `standalone` and `orientation` is `any`. Portrait still covers the game with the landscape prompt, except the parent page after the arithmetic gate, which lays out vertically and scrolls.

@@ -36,6 +36,8 @@ function start(root: HTMLElement, data: GameData) {
   function goto(next: Screen) {
     const blocked = timeUp() && next.name !== 'parent' && next.name !== 'parent-gate' && next.name !== 'timeup';
     screen = blocked ? { name: 'timeup' } : next;
+    // Only the page after the arithmetic gate may show in portrait.
+    document.body.classList.toggle('parent-open', screen.name === 'parent');
     cleanup();
     cleanup = render(stage as HTMLElement, screen, ctx);
   }
@@ -50,6 +52,14 @@ function start(root: HTMLElement, data: GameData) {
     (event) => {
       const target = event.target;
       if (target instanceof Element && target.closest('.scroll')) return;
+      if (
+        document.body.classList.contains('parent-open') &&
+        window.matchMedia('(orientation: portrait)').matches &&
+        target instanceof Element &&
+        target.closest('.parent-body')
+      ) {
+        return;
+      }
       event.preventDefault();
     },
     { passive: false },
