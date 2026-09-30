@@ -1,6 +1,9 @@
 import type { AppCtx } from '../types';
+import { levelPlan } from '../questions';
 import {
   game,
+  isCleared,
+  levelStars,
   ownedCount,
   resetProgress,
   setDailyMin,
@@ -141,7 +144,18 @@ export function mountParent(root: HTMLElement, ctx: AppCtx): () => void {
             </div>`;
           })
           .join('');
-        return `<section><h3>第${unit.unit}单元 ${esc(unit.titleEn)}</h3>${rows}</section>`;
+        const levels = levelPlan(unit.unit)
+          .map((level, index) => {
+            const cleared = isCleared(unit.unit, index);
+            const stars = levelStars(unit.unit, index);
+            return `<div class="lrow">
+              <b>${esc(level.title)}</b>
+              <i class="${cleared ? 'yes' : ''}">${cleared ? '已练习' : '未练习'}</i>
+              <small>${cleared ? `${stars}★` : '—'}</small>
+            </div>`;
+          })
+          .join('');
+        return `<section class="practice-unit"><h3>第${unit.unit}单元 ${esc(unit.titleEn)}</h3><div class="level-list">${levels}</div>${rows}</section>`;
       })
       .join('');
     const accAll = attempts ? Math.round((correct / attempts) * 100) : 0;
@@ -168,7 +182,10 @@ export function mountParent(root: HTMLElement, ctx: AppCtx): () => void {
             .join('')}
           <button type="button" class="chip${game.settings.muteSpeech ? ' on' : ''}" data-action="speech">${game.settings.muteSpeech ? '发音已关' : '发音开着'}</button>
         </div>
-        <div class="word-table scroll">${groups}</div>
+        <div class="word-table scroll">
+          <h3 class="practice-head">已经练习</h3>
+          ${groups}
+        </div>
         <button type="button" class="btn danger" data-action="reset">重置进度</button>
       </div>
       ${nav('parent')}

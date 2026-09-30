@@ -6,7 +6,7 @@
   "start_url": "/chenyi/",
   "scope": "/chenyi/",
   "display": "standalone",
-  "orientation": "landscape",
+  "orientation": "any",
   "background_color": "#8fd3ff",
   "theme_color": "#5eb0f0",
   "lang": "zh-CN",

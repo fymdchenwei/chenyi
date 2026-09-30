@@ -859,9 +859,24 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 .chip.on { background: #ffe08a; }
 .word-table { flex: 1; min-height: 0; overflow: auto; }
 .word-table h3 { margin: 8px 0 4px; font-size: 14px; }
+.practice-head { margin-top: 0; }
+.level-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 6px; }
+.lrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+.lrow b { min-width: 0; overflow-wrap: anywhere; }
+.lrow i { font-style: normal; color: #b0b8c4; font-size: 12px; }
+.lrow i.yes { color: #1f9a48; }
+.lrow small { color: #c47a12; font-size: 12px; justify-self: end; }
 .wrow {
   display: grid;
-  grid-template-columns: 1.1fr .9fr 46px 70px 42px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr) 46px 70px 42px;
   gap: 6px;
   align-items: center;
   background: #fff;
@@ -869,6 +884,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   padding: 4px 8px;
   margin-bottom: 4px;
 }
+.wrow > b, .wrow > span { min-width: 0; overflow-wrap: anywhere; }
 .wrow i { font-style: normal; color: #b0b8c4; font-size: 12px; }
 .wrow i.yes { color: #1f9a48; }
 .wrow em { height: 8px; background: #eef2f6; border-radius: 99px; overflow: hidden; }
@@ -1046,6 +1062,80 @@ button.acard { border: 0; font: inherit; color: inherit; text-align: left; width
 .sil-frame { position: relative; border-radius: 16px; overflow: hidden; background: #2d2658; }
 .sil-frame img { width: 100%; height: 48cqh; object-fit: cover; filter: brightness(0) opacity(.5); }
 .sil-frame b { position: absolute; inset: 0; display: grid; place-items: center; color: #efeaff; font-size: 12cqh; }
+
+@media (orientation: portrait) {
+  body.parent-open .portrait-lock { display: none; }
+  body.parent-open #app { display: block; }
+  body.parent-open .stage-wrap {
+    display: block;
+    height: 100%;
+    overflow: hidden;
+  }
+  body.parent-open .stage {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+  body.parent-open .screen.parent .topbar.slim {
+    height: auto;
+    min-height: 48px;
+  }
+  body.parent-open .screen.parent .topbar h2 {
+    margin: 0;
+    flex: 1;
+    font-size: 20px;
+  }
+  body.parent-open .screen.parent .star-pill { font-size: 16px; }
+  body.parent-open .screen.parent .nav {
+    height: auto;
+    min-height: 68px;
+    padding-top: 4px;
+  }
+  body.parent-open .screen.parent .nav-btn {
+    font-size: 12px;
+    min-height: 60px;
+    border-radius: 14px;
+  }
+  body.parent-open .screen.parent .nav-ico { width: 28px; height: 28px; }
+  body.parent-open .screen.parent .btn { font-size: 16px; }
+  body.parent-open .parent-body {
+    overflow: auto;
+    gap: 10px;
+    padding-bottom: 4px;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  body.parent-open .parent .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  body.parent-open .parent .stats b { font-size: 22px; }
+  body.parent-open .parent .limits { align-items: flex-start; }
+  body.parent-open .parent .chip { font-size: 14px; padding: 8px 12px; }
+  body.parent-open .parent .word-table {
+    flex: none;
+    overflow: visible;
+    min-height: auto;
+  }
+  body.parent-open .parent .wrow {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      "en flag score"
+      "zh bar bar";
+    gap: 4px 8px;
+    padding: 8px 10px;
+  }
+  body.parent-open .parent .wrow > b { grid-area: en; font-size: 16px; }
+  body.parent-open .parent .wrow > span { grid-area: zh; font-size: 13px; }
+  body.parent-open .parent .wrow > i { grid-area: flag; }
+  body.parent-open .parent .wrow > em { grid-area: bar; }
+  body.parent-open .parent .wrow > small { grid-area: score; text-align: right; }
+  body.parent-open .parent .lrow { padding: 8px 10px; }
+  body.parent-open .parent .lrow b { font-size: 15px; }
+  body.parent-open .parent .modal-card { max-width: calc(100% - 24px); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
