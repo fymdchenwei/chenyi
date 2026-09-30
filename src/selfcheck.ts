@@ -72,7 +72,18 @@ for (const meta of index.units) {
   const scene = makeQuestions(unit, 'scene', 9);
   if (unit.unit === 1 && !scene.some((q) => q.type === 'pic-zh')) problems.push('unit 1 scene missing');
   const who = makeQuestions(unit, 'who', 42);
-  if ((unit.unit === 1 || unit.unit === 3) && !who.some((q) => q.type === 'who')) problems.push(`unit ${unit.unit} who missing`);
+  if ((unit.unit === 1 || unit.unit === 3 || unit.unit >= 4) && !who.some((q) => q.type === 'who')) {
+    problems.push(`unit ${unit.unit} who missing`);
+  }
+  if (unit.unit >= 4) {
+    const plan = levelPlan(unit.unit);
+    if (plan[0]?.kind !== 'learn' || plan[1]?.kind !== 'listen' || plan[2]?.kind !== 'who') {
+      problems.push(`unit ${unit.unit} level plan`);
+    }
+    const listen = makeQuestions(unit, 'listen', 5);
+    if (!listen.length || listen.some((q) => q.type !== 'listen-picture')) problems.push(`unit ${unit.unit} listen missing`);
+    if (who.some((q) => q.type !== 'who')) problems.push(`unit ${unit.unit} who fell back`);
+  }
   const meaning = makeQuestions(unit, 'meaning', 7);
   if (!meaning.some((q) => q.type === 'meaning-en-zh') || !meaning.some((q) => q.type === 'meaning-zh-en')) {
     problems.push(`unit ${unit.unit} missing a meaning direction`);

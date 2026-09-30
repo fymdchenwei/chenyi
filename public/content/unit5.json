@@ -1,0 +1,54 @@
+{
+  "unit": 5,
+  "title_en": "School things",
+  "title_zh": "学习用品",
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "page_range": { "book": "25-30", "pdf": "29-34" },
+  "words": [
+    { "id": "u5_w01", "image": "words/u5_w01.webp", "en": "schoolbag", "zh": "书包", "emoji_hint": "🎒" },
+    { "id": "u5_w02", "image": "words/u5_w02.webp", "en": "pencil case", "zh": "笔袋；铅笔盒", "emoji_hint": "✏️" },
+    { "id": "u5_w03", "image": "words/u5_w03.webp", "en": "pencil", "zh": "铅笔", "emoji_hint": "✏️" },
+    { "id": "u5_w04", "image": "words/u5_w04.webp", "en": "book", "zh": "书，书籍", "emoji_hint": "📘" },
+    { "id": "u5_w05", "en": "bye (=goodbye)", "zh": "再见，拜拜", "emoji_hint": "👋" },
+    { "id": "u5_w06", "en": "here you are", "zh": "给你（用于把某物给某人时）", "emoji_hint": "🤲" },
+    { "id": "u5_w07", "en": "read", "zh": "阅读", "emoji_hint": "📖" },
+    { "id": "u5_w08", "en": "together", "zh": "一起，共同", "emoji_hint": "🤝" }
+  ],
+  "sentences": [
+    { "en": "Open my schoolbag!", "zh": "打开我的书包！" },
+    { "en": "My pencil case.", "zh": "我的铅笔盒。" },
+    { "en": "My pencil.", "zh": "我的铅笔。" },
+    { "en": "And my books!", "zh": "还有我的书！" },
+    { "en": "Bye, Dad!", "zh": "爸爸，再见！" },
+    { "en": "Oh, that's Toby's book and pencil case!", "zh": "哦，那是托比的书和铅笔盒！" },
+    { "en": "Oh, no!", "zh": "哦，不！" },
+    { "en": "This is my pencil.", "zh": "这是我的铅笔。" },
+    { "en": "Here you are.", "zh": "给你。" },
+    { "en": "This is my book.", "zh": "这是我的书。" },
+    { "en": "Let's read together.", "zh": "我们一起读吧。" },
+    { "en": "Thank you!", "zh": "谢谢你！" }
+  ],
+  "song": {
+    "lines": [
+      { "en": "Open my schoolbag!", "zh": "打开我的书包！" },
+      { "en": "My pencil case.", "zh": "我的铅笔盒。" },
+      { "en": "My pencil.", "zh": "我的铅笔。" },
+      { "en": "And my books!", "zh": "还有我的书！" }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "u5_d01",
+      "lines": [
+        { "speaker": "Toby", "en": "Bye, Dad!", "zh": "爸爸，再见！" },
+        { "speaker": "Taotao", "en": "Oh, that's Toby's book and pencil case!", "zh": "哦，那是托比的书和铅笔盒！" },
+        { "speaker": "Duoduo", "en": "Oh, no!", "zh": "哦，不！" },
+        { "speaker": "Taotao", "en": "This is my pencil.", "zh": "这是我的铅笔。" },
+        { "speaker": "Taotao", "en": "Here you are.", "zh": "给你。" },
+        { "speaker": "Duoduo", "en": "This is my book.", "zh": "这是我的书。" },
+        { "speaker": "Duoduo", "en": "Let's read together.", "zh": "我们一起读吧。" },
+        { "speaker": "Toby", "en": "Thank you!", "zh": "谢谢你！" }
+      ]
+    }
+  ]
+}

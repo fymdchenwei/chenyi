@@ -1,0 +1,71 @@
+{
+  "unit": 4,
+  "title_en": "My classroom",
+  "title_zh": "我的教室",
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "page_range": { "book": "19-24", "pdf": "23-28" },
+  "words": [
+    { "id": "u4_w01", "en": "what", "zh": "什么", "emoji_hint": "❓" },
+    { "id": "u4_w02", "en": "open", "zh": "打开", "emoji_hint": "🚪" },
+    { "id": "u4_w03", "image": "words/u4_w03.webp", "en": "door", "zh": "门", "emoji_hint": "🚪" },
+    { "id": "u4_w04", "image": "words/u4_w04.webp", "en": "classroom", "zh": "教室", "emoji_hint": "🏫" },
+    { "id": "u4_w05", "image": "words/u4_w05.webp", "en": "blackboard", "zh": "黑板", "emoji_hint": "🟩" },
+    { "id": "u4_w06", "image": "words/u4_w06.webp", "en": "window", "zh": "窗户", "emoji_hint": "🪟" },
+    { "id": "u4_w07", "image": "words/u4_w07.webp", "en": "desk", "zh": "书桌", "emoji_hint": "🪵" },
+    { "id": "u4_w08", "image": "words/u4_w08.webp", "en": "chair", "zh": "椅子", "emoji_hint": "🪑" },
+    { "id": "u4_w09", "en": "it", "zh": "它，这，那", "emoji_hint": "👆" },
+    { "id": "u4_w10", "en": "big", "zh": "大的", "emoji_hint": "⬜" },
+    { "id": "u4_w11", "en": "that", "zh": "那，那个", "emoji_hint": "👉" },
+    { "id": "u4_w12", "image": "words/u4_w12.webp", "en": "teacher", "zh": "教师，老师", "emoji_hint": "👩‍🏫" },
+    { "id": "u4_w13", "en": "Good job!", "zh": "干得好！；真不错！", "emoji_hint": "👍" },
+    { "id": "u4_w14", "en": "a(n)", "zh": "一（个）", "emoji_hint": "1" },
+    { "id": "u4_w15", "en": "very", "zh": "非常", "emoji_hint": "✨" },
+    { "id": "u4_w16", "en": "old", "zh": "年代久远的", "emoji_hint": "🏛️" },
+    { "id": "u4_w17", "image": "words/u4_w17.webp", "en": "school", "zh": "学校", "emoji_hint": "🏫" },
+    { "id": "u4_w18", "en": "look", "zh": "看，望，瞧", "emoji_hint": "👀" }
+  ],
+  "sentences": [
+    { "en": "What's this?", "zh": "这是什么？" },
+    { "en": "Open, open, open the door.", "zh": "打开，打开，打开门。" },
+    { "en": "This is my classroom!", "zh": "这是我的教室！" },
+    { "en": "This is the blackboard.", "zh": "这是黑板。" },
+    { "en": "This is the window.", "zh": "这是窗户。" },
+    { "en": "This is my desk.", "zh": "这是我的书桌。" },
+    { "en": "And this is my chair!", "zh": "这是我的椅子！" },
+    { "en": "Dad, May, this is my classroom!", "zh": "爸爸，梅，这是我的教室！" },
+    { "en": "Wow! It's big!", "zh": "哇！它好大！" },
+    { "en": "This is my dad. And this is my sister, May.", "zh": "这是我的爸爸。这是我的姐姐梅。" },
+    { "en": "Oh, that is my teacher!", "zh": "哦，那是我的老师！" },
+    { "en": "Good job, May!", "zh": "做得好，梅！" },
+    { "en": "This is a very old school.", "zh": "这是一所很古老的学校。" },
+    { "en": "This is a classroom. It's big!", "zh": "这是一间教室。它好大！" },
+    { "en": "Look! That is an old school, too!", "zh": "看！那也是一所古老的学校！" },
+    { "en": "Look! This is a desk.", "zh": "看！这是一张书桌。" }
+  ],
+  "song": {
+    "lines": [
+      { "en": "What's this?", "zh": "这是什么？" },
+      { "en": "Open, open, open the door.", "zh": "打开，打开，打开门。" },
+      { "en": "This is my classroom!", "zh": "这是我的教室！" },
+      { "en": "This is the blackboard.", "zh": "这是黑板。" },
+      { "en": "This is the window.", "zh": "这是窗户。" },
+      { "en": "This is my desk.", "zh": "这是我的书桌。" },
+      { "en": "And this is my chair!", "zh": "这是我的椅子！" }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "u4_d01",
+      "lines": [
+        { "speaker": "Toby", "en": "Dad, May, this is my classroom!", "zh": "爸爸，梅，这是我的教室！" },
+        { "speaker": "Toby", "en": "This is the blackboard.", "zh": "这是黑板。" },
+        { "speaker": "Dad", "en": "Wow! It's big!", "zh": "哇！它好大！" },
+        { "speaker": "Toby", "en": "This is my desk.", "zh": "这是我的书桌。" },
+        { "speaker": "Toby", "en": "This is my chair.", "zh": "这是我的椅子。" },
+        { "speaker": "Toby", "en": "This is my dad. And this is my sister, May.", "zh": "这是我的爸爸。这是我的姐姐梅。" },
+        { "speaker": "May", "en": "Oh, that is my teacher!", "zh": "哦，那是我的老师！" },
+        { "speaker": "Dad", "en": "Good job, May!", "zh": "做得好，梅！" }
+      ]
+    }
+  ]
+}

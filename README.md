@@ -4,7 +4,7 @@ An offline Progressive Web App that teaches English vocabulary from the FLTRP st
 
 The interface is Simplified Chinese. The words and sentences being learned are English.
 
-Playable in this version: Unit 1 Hello!, Unit 2 Numbers, Unit 3 Family. Units 4–6 appear on the map as locked.
+Playable in this version: Units 1–6 (Hello!, Numbers, Family, My classroom, School things, Colours).
 
 Hosted site: [https://fymdchenwei.github.io/chenyi/](https://fymdchenwei.github.io/chenyi/)
 
@@ -12,7 +12,7 @@ Hosted site: [https://fymdchenwei.github.io/chenyi/](https://fymdchenwei.github.
 
 Open the site in Safari on an iPhone, then **Add to Home Screen**. The manifest asks for standalone display and landscape. A portrait phone shows a “turn sideways” card. Designed first for iPhone 15 Pro landscape (852×393 CSS pixels) and still usable on iPad landscape.
 
-- **地图** — one island per unit, seven nodes (six lessons plus a Boss). Clear a node to open the next. Unit 2 opens after Unit 1’s Boss, Unit 3 after Unit 2’s Boss.
+- **地图** — one island per unit, seven nodes (six lessons plus a Boss). Clear a node to open the next. Each next unit opens after the previous unit’s Boss.
 - **学一学** — word cards with a picture, English, and Chinese. Tap the speaker for an en-US voice at a slow rate, or **慢** for an even slower reading. If the device has no voice, a note asks a parent to read aloud.
 - **闯关** — questions are generated from the unit JSON. A wrong answer gets a short hint and is asked again later. 3 stars with no mistakes, 2 stars with one mistake or hint, 1 star otherwise. Replaying a perfected level still grants 2 stars. At 2 stars per draw, a perfect level (3 stars) pays for one draw and banks 1 star, so two perfect levels pay for three draws — about 1–2 draws a level. A perfected replay pays for exactly one draw. The map still shows 1–3 stars; that rating is the currency gained on a first clear.
 - **抽卡** — 2 stars for one draw, 18 stars for 十连抽 (ten draws, 2 stars off the 20-star full price). Rarities: 普通 / 稀有 / 史诗 / 传说. Pity: an 史诗 within 8 draws, a 传说 within 20. A duplicate raises that card’s star level by 1, up to Lv.10. At Lv.10, another copy refunds 1 star and shows MAX. A legendary draw fills the screen. 十连抽 flips through the ten cards (or 快进) and then shows a summary grid: 新卡, an upgrade level, or MAX, with the best rarity tagged 最佳.
