@@ -70,9 +70,8 @@ export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, inde
       <div class="learn-layout">
         <button type="button" class="arrow" data-action="prev" aria-label="上一张">‹</button>
         <article class="learn-card">
-          <div class="art-wrap">${wordArt(w.id)}</div>
-          <h2>${esc(w.en)}</h2>
-          <p class="zh">${esc(w.zhShort)}</p>
+          <div class="art-wrap">${wordArt(w.id, 'card')}</div>
+          ${w.image ? `<h2>${esc(w.en)}</h2><p class="zh">${esc(w.zhShort)}</p>` : ''}
           ${w.zh !== w.zhShort ? `<p class="zh-book">词表：${esc(w.zh)}</p>` : ''}
           ${w.note ? `<p class="zh-book">${esc(w.note)}</p>` : ''}
           ${w.example ? `<p class="example">${esc(w.example.en)}<small>${esc(w.example.zh)}</small></p>` : ''}
@@ -399,7 +398,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     if (q.type === 'meaning-en-zh' || q.type === 'meaning-zh-en') {
       const prompt =
         q.type === 'meaning-en-zh'
-          ? `<div class="prompt-card">${wordArt(q.wordId)}<h2>${esc(q.en)}</h2><div class="speak-row">${speakerBtn()}${turtleBtn()}</div></div>`
+          ? `<div class="prompt-card">${wordArt(q.wordId, 'prompt')}<h2>${esc(q.en)}</h2><div class="speak-row">${speakerBtn()}${turtleBtn()}</div></div>`
           : `<div class="prompt-card zh-card"><p class="big-zh">${esc(q.zh)}</p><p class="prompt">哪一个单词？</p></div>`;
       return `<div class="mean-layout">${prompt}<div class="choice-grid">${q.options
         .map((o, i) => choice(i, esc(o.label), q.type === 'meaning-zh-en'))

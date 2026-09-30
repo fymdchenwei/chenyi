@@ -128,7 +128,6 @@
     },
     {
       "id": "u1_w02",
-      "image": "words/u1_w02.webp",
       "en": "nice",
       "zh": "令人愉快的",
       "emoji_hint": "😊",
@@ -152,7 +151,6 @@
     },
     {
       "id": "u1_w04",
-      "image": "words/u1_w04.webp",
       "en": "you",
       "zh": "你",
       "emoji_hint": "👉",
@@ -188,7 +186,6 @@
     },
     {
       "id": "u1_w07",
-      "image": "words/u1_w07.webp",
       "en": "I",
       "zh": "我",
       "emoji_hint": "🙋",
@@ -200,7 +197,6 @@
     },
     {
       "id": "u1_w08",
-      "image": "words/u1_w08.webp",
       "en": "am (I'm = I am)",
       "zh": "是（我是）",
       "emoji_hint": "🙋",
@@ -212,7 +208,6 @@
     },
     {
       "id": "u1_w09",
-      "image": "words/u1_w09.webp",
       "en": "too",
       "zh": "也，还",
       "emoji_hint": "➕",
@@ -238,7 +233,6 @@
     },
     {
       "id": "u1_w11",
-      "image": "words/u1_w11.webp",
       "en": "how",
       "zh": "怎样，如何",
       "emoji_hint": "❓",

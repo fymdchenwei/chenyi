@@ -1,24 +1,23 @@
-import { asset } from './util';
+import { asset, esc } from './util';
 
-/** Word ids that use a generated flashcard in public/content/words/. */
+/** Word files that still have a picture. Abstract words are text cards and are not listed. */
 export const WORD_ART_IDS = [
   'u1_w01',
-  'u1_w02',
   'u1_w03',
-  'u1_w04',
   'u1_w05',
   'u1_w06',
-  'u1_w07',
-  'u1_w08',
-  'u1_w09',
   'u1_w10',
-  'u1_w11',
   'u1_w12',
+  'u2_w01',
+  'u2_w02',
+  'u2_w03',
+  'u2_w04',
+  'u2_w05',
+  'u2_w06',
+  'u2_w07',
   'u2_w08',
   'u2_w09',
-  'u2_w10',
   'u2_w11',
-  'u3_w01',
   'u3_w02',
   'u3_w03',
   'u3_w04',
@@ -27,25 +26,10 @@ export const WORD_ART_IDS = [
   'u3_w07',
   'u3_w08',
   'u3_w09',
-  'u3_w10',
-  'u3_w11',
   'u3_w12',
-  'u3_w13',
 ] as const;
 
 export const FACE_ART_IDS = ['taotao', 'duoduo', 'toby', 'emma', 'girl', 'boy', 'littlegirl'] as const;
-
-const NUM: Record<string, number> = {
-  u2_w01: 1,
-  u2_w02: 2,
-  u2_w03: 3,
-  u2_w04: 4,
-  u2_w05: 5,
-  u2_w06: 6,
-  u2_w07: 7,
-};
-
-const NUM_COLOR = ['#e23b4a', '#f07a12', '#e0a000', '#1fa85a', '#1f7fe0', '#7040d8', '#e04b88'];
 
 const BALLOON_COLORS = ['#ff5d7a', '#ff9a3c', '#ffd24a', '#3dce6e', '#3aa0ff', '#8b6cff', '#ff7eb3'];
 
@@ -81,29 +65,31 @@ export function countArt(n: number, showNumber: boolean, key: string): string {
   return `<div class="art count-art" data-k="${key}">${numeral}${balloonSvg(n)}</div>`;
 }
 
-function numberCard(n: number): string {
-  const color = NUM_COLOR[n - 1] ?? '#e23b4a';
-  return `<div class="art num-card" style="--n:${color}"><b>${n}</b>${balloonSvg(n)}</div>`;
-}
-
 const wordImages = new Map<string, string>();
+const wordLabels = new Map<string, { en: string; zh: string }>();
 
 /** Picture paths come from each unit JSON `image` field (relative to public/content/). */
-export function registerWordImages(words: { id: string; image?: string }[]): void {
+export function registerWordImages(words: { id: string; image?: string; en?: string; zhShort?: string }[]): void {
+  wordImages.clear();
+  wordLabels.clear();
   for (const word of words) {
     if (word.image) wordImages.set(word.id, word.image);
+    if (word.en && word.zhShort) wordLabels.set(word.id, { en: word.en, zh: word.zhShort });
   }
 }
 
-export function wordArt(id: string): string {
+function textCard(id: string, showZh: boolean): string {
+  const label = wordLabels.get(id);
+  if (!label) return `<div class="art text-card"><b>?</b></div>`;
+  const zh = showZh ? `<span>${esc(label.zh)}</span>` : '';
+  return `<div class="art text-card"><b>${esc(label.en)}</b>${zh}</div>`;
+}
+
+/** `prompt` hides the Chinese gloss so a meaning question is not spoiled. */
+export function wordArt(id: string, mode: 'card' | 'prompt' = 'card'): string {
   const rel = wordImages.get(id);
   if (rel) return `<img class="art word-art" src="${asset(`content/${rel}`)}" alt="" />`;
-  const n = NUM[id];
-  if (n) return numberCard(n);
-  if ((WORD_ART_IDS as readonly string[]).includes(id)) {
-    return `<img class="art word-art" src="${asset(`content/words/${id}.webp`)}" alt="" />`;
-  }
-  return `<img class="art word-art" src="${asset('content/words/u1_w06.webp')}" alt="" />`;
+  return textCard(id, mode === 'card');
 }
 
 export function portrait(face: string): string {

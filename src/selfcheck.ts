@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { FACE_ART_IDS, WORD_ART_IDS } from './art';
 import { normalizeUnit } from './content';
-import { makeQuestions, levelPlan, PICTORIAL, type Question } from './questions';
+import { makeQuestions, levelPlan, PICTORIAL, TEXT_ONLY, type Question } from './questions';
 import { migrateOwned, nextCardLevel } from './state';
 import type { NormUnit } from './types';
 
@@ -38,8 +38,12 @@ for (const meta of index.units) {
   const unit = normalizeUnit(raw, meta) as NormUnit;
   if (unit.words.length < 8) problems.push(`unit ${unit.unit} has too few words`);
   for (const word of unit.words) {
+    if (TEXT_ONLY.has(word.id)) {
+      if (word.image) problems.push(`abstract word still has image ${word.id}`);
+      continue;
+    }
     if (!word.image) {
-      if (word.id !== 'u2_w07') problems.push(`missing image ${word.id}`);
+      problems.push(`missing image ${word.id}`);
       continue;
     }
     if (!word.image.startsWith('words/') || word.image.includes('..')) problems.push(`bad image path ${word.id}`);
@@ -156,6 +160,11 @@ function checkQuestion(q: Question, unit: NormUnit, where: string) {
     const labels = q.options.map((o) => o.zh);
     if (new Set(labels).size !== labels.length) problems.push(`pic-zh labels ${where}`);
     if (!q.options[q.answer] || q.options[q.answer].wordId !== q.wordId) problems.push(`pic-zh answer ${where}`);
+    for (const option of q.options) {
+      if (TEXT_ONLY.has(option.wordId)) problems.push(`abstract picture option ${option.wordId} ${where}`);
+      const pictured = unit.words.find((w) => w.id === option.wordId);
+      if (!pictured?.image) problems.push(`pic-zh without picture ${option.wordId} ${where}`);
+    }
   }
   if (q.type === 'who') {
     const faces = q.options.map((o) => o.face);
