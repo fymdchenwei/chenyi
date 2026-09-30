@@ -9,16 +9,18 @@ import { addUsage, timeUp } from './state';
 import type { AppCtx, GameData, Screen } from './types';
 import { primeSpeech } from './speech';
 import { unlockAudio } from './sfx';
+import { asset } from './util';
 
 const app = document.querySelector('#app');
 if (!(app instanceof HTMLElement)) throw new Error('missing app');
 
-app.innerHTML = `<div class="boot"><div class="boot-title">陈一</div><p>正在打开冒险…</p></div>`;
+const bootLogo = `<img class="boot-logo" src="${asset('icons/icon-v2-192.png?v=2')}" alt="" />`;
+app.innerHTML = `<div class="boot">${bootLogo}<div class="boot-title">陈一</div><p>正在打开冒险…</p></div>`;
 
 void loadAll()
   .then((data) => start(app, data))
   .catch(() => {
-    app.innerHTML = `<div class="boot"><div class="boot-title">陈一</div><p>内容没有加载出来，请再打开一次。</p></div>`;
+    app.innerHTML = `<div class="boot">${bootLogo}<div class="boot-title">陈一</div><p>内容没有加载出来，请再打开一次。</p></div>`;
   });
 
 function start(root: HTMLElement, data: GameData) {

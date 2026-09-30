@@ -53,7 +53,7 @@ export function turtleBtn(): string {
 }
 
 export function backBtn(): string {
-  return `<button type="button" class="back-btn" data-action="back" aria-label="返回">←</button>`;
+  return `<button type="button" class="back-btn" data-action="back" aria-label="返回"><span class="back-ico" aria-hidden="true">‹</span>返回</button>`;
 }
 
 export function toastHtml(message: string): string {
@@ -68,29 +68,49 @@ export function actionFrom(event: Event): HTMLElement | null {
   return el instanceof HTMLElement ? el : null;
 }
 
+/** Identity of the control a press already handled, so the follow-up click can be told apart. */
+export function pressKey(el: HTMLElement): string {
+  const d = el.dataset;
+  return [d.action, d.to, d.id, d.unit, d.level].map((part) => part ?? '').join('|');
+}
+
+/**
+ * Pointerdown already ran the action. The click that belongs to that same press
+ * must not run it again. A click on a different control — for example 返回 right
+ * after 下一张 replaced the card — still has to run.
+ */
+export function shouldIgnoreFollowUpClick(armedKey: string | null, clickKey: string | null, now: number, until: number): boolean {
+  if (armedKey === null || now >= until) return false;
+  return clickKey === null || clickKey === armedKey;
+}
+
 /**
  * Letter tiles are tapped faster than Safari emits a click. A new touchstart
  * cancels a click that has not been dispatched yet, so the letter is dropped.
- * Commit on pointerdown. Swallow the click that may still follow.
+ * Commit on pointerdown. Swallow only the click that belongs to that same press.
  */
 export function bindPress(root: HTMLElement, handle: (el: HTMLElement) => void): () => void {
-  let suppressUntil = 0;
+  let armed: { key: string; until: number } | null = null;
 
   const onPointerDown = (event: PointerEvent) => {
     if (event.button !== 0) return;
     const el = actionFrom(event);
     if (!el || el.hasAttribute('disabled')) return;
     if (event.cancelable) event.preventDefault();
-    suppressUntil = performance.now() + 1000;
+    armed = { key: pressKey(el), until: performance.now() + 500 };
     handle(el);
   };
 
   const onClick = (event: MouseEvent) => {
-    if (performance.now() < suppressUntil) {
+    const el = actionFrom(event);
+    const key = el ? pressKey(el) : null;
+    const now = performance.now();
+    if (armed && shouldIgnoreFollowUpClick(armed.key, key, now, armed.until)) {
+      armed = null;
       event.preventDefault();
       return;
     }
-    const el = actionFrom(event);
+    armed = null;
     if (!el || el.hasAttribute('disabled')) return;
     handle(el);
   };

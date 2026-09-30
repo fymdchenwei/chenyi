@@ -90,7 +90,14 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   text-align: center;
   box-shadow: 0 12px 0 #d7e8f4;
 }
-.pl-star { font-size: 48px; color: #ffd24a; }
+.pl-logo, .boot-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  display: block;
+  margin: 0 auto 8px;
+  box-shadow: 0 8px 0 rgba(90, 150, 190, 0.28);
+}
 @media (orientation: portrait) {
   .portrait-lock { display: flex; }
   #app { display: none; }
@@ -105,6 +112,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   text-align: center;
 }
 .boot-title { font-size: 64px; color: #ff8a3d; text-shadow: 0 4px 0 #fff; }
+.boot-logo { width: 104px; height: 104px; border-radius: 26px; }
 
 .topbar, .qbar {
   display: flex;
@@ -113,6 +121,8 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   min-height: 46px;
   height: 12cqh;
   flex: none;
+  position: relative;
+  z-index: 2;
 }
 .topbar.slim { height: 11cqh; }
 .name-pill, .star-pill, .satchel, .back-btn, .hint-btn, .btn, .unit-pill, .speaker, .turtle, .arrow {
@@ -182,13 +192,37 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   padding: 4px 8px;
   animation: pop .35s ease;
 }
-.back-btn, .arrow {
+.arrow {
   width: 42px;
   height: 42px;
   background: #fff;
   color: #5a4636;
   font-size: 22px;
   box-shadow: 0 4px 0 #e4d3c4;
+}
+.back-btn {
+  flex: none;
+  width: auto;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 14px 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 22px;
+  background: #ff8a3d;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 4px 0 #d26522;
+}
+.back-ico { font-size: 26px; line-height: 1; }
+.back-btn:active,
+.learn-layout .arrow:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #d26522;
 }
 .unit-dock { display: flex; gap: 6px; justify-content: center; flex: none; height: 9cqh; }
 .unit-pill {
@@ -394,10 +428,27 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 .learn-layout {
   flex: 1;
   display: grid;
-  grid-template-columns: 52px 1fr 52px;
+  grid-template-columns: 60px 1fr 60px;
   align-items: stretch;
-  gap: 8px;
+  column-gap: 8px;
   min-height: 0;
+}
+.learn-layout .arrow {
+  align-self: center;
+  justify-self: center;
+  width: 56px;
+  height: 96px;
+  border-radius: 28px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  font-size: 48px;
+  font-weight: 700;
+  background: #ff8a3d;
+  color: #fff;
+  box-shadow: 0 4px 0 #d26522;
 }
 .learn-card, .prompt-card {
   background: #fff;
@@ -639,7 +690,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 /* Picture sizes are tuned for the 852×393 stage. cqw/cqh keep the same
    proportions when the stage scales. At 393px tall, 1cqh = 3.93px. */
 .learn .qbar,
-.quiz .qbar { height: 9.16cqh; min-height: 0; }
+.quiz .qbar { height: auto; min-height: 52px; }
 .learn-card {
   display: grid;
   grid-template-columns: 1.65fr .7fr;
