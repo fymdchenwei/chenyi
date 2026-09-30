@@ -90,7 +90,14 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   text-align: center;
   box-shadow: 0 12px 0 #d7e8f4;
 }
-.pl-star { font-size: 48px; color: #ffd24a; }
+.pl-logo, .boot-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  display: block;
+  margin: 0 auto 8px;
+  box-shadow: 0 8px 0 rgba(90, 150, 190, 0.28);
+}
 @media (orientation: portrait) {
   .portrait-lock { display: flex; }
   #app { display: none; }
@@ -105,6 +112,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   text-align: center;
 }
 .boot-title { font-size: 64px; color: #ff8a3d; text-shadow: 0 4px 0 #fff; }
+.boot-logo { width: 104px; height: 104px; border-radius: 26px; }
 
 .topbar, .qbar {
   display: flex;
