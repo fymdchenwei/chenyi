@@ -70,11 +70,13 @@ export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, inde
         <button type="button" class="arrow" data-action="prev" aria-label="上一张">‹</button>
         <article class="learn-card">
           <div class="art-wrap">${wordArt(w.id, 'card')}</div>
-          ${w.image ? `<h2>${esc(w.en)}</h2><p class="zh">${esc(w.zhShort)}</p>` : ''}
-          ${w.zh !== w.zhShort ? `<p class="zh-book">词表：${esc(w.zh)}</p>` : ''}
-          ${w.note ? `<p class="zh-book">${esc(w.note)}</p>` : ''}
-          ${w.example ? `<p class="example">${esc(w.example.en)}<small>${esc(w.example.zh)}</small></p>` : ''}
-          <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+          <div class="learn-copy">
+            ${w.image ? `<h2>${esc(w.en)}</h2><p class="zh">${esc(w.zhShort)}</p>` : ''}
+            ${w.zh !== w.zhShort ? `<p class="zh-book">词表：${esc(w.zh)}</p>` : ''}
+            ${w.note ? `<p class="zh-book">${esc(w.note)}</p>` : ''}
+            ${w.example ? `<p class="example">${esc(w.example.en)}<small>${esc(w.example.zh)}</small></p>` : ''}
+            <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+          </div>
         </article>
         <button type="button" class="arrow" data-action="next" aria-label="下一张">›</button>
       </div>
@@ -384,8 +386,10 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     }
     if (q.type === 'listen-picture') {
       return `<div class="listen-layout">
-        <p class="prompt">听一听，选图片</p>
-        <div class="speak-row big">${speakerBtn()}${turtleBtn()}</div>
+        <div class="prompt-row">
+          <p class="prompt">听一听，选图片</p>
+          ${speakerBtn()}${turtleBtn()}
+        </div>
         <div class="pic-grid">${q.options
           .map((o, i) => {
             const cls = optClass(i);
@@ -396,11 +400,12 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     }
     if (q.type === 'pic-zh') {
       return `<div class="scene-layout">
-        <div class="prompt-card scene-prompt">
-          <div class="mascot-side">${mascotSvg()}</div>
+        <div class="scene-bar">
+          ${mascotSvg()}
+          ${speakerBtn()}
           <div class="bubble">${esc(q.speak)}</div>
+          ${turtleBtn()}
           <p class="prompt">听一听，选图片和意思</p>
-          <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
         </div>
         <div class="choice-grid">${q.options
           .map((o, i) => {
@@ -412,11 +417,11 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     if (q.type === 'who') {
       return `<div class="who-layout">
         <div class="who-top">
-          <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+          ${speakerBtn()}
           <div class="bubble">${esc(q.en)}</div>
-          ${zhShown ? `<p class="zh">${esc(q.zh)}</p>` : ''}
+          ${turtleBtn()}
         </div>
-        <p class="prompt">谁说的？</p>
+        ${zhShown ? `<p class="zh">${esc(q.zh)}</p>` : ''}
         <div class="pic-grid">${q.options
           .map((o, i) => {
             return `<button type="button" class="pic-card portrait-card${optClass(i)}" data-action="pick" data-i="${i}" ${faded.has(i) ? 'disabled' : ''}>${portrait(o.face)}<span>${esc(o.name)}</span></button>`;
@@ -458,14 +463,16 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
       </div>`;
     }
     if (q.type === 'count-see') {
-      return `<div class="mean-layout">
+      return `<div class="mean-layout count-see">
         <div class="prompt-card">${countArt(q.n, false, `see${q.n}`)}<p class="prompt">数一数，选单词</p></div>
         <div class="choice-grid">${q.options.map((o, i) => choice(i, esc(o.label), true)).join('')}</div>
       </div>`;
     }
-    return `<div class="listen-layout">
-      <p class="prompt">听数字，选一选</p>
-      <div class="speak-row big">${speakerBtn()}${turtleBtn()}</div>
+    return `<div class="listen-layout count-hear">
+      <div class="prompt-row">
+        <p class="prompt">听数字，选一选</p>
+        ${speakerBtn()}${turtleBtn()}
+      </div>
       <div class="pic-grid">${q.options
         .map((o, i) => `<button type="button" class="pic-card${optClass(i)}" data-action="pick" data-i="${i}">${countArt(o.n, false, `h${play}${i}`)}</button>`)
         .join('')}</div>

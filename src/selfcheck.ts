@@ -233,6 +233,32 @@ function answerText(q: Question): string {
   return '';
 }
 
+const pictureCss = readFileSync('src/style.css', 'utf8');
+const playSource = readFileSync('src/screens/play.ts', 'utf8');
+const pictureRules = [
+  '.learn-card .art-wrap .word-art',
+  'grid-template-columns: 1.65fr .7fr',
+  "height: 40.71cqh",
+  '.quiz[data-q=\'count-see\'] .prompt-card .count-svg',
+  'height: 53.44cqh',
+  '.quiz[data-q=\'listen-picture\'] .pic-card',
+  'width: 23.24cqw',
+  'height: 53.44cqh',
+  '.quiz[data-q=\'count-hear\'] .pic-card .count-svg',
+  'width: 35.21cqw',
+  'height: 33.59cqh',
+  '.who-layout .face-art',
+  'object-fit: cover',
+  'white-space: normal',
+  'overflow: visible',
+];
+for (const rule of pictureRules) {
+  if (!pictureCss.includes(rule)) problems.push(`picture size rule missing: ${rule}`);
+}
+if (!playSource.includes('class="scene-bar"')) problems.push('pic-zh should keep the mascot in the top bar');
+if (/放大|preview|zoom/.test(playSource)) problems.push('picture preview must stay off');
+if (showHintButton(2)) problems.push('level 3 must hide the hint button');
+
 if (problems.length) {
   console.error(problems.join('\n'));
   process.exit(1);
