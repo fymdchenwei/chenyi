@@ -410,6 +410,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 }
 .learn-card h2 { margin: 0; font-size: 8cqh; color: #2f6fe0; line-height: 1; }
 .art-wrap .art, .prompt-card .art { height: 22cqh; width: auto; }
+.art-wrap .text-card { height: 28cqh; width: min(78%, 460px); }
 .zh { margin: 2px 0; font-size: 4.4cqh; }
 .zh-book, .example small, .sub, .blurb, .dup { color: #6d7c90; font-size: 3cqh; }
 .example { margin: 0; font-size: 3.4cqh; }
@@ -550,6 +551,26 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 .pic-card { padding: 4px; background: #fff; }
 .pic-card .art { width: 100%; height: 14cqh; object-fit: contain; }
 .word-art { object-fit: contain; background: #fff6e8; border-radius: 16px; }
+.text-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: linear-gradient(#fff, #e7f2ff);
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 3px #d5e6ff;
+}
+.text-card b {
+  font-family: Fredoka, sans-serif;
+  font-size: 8cqh;
+  line-height: 1;
+  color: #2f6fe0;
+}
+.text-card span { font-size: 4.2cqh; color: #24365c; font-weight: 700; }
+.learn-card .text-card b { font-size: 11cqh; }
+.learn-card .text-card span { font-size: 5cqh; }
+.prompt-card .text-card { width: 78%; height: 16cqh; margin: 0 auto; }
 .num-card {
   display: flex;
   flex-direction: column;

@@ -87,7 +87,6 @@
   "words": [
     {
       "id": "u3_w01",
-      "image": "words/u3_w01.webp",
       "en": "my",
       "zh": "我的",
       "emoji_hint": "🙋",
@@ -195,7 +194,6 @@
     },
     {
       "id": "u3_w10",
-      "image": "words/u3_w10.webp",
       "en": "this",
       "zh": "这，这个",
       "emoji_hint": "👉",
@@ -207,7 +205,6 @@
     },
     {
       "id": "u3_w11",
-      "image": "words/u3_w11.webp",
       "en": "is",
       "zh": "是",
       "emoji_hint": "🟰",
@@ -231,7 +228,6 @@
     },
     {
       "id": "u3_w13",
-      "image": "words/u3_w13.webp",
       "en": "me",
       "zh": "我",
       "emoji_hint": "🧒",

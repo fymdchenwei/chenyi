@@ -177,11 +177,24 @@ function mixMeanings(unit: NormUnit, rand: () => number, en: number, zh: number)
   return shuffle([...a, ...b], rand);
 }
 
+/** Abstract words use a word + Chinese card and never appear as picture choices. */
+export const TEXT_ONLY = new Set([
+  'u1_w02',
+  'u1_w04',
+  'u1_w07',
+  'u1_w08',
+  'u1_w09',
+  'u1_w11',
+  'u2_w10',
+  'u3_w01',
+  'u3_w10',
+  'u3_w11',
+  'u3_w13',
+]);
+
 /**
  * Words a child can tell apart from the picture alone.
- * Greetings and function words stay out; Unit 1 level 2 uses picture + Chinese instead.
- * Balloon is a learn-card picture only: the number scenes already show balloons.
- * Seven is a numeral card. Family members use distinct textbook scenes.
+ * Balloon stays off listen-only choices because the number scenes are also balloons.
  */
 export const PICTORIAL = new Set([
   'u2_w01',
@@ -202,9 +215,10 @@ export const PICTORIAL = new Set([
 ]);
 
 function scenePool(unit: NormUnit, rand: () => number): Question[] {
+  const source = unit.words.filter((w) => Boolean(w.image) && !TEXT_ONLY.has(w.id));
   const out: Question[] = [];
-  for (const w of unit.words) {
-    const opts = uniqueOthers(unit.words, w, 3, rand, (x) => x.zhShort);
+  for (const w of source) {
+    const opts = uniqueOthers(source, w, 3, rand, (x) => x.zhShort);
     if (opts.length < 3) continue;
     const options = shuffle([w, ...opts], rand).map((x) => ({ wordId: x.id, zh: x.zhShort }));
     out.push({
