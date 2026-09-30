@@ -70,11 +70,13 @@ export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, inde
         <button type="button" class="arrow" data-action="prev" aria-label="上一张">‹</button>
         <article class="learn-card">
           <div class="art-wrap">${wordArt(w.id, 'card')}</div>
-          ${w.image ? `<h2>${esc(w.en)}</h2><p class="zh">${esc(w.zhShort)}</p>` : ''}
-          ${w.zh !== w.zhShort ? `<p class="zh-book">词表：${esc(w.zh)}</p>` : ''}
-          ${w.note ? `<p class="zh-book">${esc(w.note)}</p>` : ''}
-          ${w.example ? `<p class="example">${esc(w.example.en)}<small>${esc(w.example.zh)}</small></p>` : ''}
-          <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+          <div class="learn-copy">
+            ${w.image ? `<h2>${esc(w.en)}</h2><p class="zh">${esc(w.zhShort)}</p>` : ''}
+            ${w.zh !== w.zhShort ? `<p class="zh-book">词表：${esc(w.zh)}</p>` : ''}
+            ${w.note ? `<p class="zh-book">${esc(w.note)}</p>` : ''}
+            ${w.example ? `<p class="example">${esc(w.example.en)}<small>${esc(w.example.zh)}</small></p>` : ''}
+            <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+          </div>
         </article>
         <button type="button" class="arrow" data-action="next" aria-label="下一张">›</button>
       </div>

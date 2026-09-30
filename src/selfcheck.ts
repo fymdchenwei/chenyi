@@ -237,6 +237,7 @@ const pictureCss = readFileSync('src/style.css', 'utf8');
 const playSource = readFileSync('src/screens/play.ts', 'utf8');
 const pictureRules = [
   '.learn-card .art-wrap .word-art',
+  'grid-template-columns: 1.65fr .7fr',
   "height: 40.71cqh",
   '.quiz[data-q=\'count-see\'] .prompt-card .count-svg',
   'height: 53.44cqh',
