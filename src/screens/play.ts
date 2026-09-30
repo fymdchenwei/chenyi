@@ -1,13 +1,14 @@
 import { countArt, mascotSvg, portrait, wordArt } from '../art';
 import { unitByNumber } from '../content';
 import { burstAt } from '../fx';
-import { levelPlan, makeQuestions, questionWordId, starsFor, type Question } from '../questions';
+import { levelPlan, makeQuestions, questionWordId, showHintButton, starsFor, wrongHint, type Question } from '../questions';
+import { tapSpell, undoSpell, type SpellTile } from '../spell';
 import { awardLevel, isLevelUnlocked, markLearned, recordAttempt } from '../state';
 import { canSpeak, speak, stopSpeech } from '../speech';
 import { sfxCombo, sfxCorrect, sfxStar, sfxWrong } from '../sfx';
 import type { AppCtx } from '../types';
 import { esc, hashStr } from '../util';
-import { actionFrom, backBtn, speakerBtn, starIcon, toastHtml, turtleBtn } from '../ui';
+import { backBtn, bindPress, speakerBtn, starIcon, toastHtml, turtleBtn } from '../ui';
 
 export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, index: number): () => void {
   const unit = unitByNumber(ctx.data, unitNum);
@@ -17,9 +18,7 @@ export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, inde
   let play = 0;
   let spoken = -1;
 
-  const onClick = (event: MouseEvent) => {
-    const el = actionFrom(event);
-    if (!el) return;
+  const onPress = (el: HTMLElement) => {
     const action = el.dataset.action;
     if (action === 'back') {
       ctx.goto({ name: 'map' });
@@ -86,18 +85,12 @@ export function mountLearn(root: HTMLElement, ctx: AppCtx, unitNum: number, inde
     </div>`;
   }
 
-  root.addEventListener('click', onClick);
+  const unpress = bindPress(root, onPress);
   draw();
   return () => {
-    root.removeEventListener('click', onClick);
+    unpress();
     stopSpeech();
   };
-}
-
-interface Tile {
-  id: string;
-  ch: string;
-  used: boolean;
 }
 
 export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index: number): () => void {
@@ -116,7 +109,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
   let banner = '';
   let shake = false;
   let flash: { i: number; ok: boolean } | null = null;
-  let tiles: Tile[] = [];
+  let tiles: SpellTile[] = [];
   let slots: (string | null)[] = [];
   let picked: number[] = [];
   let faded = new Set<number>();
@@ -125,19 +118,16 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
 
   if (questions.length === 0) {
     root.innerHTML = `<div class="screen" data-screen="quiz"><p class="fallback">这关还没准备好</p>${backBtn()}</div>`;
-    const onClick = (event: MouseEvent) => {
-      const el = actionFrom(event);
-      if (el?.dataset.action === 'back') ctx.goto({ name: 'map' });
-    };
-    root.addEventListener('click', onClick);
-    return () => root.removeEventListener('click', onClick);
+    const unpress = bindPress(root, (el) => {
+      if (el.dataset.action === 'back') ctx.goto({ name: 'map' });
+    });
+    return () => unpress();
   }
 
   setup();
 
-  const onClick = (event: MouseEvent) => {
-    const el = actionFrom(event);
-    if (!el || (lock && el.dataset.action !== 'back')) return;
+  const onPress = (el: HTMLElement) => {
+    if (lock && el.dataset.action !== 'back') return;
     const action = el.dataset.action;
     const q = current();
     if (action === 'back') {
@@ -159,6 +149,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
       return;
     }
     if (action === 'hint') {
+      if (!showHintButton(index)) return;
       applyHint(q);
       return;
     }
@@ -168,35 +159,25 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
       const ok = isPickCorrect(q, i);
       flash = { i, ok };
       if (ok) succeed(questionWordId(q));
-      else fail(questionWordId(q), hintText(q));
+      else fail(questionWordId(q), wrongHint(q));
       draw();
       return;
     }
     if (action === 'tile' && q.type === 'dictation') {
-      const id = el.dataset.id ?? '';
-      const tile = tiles.find((t) => t.id === id);
-      const empty = slots.findIndex((s) => s === null);
-      if (!tile || tile.used || empty < 0) return;
-      tile.used = true;
-      slots[empty] = tile.id;
-      if (slots.every(Boolean)) {
-        const spelled = slots.map((tid) => tiles.find((t) => t.id === tid)?.ch ?? '').join('');
-        if (spelled === q.answer) succeed(q.wordId);
-        else fail(q.wordId, `再听一次，开头是 ${q.answer[0]}`);
+      const placed = tapSpell({ tiles, slots, answer: q.answer }, el.dataset.id ?? '');
+      if (!placed.ok) return;
+      if (!placed.done) {
+        paintDictation();
+        return;
       }
+      if (placed.correct) succeed(q.wordId);
+      else fail(q.wordId, wrongHint(q));
       draw();
       return;
     }
     if (action === 'backspace' && q.type === 'dictation') {
-      for (let i = slots.length - 1; i >= 0; i--) {
-        if (slots[i]) {
-          const tile = tiles.find((t) => t.id === slots[i]);
-          if (tile) tile.used = false;
-          slots[i] = null;
-          break;
-        }
-      }
-      draw();
+      if (!undoSpell({ tiles, slots, answer: q.answer })) return;
+      paintDictation();
       return;
     }
     if (action === 'order-add' && q.type === 'order') {
@@ -215,7 +196,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
       if (picked.length < q.lines.length) return;
       const ok = picked.every((n, i) => n === q.answer[i]);
       if (ok) succeed();
-      else fail(undefined, '再想一想顺序');
+      else fail(undefined, wrongHint(q));
       draw();
     }
   };
@@ -253,16 +234,13 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
       const ch = q.answer[i];
       const tile = tiles.find((t) => !t.used && t.ch === ch);
       if (!tile) return;
-      tile.used = true;
-      slots[i] = tile.id;
+      const placed = tapSpell({ tiles, slots, answer: q.answer }, tile.id);
+      if (!placed.ok) return;
       hints += 1;
-      if (slots.every(Boolean)) {
-        const spelled = slots.map((tid) => tiles.find((t) => t.id === tid)?.ch ?? '').join('');
-        if (spelled === q.answer) {
-          draw();
-          succeed(q.wordId);
-          return;
-        }
+      if (placed.done && placed.correct) {
+        draw();
+        succeed(q.wordId);
+        return;
       }
       draw();
       return;
@@ -392,7 +370,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
           <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
           <div class="slots">${slotHtml}</div>
         </div>
-        <button type="button" class="hint-btn" data-action="hint">提示</button>
+        ${hintButton(false)}
       </div>
       <div class="tiles">${tileHtml}<button type="button" class="tile backspace" data-action="backspace" aria-label="删除">×</button></div>`;
     }
@@ -445,7 +423,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
             return `<button type="button" class="pic-card portrait-card${optClass(i)}" data-action="pick" data-i="${i}" ${faded.has(i) ? 'disabled' : ''}>${portrait(o.face)}<span>${esc(o.name)}</span></button>`;
           })
           .join('')}</div>
-        <button type="button" class="hint-btn slim" data-action="hint">提示</button>
+        ${hintButton(true)}
       </div>`;
     }
     if (q.type === 'fill') {
@@ -455,7 +433,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
           <p class="zh">${esc(q.zh)}</p>
         </div>
         <div class="choice-grid">${q.options.map((o, i) => choice(i, esc(o), true)).join('')}</div>
-        <button type="button" class="hint-btn slim" data-action="hint">提示</button>
+        ${hintButton(true)}
       </div>`;
     }
     if (q.type === 'order') {
@@ -506,10 +484,36 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     return bits.length ? ` ${bits.join(' ')}` : '';
   }
 
-  root.addEventListener('click', onClick);
+  function paintDictation() {
+    const slotEls = root.querySelectorAll('.slots .slot');
+    if (slotEls.length !== slots.length) {
+      draw();
+      return;
+    }
+    slots.forEach((id, i) => {
+      const el = slotEls[i];
+      if (!(el instanceof HTMLElement)) return;
+      const ch = id ? (tiles.find((t) => t.id === id)?.ch ?? '') : '';
+      el.textContent = ch;
+      el.classList.toggle('filled', Boolean(ch));
+    });
+    for (const tile of tiles) {
+      const btn = root.querySelector(`button[data-id="${tile.id}"]`);
+      if (!(btn instanceof HTMLButtonElement)) continue;
+      btn.classList.toggle('used', tile.used);
+      btn.disabled = tile.used;
+    }
+  }
+
+  function hintButton(slim: boolean): string {
+    if (!showHintButton(index)) return '';
+    return `<button type="button" class="hint-btn${slim ? ' slim' : ''}" data-action="hint">提示</button>`;
+  }
+
+  const unpress = bindPress(root, onPress);
   draw();
   return () => {
-    root.removeEventListener('click', onClick);
+    unpress();
     window.clearTimeout(timer);
     stopSpeech();
   };
@@ -536,17 +540,6 @@ function optionCount(q: Question): number[] {
 function isPickCorrect(q: Question, i: number): boolean {
   if (q.type === 'order' || q.type === 'dictation') return false;
   return i === q.answer;
-}
-
-function hintText(q: Question): string {
-  if (q.type === 'meaning-en-zh' || q.type === 'meaning-zh-en') return `再记一记：${q.options[q.answer].label}`;
-  if (q.type === 'fill') return `再记一记：${q.options[q.answer]}`;
-  if (q.type === 'who') return `是${q.options[q.answer].name}说的`;
-  if (q.type === 'listen-picture') return '再听一次';
-  if (q.type === 'pic-zh') return `再记一记：${q.options[q.answer].zh}`;
-  if (q.type === 'count-see') return `是 ${q.options[q.answer].label}`;
-  if (q.type === 'count-hear') return '再数一次';
-  return '再试一次';
 }
 
 function shuffleLocal<T>(arr: T[]): T[] {
@@ -594,18 +587,15 @@ export function mountResult(
       }
     }, 200 + i * 180);
   });
-  const onClick = (event: MouseEvent) => {
-    const el = actionFrom(event);
-    if (!el) return;
+  const unpress = bindPress(root, (el) => {
     if (el.dataset.action === 'home') ctx.goto({ name: 'map' });
     if (el.dataset.action === 'replay') {
       const kind = plan[index].kind;
       ctx.goto(kind === 'learn' ? { name: 'learn', unit: unitNum, index } : { name: 'quiz', unit: unitNum, index });
     }
     if (el.dataset.action === 'next' && next) ctx.goto(next);
-  };
-  root.addEventListener('click', onClick);
-  return () => root.removeEventListener('click', onClick);
+  });
+  return () => unpress();
 }
 
 function nextStep(ctx: AppCtx, unitNum: number, index: number): { name: 'learn' | 'quiz'; unit: number; index: number } | null {

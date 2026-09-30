@@ -394,6 +394,35 @@ export function starsFor(wrongs: number, hints: number): number {
   return 1;
 }
 
+/** Third map node of each unit (谁说的 / 听音选图). Other levels keep 提示. */
+export function showHintButton(levelIndex: number): boolean {
+  return levelIndex !== 2;
+}
+
+/** Short kid-facing line after a miss. Does not reveal the answer or change scoring. */
+export function wrongHint(q: Question): string {
+  switch (q.type) {
+    case 'dictation':
+      return `再听一次，开头是 ${q.answer[0] ?? ''}`;
+    case 'order':
+      return '再想一想顺序';
+    case 'listen-picture':
+    case 'pic-zh':
+    case 'who':
+    case 'count-hear':
+      return '再听一听，再试一次';
+    case 'meaning-en-zh':
+    case 'meaning-zh-en':
+    case 'fill':
+    case 'count-see':
+      return '再看一看，再试一次';
+    default: {
+      const exhaustive: never = q;
+      return exhaustive;
+    }
+  }
+}
+
 export function questionWordId(q: Question): string | undefined {
   if (q.type === 'order' || q.type === 'who') return undefined;
   return q.wordId;

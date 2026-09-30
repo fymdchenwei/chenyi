@@ -42,7 +42,7 @@ html, body {
   user-select: none;
 }
 button, input { font-family: inherit; }
-button { cursor: pointer; }
+button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: none; }
 #app { height: 100%; height: 100dvh; }
 .stage-wrap {
   height: 100%;
@@ -457,6 +457,9 @@ button { cursor: pointer; }
   font-weight: 700;
 }
 .slot.filled { background: #fff; }
+.tiles, .choice-grid, .pic-grid, .order-list, .order-strip {
+  touch-action: manipulation;
+}
 .tiles {
   display: flex;
   gap: 6px;
@@ -465,22 +468,25 @@ button { cursor: pointer; }
   padding-bottom: 4px;
 }
 .tile {
+  flex: 0 0 auto;
   min-width: 48px;
-  height: 48px;
+  height: 52px;
   border: 0;
   border-radius: 14px;
   font-size: 26px;
   font-weight: 700;
   color: #fff;
   box-shadow: 0 4px 0 rgba(0,0,0,.12);
+  touch-action: manipulation;
 }
+.tile:active:not(:disabled) { filter: brightness(0.92); }
 .tile:nth-child(6n + 1) { background: #ffb15a; }
 .tile:nth-child(6n + 2) { background: #7dce8a; }
 .tile:nth-child(6n + 3) { background: #6aa7ff; }
 .tile:nth-child(6n + 4) { background: #c9a6ff; }
 .tile:nth-child(6n + 5) { background: #ff8fb8; }
 .tile:nth-child(6n + 6) { background: #ffd24a; color: #6a4010; }
-.tile.used { visibility: hidden; }
+.tile.used { visibility: hidden; pointer-events: none; }
 .tile.backspace { background: #fff; color: #6a4010; box-shadow: 0 4px 0 #e4d3c4; }
 .hint-btn {
   height: 74px;
@@ -528,6 +534,10 @@ button { cursor: pointer; }
   color: var(--ink);
   min-height: 14cqh;
   padding: 6px;
+  touch-action: manipulation;
+}
+.choice:active:not(:disabled), .pic-card:active:not(:disabled), .order-card:active:not(:disabled) {
+  filter: brightness(0.97);
 }
 .choice.en { color: #2f6fe0; font-size: 5cqh; }
 .choice:nth-child(1) { background: #d9ffd0; }
