@@ -1,6 +1,7 @@
 import './style.css';
+import { registerWordImages } from './art';
 import { loadAll } from './content';
-import { mountAlbum, mountDraw, mountReveal } from './screens/collect';
+import { mountAlbum, mountDraw, mountReveal, mountTen } from './screens/collect';
 import { mountMap } from './screens/map';
 import { mountGate, mountParent, mountTimeup } from './screens/parent';
 import { mountLearn, mountQuiz, mountResult } from './screens/play';
@@ -21,6 +22,7 @@ void loadAll()
   });
 
 function start(root: HTMLElement, data: GameData) {
+  registerWordImages(data.units.flatMap((unit) => unit.words));
   root.innerHTML = `<div class="stage-wrap"><div class="stage" id="stage"></div></div>`;
   const stage = root.querySelector('#stage');
   if (!(stage instanceof HTMLElement)) return;
@@ -83,7 +85,8 @@ function render(stage: HTMLElement, screen: Screen, ctx: AppCtx): () => void {
   if (screen.name === 'quiz') return mountQuiz(stage, ctx, screen.unit, screen.index);
   if (screen.name === 'result') return mountResult(stage, ctx, screen.unit, screen.index, screen.stars, screen.gained, screen.first);
   if (screen.name === 'draw') return mountDraw(stage, ctx);
-  if (screen.name === 'reveal') return mountReveal(stage, ctx, screen.cardId, screen.isNew, screen.refund);
+  if (screen.name === 'reveal') return mountReveal(stage, ctx, screen);
+  if (screen.name === 'ten') return mountTen(stage, ctx, screen.hits);
   if (screen.name === 'album') return mountAlbum(stage, ctx);
   if (screen.name === 'parent-gate') return mountGate(stage, ctx);
   if (screen.name === 'parent') return mountParent(stage, ctx);

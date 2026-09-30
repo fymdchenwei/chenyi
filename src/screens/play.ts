@@ -350,7 +350,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
     const text = speakOf(q);
     if (text && spoken !== play) {
       spoken = play;
-      if (!speak(text, 0.72) && (q.type === 'dictation' || q.type === 'listen-picture' || q.type === 'count-hear')) {
+      if (!speak(text, 0.72) && (q.type === 'dictation' || q.type === 'listen-picture' || q.type === 'count-hear' || q.type === 'pic-zh')) {
         banner = q.type === 'dictation' ? `看一看：${q.answer}` : `请家长读：${text}`;
       }
     }
@@ -413,6 +413,21 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
           .map((o, i) => {
             const cls = optClass(i);
             return `<button type="button" class="pic-card${cls}" data-action="pick" data-i="${i}" ${faded.has(i) ? 'disabled' : ''}>${wordArt(o.wordId)}</button>`;
+          })
+          .join('')}</div>
+      </div>`;
+    }
+    if (q.type === 'pic-zh') {
+      return `<div class="scene-layout">
+        <div class="prompt-card scene-prompt">
+          <div class="mascot-side">${mascotSvg()}</div>
+          <div class="bubble">${esc(q.speak)}</div>
+          <p class="prompt">听一听，选图片和意思</p>
+          <div class="speak-row">${speakerBtn()}${turtleBtn()}</div>
+        </div>
+        <div class="choice-grid">${q.options
+          .map((o, i) => {
+            return `<button type="button" class="choice scene-choice${optClass(i)}" data-action="pick" data-i="${i}" ${faded.has(i) ? 'disabled' : ''}>${wordArt(o.wordId)}<span>${esc(o.zh)}</span></button>`;
           })
           .join('')}</div>
       </div>`;
@@ -501,7 +516,7 @@ export function mountQuiz(root: HTMLElement, ctx: AppCtx, unitNum: number, index
 }
 
 function speakOf(q: Question): string | null {
-  if (q.type === 'dictation' || q.type === 'meaning-en-zh' || q.type === 'listen-picture' || q.type === 'who' || q.type === 'count-hear') {
+  if (q.type === 'dictation' || q.type === 'meaning-en-zh' || q.type === 'listen-picture' || q.type === 'pic-zh' || q.type === 'who' || q.type === 'count-hear') {
     return q.speak;
   }
   return null;
@@ -513,7 +528,7 @@ function correctIndex(q: Question): number {
 }
 
 function optionCount(q: Question): number[] {
-  if (q.type === 'meaning-en-zh' || q.type === 'meaning-zh-en' || q.type === 'fill') return q.options.map((_, i) => i);
+  if (q.type === 'meaning-en-zh' || q.type === 'meaning-zh-en' || q.type === 'fill' || q.type === 'pic-zh') return q.options.map((_, i) => i);
   if (q.type === 'listen-picture' || q.type === 'who' || q.type === 'count-see' || q.type === 'count-hear') return q.options.map((_, i) => i);
   return [];
 }
@@ -528,6 +543,7 @@ function hintText(q: Question): string {
   if (q.type === 'fill') return `再记一记：${q.options[q.answer]}`;
   if (q.type === 'who') return `是${q.options[q.answer].name}说的`;
   if (q.type === 'listen-picture') return '再听一次';
+  if (q.type === 'pic-zh') return `再记一记：${q.options[q.answer].zh}`;
   if (q.type === 'count-see') return `是 ${q.options[q.answer].label}`;
   if (q.type === 'count-hear') return '再数一次';
   return '再试一次';

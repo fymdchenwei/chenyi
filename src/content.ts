@@ -1,4 +1,4 @@
-import type { GameData, NormUnit, Word } from './types';
+import type { CardExtra, GameData, NormUnit, Word } from './types';
 import { asset, escapeReg } from './util';
 
 interface UnitMeta {
@@ -19,6 +19,7 @@ interface RawWord {
   en: string;
   zh: string;
   emoji_hint?: string;
+  image?: string;
 }
 
 interface RawLine {
@@ -115,6 +116,7 @@ export function normalizeUnit(raw: RawUnit, meta?: Partial<UnitMeta>): NormUnit 
       dictatable: spell.length >= 3 && spell.length <= 10 && spell === en.toLowerCase(),
       note,
       example,
+      image: w.image,
     };
   });
   return {
@@ -172,7 +174,8 @@ export async function loadAll(): Promise<GameData> {
     }
   }
   const cards = await getJson<GameData['cards']>(asset('content/cards/manifest.json'));
-  return { book: index.book, units, cards };
+  const lore = await getJson<Record<string, CardExtra>>(asset('content/cards/lore.json'));
+  return { book: index.book, units, cards, lore };
 }
 
 export function unitByNumber(data: GameData, n: number): NormUnit {

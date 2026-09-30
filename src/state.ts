@@ -22,6 +22,8 @@ export interface Save {
   levels: Record<string, LevelStat>;
   words: Record<string, WordStat>;
   owned: Record<string, number>;
+  /** True once `owned` stores star level 1–10. Missing on saves from before card levels. */
+  ownedLevels: boolean;
   pity: { epic: number; legendary: number };
   claimed: Record<string, boolean>;
   settings: Settings;
@@ -40,6 +42,7 @@ function defaultSave(): Save {
     levels: {},
     words: {},
     owned: {},
+    ownedLevels: true,
     pity: { epic: 0, legendary: 0 },
     claimed: {},
     settings: { dailyMin: 20, muteSfx: false, muteSpeech: false },
@@ -49,13 +52,59 @@ function defaultSave(): Save {
   };
 }
 
+export function migrateOwned(raw: unknown, alreadyLevels: boolean, maxLevel = 10): Record<string, number> {
+  if (!raw || typeof raw !== 'object') return {};
+  const out: Record<string, number> = {};
+  for (const [id, value] of Object.entries(raw as Record<string, unknown>)) {
+    const n = typeof value === 'number' && Number.isFinite(value) ? Math.floor(value) : 0;
+    if (n <= 0) continue;
+    out[id] = alreadyLevels ? Math.min(maxLevel, Math.max(1, n)) : 1;
+  }
+  return out;
+}
+
+export interface CardGain {
+  isNew: boolean;
+  level: number;
+  refund: number;
+  maxed: boolean;
+}
+
+/** Next star level after drawing `id` when it is already at `prev` (0 = not owned). */
+export function nextCardLevel(prev: number, maxLevel: number, maxRefund: number): CardGain {
+  const cap = Math.max(1, maxLevel);
+  if (prev <= 0) return { isNew: true, level: 1, refund: 0, maxed: false };
+  if (prev >= cap) return { isNew: false, level: cap, refund: maxRefund, maxed: true };
+  return { isNew: false, level: prev + 1, refund: 0, maxed: false };
+}
+
+function readRaw(): string | null {
+  try {
+    if (typeof localStorage === 'undefined') return null;
+    return localStorage.getItem(KEY);
+  } catch {
+    return null;
+  }
+}
+
+let migratedOnLoad = false;
+
 function load(): Save {
   try {
-    const raw = localStorage.getItem(KEY);
+    const raw = readRaw();
     if (!raw) return defaultSave();
     const parsed = JSON.parse(raw) as Save;
     if (!parsed || parsed.v !== 1) return defaultSave();
-    return { ...defaultSave(), ...parsed, settings: { ...defaultSave().settings, ...parsed.settings }, pity: { ...defaultSave().pity, ...parsed.pity } };
+    const already = Boolean(parsed.ownedLevels);
+    if (!already) migratedOnLoad = true;
+    return {
+      ...defaultSave(),
+      ...parsed,
+      owned: migrateOwned(parsed.owned, already),
+      ownedLevels: true,
+      settings: { ...defaultSave().settings, ...parsed.settings },
+      pity: { ...defaultSave().pity, ...parsed.pity },
+    };
   } catch {
     return defaultSave();
   }
@@ -64,8 +113,15 @@ function load(): Save {
 export let game: Save = load();
 
 export function persist(): void {
-  localStorage.setItem(KEY, JSON.stringify(game));
+  try {
+    if (typeof localStorage === 'undefined') return;
+    localStorage.setItem(KEY, JSON.stringify(game));
+  } catch {
+    /* private mode or a non-browser check */
+  }
 }
+
+if (migratedOnLoad) persist();
 
 export function levelKey(unit: number, index: number): string {
   return `u${unit}-l${index}`;
@@ -122,15 +178,15 @@ export function ownedCount(): number {
   return Object.values(game.owned).filter((n) => n > 0).length;
 }
 
-export function giveCard(id: string, refund: number): { isNew: boolean } {
-  const prev = game.owned[id] ?? 0;
-  game.owned[id] = prev + 1;
-  if (prev > 0) {
-    game.stars += refund;
-    game.totalEarned += refund;
+export function giveCard(id: string, maxLevel: number, maxRefund: number): CardGain {
+  const gain = nextCardLevel(game.owned[id] ?? 0, maxLevel, maxRefund);
+  game.owned[id] = gain.level;
+  if (gain.refund > 0) {
+    game.stars += gain.refund;
+    game.totalEarned += gain.refund;
   }
   persist();
-  return { isNew: prev === 0 };
+  return gain;
 }
 
 export function spendStars(n: number): boolean {

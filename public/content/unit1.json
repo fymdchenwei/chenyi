@@ -116,6 +116,7 @@
   "words": [
     {
       "id": "u1_w01",
+      "image": "words/u1_w01.webp",
       "en": "hello",
       "zh": "喂，你好",
       "emoji_hint": "👋",
@@ -127,6 +128,7 @@
     },
     {
       "id": "u1_w02",
+      "image": "words/u1_w02.webp",
       "en": "nice",
       "zh": "令人愉快的",
       "emoji_hint": "😊",
@@ -138,6 +140,7 @@
     },
     {
       "id": "u1_w03",
+      "image": "words/u1_w03.webp",
       "en": "meet",
       "zh": "认识，结识",
       "emoji_hint": "🤝",
@@ -149,6 +152,7 @@
     },
     {
       "id": "u1_w04",
+      "image": "words/u1_w04.webp",
       "en": "you",
       "zh": "你",
       "emoji_hint": "👉",
@@ -160,6 +164,7 @@
     },
     {
       "id": "u1_w05",
+      "image": "words/u1_w05.webp",
       "en": "let's = let us",
       "zh": "让我们",
       "emoji_hint": "🙌",
@@ -171,6 +176,7 @@
     },
     {
       "id": "u1_w06",
+      "image": "words/u1_w06.webp",
       "en": "play",
       "zh": "玩，玩耍",
       "emoji_hint": "⚽",
@@ -182,6 +188,7 @@
     },
     {
       "id": "u1_w07",
+      "image": "words/u1_w07.webp",
       "en": "I",
       "zh": "我",
       "emoji_hint": "🙋",
@@ -193,6 +200,7 @@
     },
     {
       "id": "u1_w08",
+      "image": "words/u1_w08.webp",
       "en": "am (I'm = I am)",
       "zh": "是（我是）",
       "emoji_hint": "🙋",
@@ -204,6 +212,7 @@
     },
     {
       "id": "u1_w09",
+      "image": "words/u1_w09.webp",
       "en": "too",
       "zh": "也，还",
       "emoji_hint": "➕",
@@ -215,6 +224,7 @@
     },
     {
       "id": "u1_w10",
+      "image": "words/u1_w10.webp",
       "en": "photo",
       "zh": "照片，相片",
       "emoji_hint": "🖼️",
@@ -228,6 +238,7 @@
     },
     {
       "id": "u1_w11",
+      "image": "words/u1_w11.webp",
       "en": "how",
       "zh": "怎样，如何",
       "emoji_hint": "❓",
@@ -239,6 +250,7 @@
     },
     {
       "id": "u1_w12",
+      "image": "words/u1_w12.webp",
       "en": "say",
       "zh": "说",
       "emoji_hint": "🗣️",
