@@ -242,7 +242,7 @@ const pictureRules = [
   'height: 53.44cqh',
   '.quiz[data-q=\'listen-picture\'] .pic-card',
   'width: 23.24cqw',
-  'height: 54.45cqh',
+  'height: 53.44cqh',
   '.quiz[data-q=\'count-hear\'] .pic-card .count-svg',
   'width: 35.21cqw',
   'height: 33.59cqh',

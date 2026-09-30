@@ -651,11 +651,23 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
   height: 40.71cqh;
   max-width: 100%;
 }
-.quiz[data-q='count-see'] .mean-layout { grid-template-columns: 1.15fr .85fr; }
-.quiz[data-q='count-see'] .prompt-card .count-art { width: 100%; }
+.quiz[data-q='count-see'] .mean-layout {
+  grid-template-columns: 1.15fr .85fr;
+  align-items: stretch;
+}
+.quiz[data-q='count-see'] .prompt-card {
+  height: auto;
+  align-self: stretch;
+  justify-content: center;
+}
+.quiz[data-q='count-see'] .prompt-card .count-art {
+  width: 100%;
+  height: auto;
+}
 .quiz[data-q='count-see'] .prompt-card .count-svg {
   height: 53.44cqh;
   width: 100%;
+  flex: none;
 }
 .scene-layout {
   display: flex;
@@ -695,17 +707,22 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 .scene-layout .scene-choice {
   position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  height: auto;
+  justify-self: center;
+  align-self: center;
   min-height: 0;
   padding: 4px;
   overflow: hidden;
 }
 .scene-layout .scene-choice .word-art {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-  min-height: 0;
+  width: auto;
+  height: 33.08cqh;
+  max-width: 100%;
+  flex: none;
   object-fit: contain;
 }
 .scene-layout .scene-choice span {
@@ -745,7 +762,7 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 }
 .quiz[data-q='listen-picture'] .pic-card {
   width: 23.24cqw;
-  height: 54.45cqh;
+  height: 53.44cqh;
   flex: none;
   min-height: 0;
   padding: 6px;
