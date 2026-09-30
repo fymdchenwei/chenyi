@@ -979,6 +979,7 @@ button.acard { border: 0; font: inherit; color: inherit; text-align: left; width
   padding: 8px;
 }
 .detail-card {
+  position: relative;
   display: grid;
   grid-template-columns: min(34cqh, 220px) 1fr;
   gap: 10px;
@@ -996,6 +997,20 @@ button.acard { border: 0; font: inherit; color: inherit; text-align: left; width
 .detail-copy h3, .detail-copy h4, .detail-copy p { margin: 0; }
 .detail-copy h4 { color: #7a4dff; }
 .detail-card .btn { align-self: flex-start; }
+.detail-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-card:not(.locked) .detail-copy {
+  padding-top: calc(4cqh + 42px);
+}
 .detail-card.locked { align-items: center; }
 .sil-frame { position: relative; border-radius: 16px; overflow: hidden; background: #2d2658; }
 .sil-frame img { width: 100%; height: 48cqh; object-fit: cover; filter: brightness(0) opacity(.5); }
