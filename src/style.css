@@ -428,23 +428,23 @@ button { cursor: pointer; touch-action: manipulation; -webkit-touch-callout: non
 .learn-layout {
   flex: 1;
   display: grid;
-  grid-template-columns: 76px 1fr 76px;
+  grid-template-columns: 60px 1fr 60px;
   align-items: stretch;
-  column-gap: 2px;
+  column-gap: 8px;
   min-height: 0;
 }
 .learn-layout .arrow {
   align-self: center;
   justify-self: center;
-  width: 76px;
-  height: 52px;
-  border-radius: 26px;
+  width: 56px;
+  height: 96px;
+  border-radius: 28px;
   margin: 0;
   padding: 0;
   display: grid;
   place-items: center;
   line-height: 1;
-  font-size: 34px;
+  font-size: 48px;
   font-weight: 700;
   background: #ff8a3d;
   color: #fff;
