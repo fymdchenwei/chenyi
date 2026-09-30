@@ -1,0 +1,54 @@
+{
+  "unit": 6,
+  "title_en": "Colours",
+  "title_zh": "颜色",
+  "book": "外研社（FLTRP）英语 一年级 上册（预备级），2024 新版",
+  "page_range": { "book": "31-36", "pdf": "35-40" },
+  "words": [
+    { "id": "u6_w01", "image": "words/u6_w01.webp", "en": "red", "zh": "红色", "emoji_hint": "🔴" },
+    { "id": "u6_w02", "image": "words/u6_w02.webp", "en": "green", "zh": "绿色", "emoji_hint": "🟢" },
+    { "id": "u6_w03", "image": "words/u6_w03.webp", "en": "blue", "zh": "蓝色", "emoji_hint": "🔵" },
+    { "id": "u6_w04", "image": "words/u6_w04.webp", "en": "black", "zh": "黑色", "emoji_hint": "⚫" },
+    { "id": "u6_w05", "image": "words/u6_w05.webp", "en": "white", "zh": "白色", "emoji_hint": "⚪" },
+    { "id": "u6_w06", "image": "words/u6_w06.webp", "en": "yellow", "zh": "黄色", "emoji_hint": "🟡" },
+    { "id": "u6_w07", "en": "colour", "zh": "颜色", "emoji_hint": "🎨" },
+    { "id": "u6_w08", "en": "so", "zh": "这么，如此", "emoji_hint": "❗" },
+    { "id": "u6_w09", "en": "many", "zh": "许多；大量", "emoji_hint": "✨" },
+    { "id": "u6_w10", "en": "happy", "zh": "快乐的", "emoji_hint": "😊" },
+    { "id": "u6_w11", "image": "words/u6_w11.webp", "en": "Chinese New Year", "zh": "春节", "emoji_hint": "🏮" },
+    { "id": "u6_w12", "en": "stop", "zh": "停止，终止", "emoji_hint": "🛑" },
+    { "id": "u6_w13", "en": "go", "zh": "走", "emoji_hint": "🚶" },
+    { "id": "u6_w14", "en": "slow", "zh": "慢下来，减速", "emoji_hint": "🐢" }
+  ],
+  "sentences": [
+    { "en": "What colour?", "zh": "什么颜色？" },
+    { "en": "Red, green and blue,", "zh": "红色、绿色和蓝色，" },
+    { "en": "Black, white and yellow.", "zh": "黑色、白色和黄色。" },
+    { "en": "Colours, colours!", "zh": "颜色，颜色！" },
+    { "en": "So many colours!", "zh": "这么多颜色！" },
+    { "en": "It's red!", "zh": "它是红色的！" },
+    { "en": "It's green, red and yellow!", "zh": "它是绿色、红色和黄色的！" },
+    { "en": "Blue, green, red and yellow! Four colours!", "zh": "蓝色、绿色、红色和黄色！四种颜色！" },
+    { "en": "Happy Chinese New Year!", "zh": "春节快乐！" }
+  ],
+  "song": {
+    "lines": [
+      { "en": "What colour?", "zh": "什么颜色？" },
+      { "en": "Red, green and blue,", "zh": "红色、绿色和蓝色，" },
+      { "en": "Black, white and yellow.", "zh": "黑色、白色和黄色。" },
+      { "en": "Colours, colours!", "zh": "颜色，颜色！" },
+      { "en": "So many colours!", "zh": "这么多颜色！" }
+    ]
+  },
+  "dialogues": [
+    {
+      "id": "u6_d01",
+      "lines": [
+        { "speaker": "Taotao", "en": "It's red!", "zh": "它是红色的！" },
+        { "speaker": "Duoduo", "en": "It's green, red and yellow!", "zh": "它是绿色、红色和黄色的！" },
+        { "speaker": "Emma", "en": "Blue, green, red and yellow! Four colours!", "zh": "蓝色、绿色、红色和黄色！四种颜色！" },
+        { "speaker": "Taotao", "en": "Happy Chinese New Year!", "zh": "春节快乐！" }
+      ]
+    }
+  ]
+}

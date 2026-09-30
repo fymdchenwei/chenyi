@@ -26,22 +26,22 @@
       "unit": 4,
       "title_en": "My classroom",
       "title_zh": "我的教室",
-      "file": null,
-      "playable": false
+      "file": "unit4.json",
+      "playable": true
     },
     {
       "unit": 5,
       "title_en": "School things",
       "title_zh": "学习用品",
-      "file": null,
-      "playable": false
+      "file": "unit5.json",
+      "playable": true
     },
     {
       "unit": 6,
       "title_en": "Colours",
       "title_zh": "颜色",
-      "file": null,
-      "playable": false
+      "file": "unit6.json",
+      "playable": true
     }
   ]
 }
