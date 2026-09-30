@@ -249,12 +249,15 @@ export function mountTen(root: HTMLElement, ctx: AppCtx, hits: DrawHit[]): () =>
             if (!found) return '';
             const { card } = found;
             const meta = RARITY_META[card.rarity];
-            const top = RARITY_RANK[card.rarity] === best;
-            const badge = hit.isNew ? '新卡' : hit.maxed ? 'MAX' : `Lv.${hit.level}`;
+            const top = RARITY_RANK[card.rarity] === best && hits.some((other) => {
+              const otherCard = findCard(ctx.data.cards, other.cardId)?.card;
+              return otherCard ? RARITY_RANK[otherCard.rarity] < best : false;
+            });
+            const badge = hit.isNew ? '新卡' : hit.maxed ? 'MAX' : '升级';
             const cls = hit.isNew ? 'badge-new' : hit.maxed ? 'badge-max' : 'badge-up';
             return `<article class="ten-cell r-${card.rarity}${top ? ' best' : ''}">
               ${top ? '<em class="best-tag">最佳</em>' : ''}
-              <img src="${asset(`content/cards/images/${card.image}`)}" alt="" />
+              <img src="${asset(`content/cards/images/${card.image}`)}" alt="${esc(card.name)}" />
               <b>${esc(card.name)}</b>
               <small>${meta.zh}</small>
               <span class="ten-badge ${cls}">${badge}</span>
